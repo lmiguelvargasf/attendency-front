@@ -1,7 +1,7 @@
 import React from 'react'
 import { DatePicker } from 'antd'
 
-import styles from './App.module.scss'
+import styles from './App.module.sass'
 
 function App () {
   return (
