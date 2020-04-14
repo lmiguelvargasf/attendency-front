@@ -1,13 +1,14 @@
 import React from 'react'
-import { DatePicker } from 'antd'
+import { Route } from 'react-router-dom'
 
-import styles from './App.module.sass'
+import Admin from './Admin'
+
+import './App.module.sass'
 
 function App () {
   return (
     <>
-      <h1 className={styles.testing}>Attendency</h1>
-      <DatePicker />
+      <Route path='/admin' component={Admin} />
     </>
   )
 }
