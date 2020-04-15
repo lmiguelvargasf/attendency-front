@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Switch, Link, Redirect } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Route, Switch, Link, Redirect, useLocation } from 'react-router-dom'
 import { Layout, Menu, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
@@ -15,19 +15,25 @@ const { Header, Content, Sider } = Layout
 const menuItems = [
   {
     icon: faDraftingCompass,
-    label: 'Projects'
+    label: 'Projects',
+    key: 'projects'
   },
   {
     icon: faUsers,
-    label: 'Members'
+    label: 'Members',
+    key: 'members'
   },
   {
     icon: faCalendarAlt,
-    label: 'Meetings'
+    label: 'Meetings',
+    key: 'meetings'
   }
 ]
 
 const Admin = () => {
+  const location = useLocation()
+  const [selectedMenuItem, setselectedMenuItem] = useState(location.pathname.replace('/admin/', ''))
+
   return (
     <Layout style={{ height: '100vh' }}>
       <Header className='header'>
@@ -39,12 +45,12 @@ const Admin = () => {
       <Layout>
         <Sider width={200}>
           <Menu
-            defaultSelectedKeys={['0']}
+            selectedKeys={[selectedMenuItem]}
             style={{ height: '100%', borderRight: 0 }}
           >
-            {menuItems.map((item, i) => (
-              <Menu.Item key={i}>
-                <Link to={`/admin/${item.label.toLowerCase()}`}>
+            {menuItems.map(item => (
+              <Menu.Item key={item.key}>
+                <Link to={`/admin/${item.key}`} onClick={() => { setselectedMenuItem(item.key) }}>
                   <Space size='middle'>
                     <FontAwesomeIcon icon={item.icon} />
                     <span>{item.label}</span>
