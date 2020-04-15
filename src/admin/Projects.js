@@ -1,5 +1,7 @@
 import React from 'react'
-import { Table, Tag } from 'antd'
+import { Table, Space } from 'antd'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Projects = () => {
   const columns = [
@@ -28,10 +30,11 @@ const Projects = () => {
       title: 'Action',
       key: 'action',
       render: (text, record) => (
-        <span>
-          <a style={{ marginRight: 16 }}>Invite {record.name}</a>
-          <a>Delete</a>
-        </span>
+        <Space size='middle'>
+          <FontAwesomeIcon icon={faEdit} />
+          <FontAwesomeIcon icon={faCalendar} />
+          <FontAwesomeIcon icon={faUserPlus} />
+        </Space>
       )
     }
   ]
