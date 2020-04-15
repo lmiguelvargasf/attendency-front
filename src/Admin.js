@@ -1,11 +1,26 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Space } from 'antd'
+import { Layout, Menu, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './Admin.module.sass'
 
 const { Header, Content, Sider } = Layout
+
+const menuItems = [
+  {
+    icon: faDraftingCompass,
+    label: 'Projects'
+  },
+  {
+    icon: faUsers,
+    label: 'Members'
+  },
+  {
+    icon: faCalendarAlt,
+    label: 'Meetings'
+  }
+]
 
 const Admin = () => {
   return (
@@ -19,27 +34,17 @@ const Admin = () => {
       <Layout>
         <Sider width={200}>
           <Menu
-            defaultSelectedKeys={['1']}
+            defaultSelectedKeys={['0']}
             style={{ height: '100%', borderRight: 0 }}
           >
-            <Menu.Item key='1'>
-              <Space size='middle'>
-                <FontAwesomeIcon icon={faDraftingCompass} />
-                <span>Projects</span>
-              </Space>
-            </Menu.Item>
-            <Menu.Item key='2'>
-              <Space size='middle'>
-                <FontAwesomeIcon icon={faUsers} />
-                <span>Members</span>
-              </Space>
-            </Menu.Item>
-            <Menu.Item key='3'>
-              <Space size='middle'>
-                <FontAwesomeIcon icon={faCalendarAlt} />
-                <span>Meetings</span>
-              </Space>
-            </Menu.Item>
+            {menuItems.map((item, i) => (
+              <Menu.Item key={i}>
+                <Space size='middle'>
+                  <FontAwesomeIcon icon={item.icon} />
+                  <span>{item.label}</span>
+                </Space>
+              </Menu.Item>
+            ))}
           </Menu>
         </Sider>
         <Layout style={{ padding: '24px' }}>
