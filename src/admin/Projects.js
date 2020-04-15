@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Projects = () => {
-  const [{ data, loading, error }, refetch] = useAxios(
+  const [{ data, loading, error }] = useAxios(
     'http://localhost:8000/api/projects/'
   )
 
