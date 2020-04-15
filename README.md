@@ -66,3 +66,17 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Environment Variables
+
+### `.env` file
+
+Create a file `.env` in the root of this project.
+
+### Variables
+
+The following variables should be defined inside `.env`:
+
+|         Variable       |             Value           |
+| ---------------------- | --------------------------- |
+|`REACT_APP_API_URL`     | http://localhost:8000/api   |
