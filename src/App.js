@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import Admin from './Admin'
+import Admin from './admin/Admin'
 
 import './App.module.sass'
 
