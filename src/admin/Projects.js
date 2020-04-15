@@ -6,7 +6,7 @@ import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icon
 
 const Projects = () => {
   const [{ data, loading, error }] = useAxios(
-    'http://localhost:8000/api/projects/'
+    `${process.env.REACT_APP_API_URL}/projects/`
   )
 
   if (loading) return <p>Loading...</p>
