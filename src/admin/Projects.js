@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Projects = () => {
+  useEffect(() => {
+    
+  }, [])
   const columns = [
     {
       title: 'Title',
