@@ -1,7 +1,12 @@
 import React from 'react'
+import { Route, Switch, Link, Redirect } from 'react-router-dom'
 import { Layout, Menu, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+
+import Meetings from './Meetings'
+import Members from './Members'
+import Projects from './Projects'
 
 import styles from './Admin.module.sass'
 
@@ -39,10 +44,12 @@ const Admin = () => {
           >
             {menuItems.map((item, i) => (
               <Menu.Item key={i}>
-                <Space size='middle'>
-                  <FontAwesomeIcon icon={item.icon} />
-                  <span>{item.label}</span>
-                </Space>
+                <Link to={`/admin/${item.label.toLowerCase()}`}>
+                  <Space size='middle'>
+                    <FontAwesomeIcon icon={item.icon} />
+                    <span>{item.label}</span>
+                  </Space>
+                </Link>
               </Menu.Item>
             ))}
           </Menu>
@@ -52,7 +59,12 @@ const Admin = () => {
             className={styles.siteLayoutBackground}
             style={{ padding: 24 }}
           >
-            Content
+            <Switch>
+              <Route exact path='/admin' render={() => (<Redirect to='/admin/projects' />)} />
+              <Route path='/admin/projects' component={Projects} />
+              <Route path='/admin/members' component={Members} />
+              <Route path='/admin/meetings' component={Meetings} />
+            </Switch>
           </Content>
         </Layout>
       </Layout>
