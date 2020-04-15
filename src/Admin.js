@@ -42,19 +42,10 @@ const Admin = () => {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+        <Layout style={{ padding: '24px' }}>
           <Content
             className={styles.siteLayoutBackground}
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280
-            }}
+            style={{ padding: 24 }}
           >
             Content
           </Content>
