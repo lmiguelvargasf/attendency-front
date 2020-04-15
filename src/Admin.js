@@ -1,6 +1,7 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd'
-import { UserOutlined, LaptopOutlined, CalendarOutlined } from '@ant-design/icons'
+import { Layout, Menu, Breadcrumb, Space } from 'antd'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './Admin.module.sass'
 
@@ -21,17 +22,23 @@ const Admin = () => {
             defaultSelectedKeys={['1']}
             style={{ height: '100%', borderRight: 0 }}
           >
-            <Menu.Item key="1">
-              <UserOutlined />
-              <span>Projects</span>
+            <Menu.Item key='1'>
+              <Space size='middle'>
+                <FontAwesomeIcon icon={faDraftingCompass} />
+                <span>Projects</span>
+              </Space>
             </Menu.Item>
-            <Menu.Item key="2">
-              <LaptopOutlined />
-              <span>Members</span>
+            <Menu.Item key='2'>
+              <Space size='middle'>
+                <FontAwesomeIcon icon={faUsers} />
+                <span>Members</span>
+              </Space>
             </Menu.Item>
-            <Menu.Item key="3">
-              <CalendarOutlined />
-              <span>Meetings</span>
+            <Menu.Item key='3'>
+              <Space size='middle'>
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                <span>Meetings</span>
+              </Space>
             </Menu.Item>
           </Menu>
         </Sider>
