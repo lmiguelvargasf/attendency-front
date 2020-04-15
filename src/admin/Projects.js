@@ -1,23 +1,23 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
+import useAxios from 'axios-hooks'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Projects = () => {
-  useEffect(() => {
-    const getProjects = async () => {
-      const res = await axios.get('http://localhost:8000/api/projects/')
-      console.log(res)
-    }
-    getProjects()
-  }, [])
+  const [{ data, loading, error }, refetch] = useAxios(
+    'http://localhost:8000/api/projects/'
+  )
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error!</p>
+
   const columns = [
     {
       title: 'Title',
       dataIndex: 'title',
       key: 'title',
-      render: text => <a>{text}</a>
+      render: title => <a>{title}</a>
     },
     {
       title: 'Start Date',
@@ -27,7 +27,8 @@ const Projects = () => {
     {
       title: 'Description',
       dataIndex: 'description',
-      key: 'description'
+      key: 'description',
+      render: description => `${description.substring(0, 50)}...`
     },
     {
       title: 'Team',
@@ -44,30 +45,6 @@ const Projects = () => {
           <FontAwesomeIcon icon={faUserPlus} />
         </Space>
       )
-    }
-  ]
-
-  const data = [
-    {
-      key: '1',
-      title: 'ABC',
-      startDate: '2019-04-02',
-      description: 'New York No. 1 Lake Park',
-      team: 'Anastasia, Byron, Charles'
-    },
-    {
-      key: '2',
-      title: 'MN',
-      startDate: '2019-07-21',
-      description: 'London No. 1 Lake Park',
-      team: 'Merlin, Nicholas'
-    },
-    {
-      key: '3',
-      title: 'XYZ',
-      startDate: '2020-11-15',
-      description: 'Sidney No. 1 Lake Park',
-      team: 'Xavier, Yasmine, Zachary'
     }
   ]
 
