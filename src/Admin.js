@@ -2,22 +2,22 @@ import React from 'react'
 import { Layout, Menu, Breadcrumb } from 'antd'
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons'
 
+import styles from './Admin.module.sass'
+
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
 
 const Admin = () => {
   return (
-    <Layout>
+    <Layout style={{height: '100vh'}}>
       <Header className='header'>
-        <div className='logo' />
-        <Menu theme='dark' mode='horizontal' defaultSelectedKeys={['2']}>
-          <Menu.Item key='1'>nav 1</Menu.Item>
-          <Menu.Item key='2'>nav 2</Menu.Item>
-          <Menu.Item key='3'>nav 3</Menu.Item>
+        <div className={styles.logo} />
+        <Menu theme='dark' mode='horizontal' style={{float: 'right'}}>
+          <Menu.Item key='1'>Log Out</Menu.Item>
         </Menu>
       </Header>
       <Layout>
-        <Sider width={200} className='site-layout-background'>
+        <Sider width={200} className={styles.siteLayoutBackground}>
           <Menu
             mode='inline'
             defaultSelectedKeys={['1']}
