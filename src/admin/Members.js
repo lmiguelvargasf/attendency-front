@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const Members = () => {
-  const [{ data, loading, error }] = useAxios(
+  const [{ data: members, loading, error }] = useAxios(
     `${process.env.REACT_APP_API_URL}/members/`
   )
 
@@ -42,7 +42,7 @@ const Members = () => {
   ]
 
   return (
-    <Table columns={columns} dataSource={data} pagination={false} />
+    <Table columns={columns} dataSource={members} pagination={false} />
   )
 }
 

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Projects = () => {
-  const [{ data, loading, error }] = useAxios(
+  const [{ data: projects, loading, error }] = useAxios(
     `${process.env.REACT_APP_API_URL}/projects/`
   )
 
@@ -49,7 +49,7 @@ const Projects = () => {
   ]
 
   return (
-    <Table columns={columns} dataSource={data} pagination={false} />
+    <Table columns={columns} dataSource={projects} pagination={false} />
   )
 }
 
