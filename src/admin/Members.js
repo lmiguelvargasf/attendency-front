@@ -1,20 +1,28 @@
 import React from 'react'
+import useAxios from 'axios-hooks'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const Members = () => {
+  const [{ data, loading, error }] = useAxios(
+    `${process.env.REACT_APP_API_URL}/members/`
+  )
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error!</p>
+
   const columns = [
     {
-      title: 'Full Name',
-      dataIndex: 'fullName',
-      key: 'fullName',
-      render: fullName => <a>{fullName}</a>
+      title: 'First Name',
+      dataIndex: 'firstName',
+      key: 'firstName',
+      render: firstName => <a>{firstName}</a>
     },
     {
-      title: 'Preferred Name',
-      dataIndex: 'preferredName',
-      key: 'fullName'
+      title: 'Last Name',
+      dataIndex: 'lastName',
+      key: 'lastName'
     },
     {
       title: 'Email',
@@ -30,27 +38,6 @@ const Members = () => {
           <FontAwesomeIcon icon={faTrash} />
         </Space>
       )
-    }
-  ]
-
-  const data = [
-    {
-      key: '1',
-      fullName: 'Martina W. Guzman',
-      preferredName: 'Winona',
-      email: 'martina.winona@gmail.com'
-    },
-    {
-      key: '2',
-      fullName: 'Isaac Newton',
-      preferredName: 'Isaac',
-      email: 'isaac.newton@gmail.com'
-    },
-    {
-      key: '3',
-      fullName: 'Nikola Tesla',
-      preferredName: 'Nikola',
-      email: 'nikola.tesla@gmail.com'
     }
   ]
 
