@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Members component properly 1`] = `
+exports[`renders Meetings component properly 1`] = `
 <p>
   Loading...
 </p>
