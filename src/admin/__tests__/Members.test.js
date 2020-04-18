@@ -1,9 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Meetings from './Meetings'
+import Members from '../Members'
 
-it('renders Meetings component properly', () => {
-  const component = renderer.create(<Meetings />)
+it('renders Members component properly', () => {
+  const component = renderer.create(<Members />)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
