@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Projects component matches snapshot 1`] = `
-<p>
-  Loading...
-</p>
+<DocumentFragment>
+  <p>
+    Loading...
+  </p>
+</DocumentFragment>
 `;
