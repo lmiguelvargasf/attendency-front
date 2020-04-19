@@ -2,7 +2,7 @@ import React from 'react'
 import useAxios from 'axios-hooks'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faCalendar, faUserPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Projects = () => {
   const [{ data: projects, loading, error }] = useAxios(
@@ -43,6 +43,7 @@ const Projects = () => {
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faCalendar} />
           <FontAwesomeIcon icon={faUserPlus} />
+          <FontAwesomeIcon icon={faTimes} />
         </Space>
       )
     }
