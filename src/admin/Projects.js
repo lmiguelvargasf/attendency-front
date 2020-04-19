@@ -50,7 +50,7 @@ const Projects = () => {
 
   return (
     <Table
-      data-testid='project-table-id'
+      data-testid='project-table'
       columns={columns}
       dataSource={projects}
       pagination={false}

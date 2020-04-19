@@ -40,7 +40,7 @@ describe('Projects component', () => {
 
     it('renders loading', () => {
       const { getByTestId, queryByTestId } = render(<Projects />)
-      expect(queryByTestId('project-table-id')).toBeNull()
+      expect(queryByTestId('project-table')).toBeNull()
       expect(getByTestId('loading')).not.toBeNull()
       expect(queryByTestId('error')).toBeNull()
     })
@@ -62,7 +62,7 @@ describe('Projects component', () => {
 
     it('renders error', () => {
       const { getByTestId, queryByTestId } = render(<Projects />)
-      expect(queryByTestId('project-table-id')).toBeNull()
+      expect(queryByTestId('project-table')).toBeNull()
       expect(queryByTestId('loading')).toBeNull()
       expect(getByTestId('error')).not.toBeNull()
     })
@@ -89,7 +89,7 @@ describe('Projects component', () => {
         error: null
       }])
       const { getByTestId, queryByTestId } = render(<Projects />)
-      expect(getByTestId('project-table-id')).not.toBeNull()
+      expect(getByTestId('project-table')).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()
       expect(queryByTestId('error')).toBeNull()
     })

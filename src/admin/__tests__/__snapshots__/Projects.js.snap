@@ -33,7 +33,7 @@ exports[`Projects component projects table matches snapshop when displaying tabl
       >
         <div
           class="ant-table"
-          data-testid="project-table-id"
+          data-testid="project-table"
         >
           <div
             class="ant-table-container"
