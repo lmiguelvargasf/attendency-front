@@ -2,7 +2,7 @@ import React from 'react'
 import useAxios from 'axios-hooks'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Meetings = () => {
   const [{ data: meetings, loading, error }] = useAxios(
@@ -36,6 +36,7 @@ const Meetings = () => {
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faTrash} />
+          <FontAwesomeIcon icon={faTimes} />
         </Space>
       )
     }
