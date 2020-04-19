@@ -9,8 +9,8 @@ const Members = () => {
     `${process.env.REACT_APP_API_URL}/members/`
   )
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
+  if (loading) return <p data-testid='loading'>Loading...</p>
+  if (error) return <p data-testid='error'>Error!</p>
 
   const columns = [
     {
@@ -42,7 +42,12 @@ const Members = () => {
   ]
 
   return (
-    <Table columns={columns} dataSource={members} pagination={false} />
+    <Table
+      data-testid='member-table'
+      columns={columns}
+      dataSource={members}
+      pagination={false}
+    />
   )
 }
 
