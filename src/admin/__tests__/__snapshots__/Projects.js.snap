@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Projects component error matches snapshot when having error 1`] = `
+<DocumentFragment>
+  <p
+    data-testid="error"
+  >
+    Error!
+  </p>
+</DocumentFragment>
+`;
+
+exports[`Projects component loading data matches snapshot when loading data 1`] = `
+<DocumentFragment>
+  <p
+    data-testid="loading"
+  >
+    Loading...
+  </p>
+</DocumentFragment>
+`;
+
+exports[`Projects component projects table matches snapshop when displaying table 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-table-wrapper"
+  >
+    <div
+      class="ant-spin-nested-loading"
+    >
+      <div
+        class="ant-spin-container"
+      >
+        <div
+          class="ant-table"
+          data-testid="project-table"
+        >
+          <div
+            class="ant-table-container"
+          >
+            <div
+              class="ant-table-content"
+            >
+              <table
+                style="table-layout: auto;"
+              >
+                <colgroup />
+                <thead
+                  class="ant-table-thead"
+                >
+                  <tr>
+                    <th
+                      class="ant-table-cell"
+                    >
+                      Title
+                    </th>
+                    <th
+                      class="ant-table-cell"
+                    >
+                      Start Date
+                    </th>
+                    <th
+                      class="ant-table-cell"
+                    >
+                      Description
+                    </th>
+                    <th
+                      class="ant-table-cell"
+                    >
+                      Team
+                    </th>
+                    <th
+                      class="ant-table-cell"
+                    >
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="ant-table-tbody"
+                >
+                  <tr
+                    class="ant-table-row ant-table-row-level-0"
+                    data-row-key="1"
+                  >
+                    <td
+                      class="ant-table-cell"
+                    >
+                      <a>
+                        Testing Project Alpha
+                      </a>
+                    </td>
+                    <td
+                      class="ant-table-cell"
+                    >
+                      2020-04-18
+                    </td>
+                    <td
+                      class="ant-table-cell"
+                    >
+                      This is just for testing...
+                    </td>
+                    <td
+                      class="ant-table-cell"
+                    >
+                      A, B, C
+                    </td>
+                    <td
+                      class="ant-table-cell"
+                    >
+                      <div
+                        class="ant-space ant-space-horizontal"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 16px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-edit fa-w-18 "
+                            data-icon="edit"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 576 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 16px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-calendar fa-w-14 "
+                            data-icon="calendar"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-user-plus fa-w-20 "
+                            data-icon="user-plus"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 640 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="ant-table-row ant-table-row-level-0"
+                    data-row-key="2"
+                  >
+                    <td
+                      class="ant-table-cell"
+                    >
+                      <a>
+                        Testing Project Beta
+                      </a>
+                    </td>
+                    <td
+                      class="ant-table-cell"
+                    >
+                      2020-04-19
+                    </td>
+                    <td
+                      class="ant-table-cell"
+                    >
+                      This is just for testing too...
+                    </td>
+                    <td
+                      class="ant-table-cell"
+                    >
+                      X, Y, Z
+                    </td>
+                    <td
+                      class="ant-table-cell"
+                    >
+                      <div
+                        class="ant-space ant-space-horizontal"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 16px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-edit fa-w-18 "
+                            data-icon="edit"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 576 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 16px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-calendar fa-w-14 "
+                            data-icon="calendar"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="svg-inline--fa fa-user-plus fa-w-20 "
+                            data-icon="user-plus"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            viewBox="0 0 640 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

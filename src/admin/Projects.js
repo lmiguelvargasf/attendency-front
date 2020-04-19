@@ -9,8 +9,8 @@ const Projects = () => {
     `${process.env.REACT_APP_API_URL}/projects/`
   )
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
+  if (loading) return <p data-testid='loading'>Loading...</p>
+  if (error) return <p data-testid='error'>Error!</p>
 
   const columns = [
     {
@@ -49,7 +49,12 @@ const Projects = () => {
   ]
 
   return (
-    <Table columns={columns} dataSource={projects} pagination={false} />
+    <Table
+      data-testid='project-table'
+      columns={columns}
+      dataSource={projects}
+      pagination={false}
+    />
   )
 }
 
