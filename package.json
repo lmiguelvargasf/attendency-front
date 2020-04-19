@@ -47,6 +47,8 @@
     "standard": "^14.3.3"
   },
   "standard": {
-    "env": [ "jest" ]
+    "env": [
+      "jest"
+    ]
   }
 }
