@@ -4,6 +4,7 @@ import Projects from '../Projects'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
+const TABLE_TEST_ID = 'project-table'
 const fakeData = [
   {
     key: 1,
@@ -40,7 +41,7 @@ describe('Projects component', () => {
 
     it('renders loading', () => {
       const { getByTestId, queryByTestId } = render(<Projects />)
-      expect(queryByTestId('project-table')).toBeNull()
+      expect(queryByTestId(TABLE_TEST_ID)).toBeNull()
       expect(getByTestId('loading')).not.toBeNull()
       expect(queryByTestId('error')).toBeNull()
     })
@@ -62,7 +63,7 @@ describe('Projects component', () => {
 
     it('renders error', () => {
       const { getByTestId, queryByTestId } = render(<Projects />)
-      expect(queryByTestId('project-table')).toBeNull()
+      expect(queryByTestId(TABLE_TEST_ID)).toBeNull()
       expect(queryByTestId('loading')).toBeNull()
       expect(getByTestId('error')).not.toBeNull()
     })
@@ -89,7 +90,7 @@ describe('Projects component', () => {
         error: null
       }])
       const { getByTestId, queryByTestId } = render(<Projects />)
-      expect(getByTestId('project-table')).not.toBeNull()
+      expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()
       expect(queryByTestId('error')).toBeNull()
     })
