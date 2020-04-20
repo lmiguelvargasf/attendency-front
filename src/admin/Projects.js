@@ -4,7 +4,7 @@ import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const RemoveProjectButton = ({ project, updateProjects }) => {
+export const RemoveProjectButton = ({ project, updateProjects }) => {
   const [, execute] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/projects/${project.key}/`,
@@ -19,10 +19,10 @@ const RemoveProjectButton = ({ project, updateProjects }) => {
     updateProjects(project)
   }
 
-  return <a onClick={() => { removeProject(project) }}><FontAwesomeIcon icon={faTimes} /></a>
+  return <a data-testid={`project-${project.key}`} onClick={() => { removeProject(project) }}><FontAwesomeIcon icon={faTimes} /></a>
 }
 
-const Projects = () => {
+export const Projects = () => {
   const [projects, setProjects] = useState([])
   const [{ data, loading, error }] = useAxios(
     `${process.env.REACT_APP_API_URL}/projects/`
@@ -87,5 +87,3 @@ const Projects = () => {
     />
   )
 }
-
-export default Projects
