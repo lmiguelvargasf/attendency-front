@@ -14,12 +14,12 @@ export const RemoveProjectButton = ({ project, updateProjects }) => {
       manual: true
     }
   )
-  const removeProject = async (project) => {
+  const removeProject = async () => {
     await execute()
     updateProjects(project)
   }
 
-  return <a data-testid={`project-${project.key}`} onClick={() => { removeProject(project) }}><FontAwesomeIcon icon={faTimes} /></a>
+  return <a data-testid={`project-${project.key}`} onClick={removeProject}><FontAwesomeIcon icon={faTimes} /></a>
 }
 
 export const Projects = () => {
