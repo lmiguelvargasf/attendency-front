@@ -99,9 +99,12 @@ describe('Projects component', () => {
   })
 
   describe('projects table', () => {
-    beforeAll(() => {
-      useAxios.mockImplementation(url => [{
-        data: fakeData,
+    let projects
+
+    beforeEach(() => {
+      projects = JSON.parse(JSON.stringify(fakeData))
+      useAxios.mockReturnValue([{
+        data: projects,
         loading: false,
         error: null
       }])
@@ -113,11 +116,6 @@ describe('Projects component', () => {
     })
 
     it('renders projects table', async () => {
-      useAxios.mockImplementation(url => [{
-        data: fakeData,
-        loading: false,
-        error: null
-      }])
       const { getByTestId, queryByTestId } = render(<Projects />)
       expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()
