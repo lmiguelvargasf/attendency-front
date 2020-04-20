@@ -6,7 +6,7 @@ import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-sol
 
 import Meetings from './Meetings'
 import Members from './Members'
-import Projects from './Projects'
+import {Projects} from './Projects'
 
 import styles from './Admin.module.sass'
 

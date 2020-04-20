@@ -1,6 +1,6 @@
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
-import Projects from '../Projects'
+import { render, cleanup, fireEvent } from '@testing-library/react'
+import { Projects, RemoveProjectButton } from '../Projects'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
@@ -21,6 +21,35 @@ const fakeData = [
     team: 'X, Y, Z'
   }
 ]
+
+describe('RemoveProjectButton component', () => {
+  const executeMock = jest.fn()
+  const updateProjectsMock = jest.fn()
+  let project
+
+  beforeEach(() => {
+    project = fakeData[0]
+    useAxios.mockReturnValue([{}, executeMock])
+  })
+
+  afterEach(cleanup)
+
+  it('matches snapshot', () => {
+    const { asFragment } = render(
+      <RemoveProjectButton project={project} updateProjects={updateProjectsMock} />
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('execute and updateProjects are called when clicking on component', async () => {
+    const { getByTestId } = render(
+      <RemoveProjectButton project={project} updateProjects={updateProjectsMock} />
+    )
+    await fireEvent.click(getByTestId('project-1'))
+    expect(executeMock).toHaveBeenCalled()
+    expect(updateProjectsMock).toHaveBeenCalledWith(project)
+  })
+})
 
 describe('Projects component', () => {
   afterEach(cleanup)
@@ -70,9 +99,12 @@ describe('Projects component', () => {
   })
 
   describe('projects table', () => {
-    beforeAll(() => {
-      useAxios.mockImplementation(url => [{
-        data: fakeData,
+    let projects
+
+    beforeEach(() => {
+      projects = JSON.parse(JSON.stringify(fakeData))
+      useAxios.mockReturnValue([{
+        data: projects,
         loading: false,
         error: null
       }])
@@ -84,11 +116,6 @@ describe('Projects component', () => {
     })
 
     it('renders projects table', async () => {
-      useAxios.mockImplementation(url => [{
-        data: fakeData,
-        loading: false,
-        error: null
-      }])
       const { getByTestId, queryByTestId } = render(<Projects />)
       expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()

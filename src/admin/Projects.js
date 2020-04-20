@@ -1,13 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useAxios from 'axios-hooks'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const Projects = () => {
-  const [{ data: projects, loading, error }] = useAxios(
+export const RemoveProjectButton = ({ project, updateProjects }) => {
+  const [, execute] = useAxios(
+    {
+      url: `${process.env.REACT_APP_API_URL}/projects/${project.key}/`,
+      method: 'delete'
+    },
+    {
+      manual: true
+    }
+  )
+  const removeProject = async (project) => {
+    await execute()
+    updateProjects(project)
+  }
+
+  return <a data-testid={`project-${project.key}`} onClick={() => { removeProject(project) }}><FontAwesomeIcon icon={faTimes} /></a>
+}
+
+export const Projects = () => {
+  const [projects, setProjects] = useState([])
+  const [{ data, loading, error }] = useAxios(
     `${process.env.REACT_APP_API_URL}/projects/`
   )
+
+  useEffect(() => {
+    setProjects(data)
+  }, [data])
+
+  useEffect(() => {}, [projects])
+
+  const updateProjects = (projectToDelete) => {
+    setProjects(() => projects.filter(project => project.key !== projectToDelete.key))
+  }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
   if (error) return <p data-testid='error'>Error!</p>
@@ -38,12 +67,12 @@ const Projects = () => {
     {
       title: 'Action',
       key: 'action',
-      render: (text, record) => (
+      render: (text, record, index) => (
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faCalendar} />
           <FontAwesomeIcon icon={faUserPlus} />
-          <FontAwesomeIcon icon={faTimes} />
+          <RemoveProjectButton project={record} updateProjects={updateProjects} />
         </Space>
       )
     }
@@ -58,5 +87,3 @@ const Projects = () => {
     />
   )
 }
-
-export default Projects
