@@ -1,13 +1,15 @@
 import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
-import { Projects, RemoveProjectButton } from '../Projects'
+import { Projects } from '../Projects'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
+const BASE_API_URL = process.env.REACT_APP_API_URL
 const TABLE_TEST_ID = 'project-table'
 const fakeData = [
   {
     key: 1,
+    url: `${BASE_API_URL}/projects/1`,
     title: 'Testing Project Alpha',
     startDate: '2020-04-18',
     description: 'This is just for testing',
@@ -15,41 +17,13 @@ const fakeData = [
   },
   {
     key: 2,
+    url: `${BASE_API_URL}/projects/2`,
     title: 'Testing Project Beta',
     startDate: '2020-04-19',
     description: 'This is just for testing too',
     team: 'X, Y, Z'
   }
 ]
-
-describe('RemoveProjectButton component', () => {
-  const executeMock = jest.fn()
-  const updateProjectsMock = jest.fn()
-  let project
-
-  beforeEach(() => {
-    project = fakeData[0]
-    useAxios.mockReturnValue([{}, executeMock])
-  })
-
-  afterEach(cleanup)
-
-  it('matches snapshot', () => {
-    const { asFragment } = render(
-      <RemoveProjectButton project={project} updateProjects={updateProjectsMock} />
-    )
-    expect(asFragment()).toMatchSnapshot()
-  })
-
-  it('execute and updateProjects are called when clicking on component', async () => {
-    const { getByTestId } = render(
-      <RemoveProjectButton project={project} updateProjects={updateProjectsMock} />
-    )
-    await fireEvent.click(getByTestId('project-1'))
-    expect(executeMock).toHaveBeenCalled()
-    expect(updateProjectsMock).toHaveBeenCalledWith(project)
-  })
-})
 
 describe('Projects component', () => {
   afterEach(cleanup)
@@ -123,6 +97,7 @@ describe('Projects component', () => {
     })
 
     it('removes project in table when clicking on X', async () => {
+      const project = projects[0]
       const executeMock = jest.fn()
       useAxios.mockImplementation((...args) => {
         switch (args.length) {
@@ -138,10 +113,10 @@ describe('Projects component', () => {
         }
       })
       const { getByTestId, findByTestId } = render(<Projects />)
-      expect(getByTestId('project-table')).toHaveTextContent('Testing Project Alpha')
-      fireEvent.click(getByTestId('project-1'))
-      const table = await findByTestId('project-table')
-      expect(table).not.toHaveTextContent('Testing Project Alpha')
+      expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(project.title)
+      fireEvent.click(getByTestId(project.url))
+      const table = await findByTestId(TABLE_TEST_ID)
+      expect(table).not.toHaveTextContent(project.title)
     })
   })
 })

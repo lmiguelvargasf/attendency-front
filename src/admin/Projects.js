@@ -2,37 +2,20 @@ import React, { useEffect, useState } from 'react'
 import useAxios from 'axios-hooks'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faCalendar, faUserPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
-
-export const RemoveProjectButton = ({ project, updateProjects }) => {
-  const [, execute] = useAxios(
-    {
-      url: `${process.env.REACT_APP_API_URL}/projects/${project.key}/`,
-      method: 'delete'
-    },
-    {
-      manual: true
-    }
-  )
-  const removeProject = async (project) => {
-    await execute()
-    updateProjects(project)
-  }
-
-  return <a data-testid={`project-${project.key}`} onClick={() => { removeProject(project) }}><FontAwesomeIcon icon={faTimes} /></a>
-}
+import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import RemoveObjectButton from './RemoveObjectButton'
 
 export const Projects = () => {
   const [projects, setProjects] = useState([])
   const [{ data, loading, error }] = useAxios(
-    `${process.env.REACT_APP_API_URL}/projects/`
+    `${process.env.REACT_APP_API_URL}/projects`
   )
 
   useEffect(() => {
     setProjects(data)
   }, [data])
 
-  useEffect(() => {}, [projects])
+  useEffect(() => { }, [projects])
 
   const updateProjects = (projectToDelete) => {
     setProjects(() => projects.filter(project => project.key !== projectToDelete.key))
@@ -72,7 +55,7 @@ export const Projects = () => {
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faCalendar} />
           <FontAwesomeIcon icon={faUserPlus} />
-          <RemoveProjectButton project={record} updateProjects={updateProjects} />
+          <RemoveObjectButton object={record} updateObjects={updateProjects} />
         </Space>
       )
     }
