@@ -4,16 +4,19 @@ import Meetings from '../Meetings'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
+const BASE_API_URL = process.env.REACT_APP_API_URL
 const TABLE_TEST_ID = 'meeting-table'
 const fakeData = [
   {
     key: 1,
+    url: `${BASE_API_URL}/meetings/1`,
     project: 'Testing Project',
     date: '2020-04-18',
     time: '18:00'
   },
   {
     key: 2,
+    url: `${BASE_API_URL}/meetings/2`,
     project: 'Another Testing Project',
     date: '2020-04-18',
     time: '18:00'
