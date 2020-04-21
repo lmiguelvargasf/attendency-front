@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "test": "react-app-rewired test --env=jest-environment-jsdom-sixteen",
     "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.13.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "react-test-renderer": "^16.13.1",
     "standard": "^14.3.3"
   },

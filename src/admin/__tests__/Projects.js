@@ -56,7 +56,7 @@ describe('Projects component', () => {
 
   describe('loading data', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: null,
         loading: true,
         error: null
@@ -78,7 +78,7 @@ describe('Projects component', () => {
 
   describe('error', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: null,
         loading: false,
         error: 'Error'
@@ -120,6 +120,28 @@ describe('Projects component', () => {
       expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()
       expect(queryByTestId('error')).toBeNull()
+    })
+
+    it('removes project in table when clicking on X', async () => {
+      const executeMock = jest.fn()
+      useAxios.mockImplementation((...args) => {
+        switch (args.length) {
+          case 1:
+            return [{
+              data: projects,
+              loading: false,
+              error: null
+            }]
+          case 2:
+            return [{}, executeMock]
+          default: break
+        }
+      })
+      const { getByTestId, findByTestId } = render(<Projects />)
+      expect(getByTestId('project-table')).toHaveTextContent('Testing Project Alpha')
+      fireEvent.click(getByTestId('project-1'))
+      const table = await findByTestId('project-table')
+      expect(table).not.toHaveTextContent('Testing Project Alpha')
     })
   })
 })
