@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useAxios from 'axios-hooks'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import RemoveObjectButton from './RemoveObjectButton'
 
 const Meetings = () => {
-  const [{ data: meetings, loading, error }] = useAxios(
+  const [meetings, setMeetings] = useState([])
+  const [{ data, loading, error }] = useAxios(
     `${process.env.REACT_APP_API_URL}/meetings/`
   )
+
+  useEffect(() => {
+    setMeetings(data)
+  }, [data])
+
+  useEffect(() => { }, [meetings])
+
+  const updateMembers = (meetingToDelete) => {
+    setMeetings(() => meetings.filter(meeting => meeting.key !== meetingToDelete.key))
+  }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
   if (error) return <p data-testid='error'>Error!</p>
@@ -36,7 +48,7 @@ const Meetings = () => {
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faTrash} />
-          <FontAwesomeIcon icon={faTimes} />
+          <RemoveObjectButton object={record} updateObjects={updateMembers} />
         </Space>
       )
     }
