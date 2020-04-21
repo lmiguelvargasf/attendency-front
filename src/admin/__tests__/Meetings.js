@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render, cleanup, fireEvent } from '@testing-library/react'
 import Meetings from '../Meetings'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
@@ -10,7 +10,7 @@ const fakeData = [
   {
     key: 1,
     url: `${BASE_API_URL}/meetings/1`,
-    project: 'Testing Project',
+    project: 'Testing Project XYZ',
     date: '2020-04-18',
     time: '18:00'
   },
@@ -71,9 +71,12 @@ describe('Meetings component', () => {
   })
 
   describe('meetings table', () => {
-    beforeAll(() => {
+    let meetings
+
+    beforeEach(() => {
+      meetings = JSON.parse(JSON.stringify(fakeData))
       useAxios.mockReturnValue([{
-        data: fakeData,
+        data: meetings,
         loading: false,
         error: null
       }])
@@ -85,15 +88,33 @@ describe('Meetings component', () => {
     })
 
     it('renders meetings table', async () => {
-      useAxios.mockImplementation(url => [{
-        data: fakeData,
-        loading: false,
-        error: null
-      }])
       const { getByTestId, queryByTestId } = render(<Meetings />)
       expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()
       expect(queryByTestId('error')).toBeNull()
+    })
+
+    it('removes meeting in table when clicking on X', async () => {
+      const meeting = meetings[0]
+      const executeMock = jest.fn()
+      useAxios.mockImplementation((...args) => {
+        switch (args.length) {
+          case 1:
+            return [{
+              data: meetings,
+              loading: false,
+              error: null
+            }]
+          case 2:
+            return [{}, executeMock]
+          default: break
+        }
+      })
+      const { getByTestId, findByTestId } = render(<Meetings />)
+      expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(meeting.project)
+      fireEvent.click(getByTestId(meeting.url))
+      const table = await findByTestId(TABLE_TEST_ID)
+      expect(table).not.toHaveTextContent(meeting.project)
     })
   })
 })

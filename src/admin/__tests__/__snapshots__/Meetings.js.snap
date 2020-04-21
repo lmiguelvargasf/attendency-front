@@ -82,7 +82,7 @@ exports[`Meetings component meetings table matches snapshop when displaying tabl
                       class="ant-table-cell"
                     >
                       <a>
-                        Testing Project
+                        Testing Project XYZ
                       </a>
                     </td>
                     <td
