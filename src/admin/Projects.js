@@ -23,10 +23,9 @@ export const RemoveProjectButton = ({ project, updateProjects }) => {
 }
 
 export const Projects = () => {
+  const PROJECTS_BASE_URL = `${process.env.REACT_APP_API_URL}/projects/`
   const [projects, setProjects] = useState([])
-  const [{ data, loading, error }] = useAxios(
-    `${process.env.REACT_APP_API_URL}/projects/`
-  )
+  const [{ data, loading, error }] = useAxios(PROJECTS_BASE_URL)
 
   useEffect(() => {
     setProjects(data)
