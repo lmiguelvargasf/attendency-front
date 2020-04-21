@@ -28,7 +28,7 @@ describe('Members component', () => {
 
   describe('loading data', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: null,
         loading: true,
         error: null
@@ -50,7 +50,7 @@ describe('Members component', () => {
 
   describe('error', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: null,
         loading: false,
         error: 'Error'
@@ -71,9 +71,12 @@ describe('Members component', () => {
   })
 
   describe('members table', () => {
-    beforeAll(() => {
-      useAxios.mockImplementation(url => [{
-        data: fakeData,
+    let members
+
+    beforeEach(() => {
+      members = JSON.parse(JSON.stringify(fakeData))
+      useAxios.mockReturnValue([{
+        data: members,
         loading: false,
         error: null
       }])
@@ -85,11 +88,6 @@ describe('Members component', () => {
     })
 
     it('renders members table', async () => {
-      useAxios.mockImplementation(url => [{
-        data: fakeData,
-        loading: false,
-        error: null
-      }])
       const { getByTestId, queryByTestId } = render(<Members />)
       expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()
