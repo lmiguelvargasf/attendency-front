@@ -56,7 +56,7 @@ describe('Projects component', () => {
 
   describe('loading data', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: null,
         loading: true,
         error: null
@@ -78,7 +78,7 @@ describe('Projects component', () => {
 
   describe('error', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: null,
         loading: false,
         error: 'Error'
