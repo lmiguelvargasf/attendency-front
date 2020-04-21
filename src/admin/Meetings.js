@@ -17,7 +17,7 @@ const Meetings = () => {
 
   useEffect(() => { }, [meetings])
 
-  const updateMembers = (meetingToDelete) => {
+  const updateMeetings = (meetingToDelete) => {
     setMeetings(() => meetings.filter(meeting => meeting.key !== meetingToDelete.key))
   }
 
@@ -48,7 +48,7 @@ const Meetings = () => {
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faTrash} />
-          <RemoveObjectButton object={record} updateObjects={updateMembers} />
+          <RemoveObjectButton object={record} updateObjects={updateMeetings} />
         </Space>
       )
     }
