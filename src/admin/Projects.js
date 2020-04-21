@@ -3,27 +3,10 @@ import useAxios from 'axios-hooks'
 import { Table, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
-
-export const RemoveProjectButton = ({ project, updateProjects }) => {
-  const [, execute] = useAxios(
-    {
-      url: `${process.env.REACT_APP_API_URL}/projects/${project.key}/`,
-      method: 'delete'
-    },
-    {
-      manual: true
-    }
-  )
-  const removeProject = async () => {
-    await execute()
-    updateProjects(project)
-  }
-
-  return <a data-testid={`project-${project.key}`} onClick={removeProject}><FontAwesomeIcon icon={faTimes} /></a>
-}
+import RemoveObjectButton from './RemoveObjectButton'
 
 export const Projects = () => {
-  const PROJECTS_BASE_URL = `${process.env.REACT_APP_API_URL}/projects/`
+  const PROJECTS_BASE_URL = `${process.env.REACT_APP_API_URL}/projects`
   const [projects, setProjects] = useState([])
   const [{ data, loading, error }] = useAxios(PROJECTS_BASE_URL)
 

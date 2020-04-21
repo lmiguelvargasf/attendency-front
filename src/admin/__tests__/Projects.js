@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
-import { Projects, RemoveProjectButton } from '../Projects'
+import { Projects } from '../Projects'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
@@ -21,35 +21,6 @@ const fakeData = [
     team: 'X, Y, Z'
   }
 ]
-
-describe('RemoveProjectButton component', () => {
-  const executeMock = jest.fn()
-  const updateProjectsMock = jest.fn()
-  let project
-
-  beforeEach(() => {
-    project = fakeData[0]
-    useAxios.mockReturnValue([{}, executeMock])
-  })
-
-  afterEach(cleanup)
-
-  it('matches snapshot', () => {
-    const { asFragment } = render(
-      <RemoveProjectButton project={project} updateProjects={updateProjectsMock} />
-    )
-    expect(asFragment()).toMatchSnapshot()
-  })
-
-  it('execute and updateProjects are called when clicking on component', async () => {
-    const { getByTestId } = render(
-      <RemoveProjectButton project={project} updateProjects={updateProjectsMock} />
-    )
-    await fireEvent.click(getByTestId('project-1'))
-    expect(executeMock).toHaveBeenCalled()
-    expect(updateProjectsMock).toHaveBeenCalledWith(project)
-  })
-})
 
 describe('Projects component', () => {
   afterEach(cleanup)
