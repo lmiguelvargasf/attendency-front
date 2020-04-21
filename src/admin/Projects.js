@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useAxios from 'axios-hooks'
-import { Table, Space } from 'antd'
+import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faCalendar, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faCalendar, faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import RemoveObjectButton from './RemoveObjectButton'
 
 export const Projects = () => {
@@ -62,11 +62,19 @@ export const Projects = () => {
   ]
 
   return (
-    <Table
-      data-testid='project-table'
-      columns={columns}
-      dataSource={projects}
-      pagination={false}
-    />
+    <Space direction='vertical' size='middle' style={{ width: '100%' }}>
+      <Button type='primary'>
+        <Space>
+          <FontAwesomeIcon icon={faPlus} />
+          <span>New project</span>
+        </Space>
+      </Button>
+      <Table
+        data-testid='project-table'
+        columns={columns}
+        dataSource={projects}
+        pagination={false}
+      />
+    </Space>
   )
 }

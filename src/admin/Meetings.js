@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useAxios from 'axios-hooks'
-import { Table, Space } from 'antd'
+import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
 import RemoveObjectButton from './RemoveObjectButton'
 
 const Meetings = () => {
@@ -55,12 +55,20 @@ const Meetings = () => {
   ]
 
   return (
-    <Table
-      data-testid='meeting-table'
-      columns={columns}
-      dataSource={meetings}
-      pagination={false}
-    />
+    <Space direction='vertical' size='middle' style={{ width: '100%' }}>
+      <Button type='primary'>
+        <Space>
+          <FontAwesomeIcon icon={faPlus} />
+          <span>New meeting</span>
+        </Space>
+      </Button>
+      <Table
+        data-testid='meeting-table'
+        columns={columns}
+        dataSource={meetings}
+        pagination={false}
+      />
+    </Space>
   )
 }
 

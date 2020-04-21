@@ -23,245 +23,295 @@ exports[`Members component loading data matches snapshot when loading data 1`] =
 exports[`Members component members table matches snapshop when displaying table 1`] = `
 <DocumentFragment>
   <div
-    class="ant-table-wrapper"
+    class="ant-space ant-space-vertical"
+    style="width: 100%;"
   >
     <div
-      class="ant-spin-nested-loading"
+      class="ant-space-item"
+      style="margin-bottom: 16px;"
     >
-      <div
-        class="ant-spin-container"
+      <button
+        class="ant-btn ant-btn-primary"
+        type="button"
       >
         <div
-          class="ant-table"
-          data-testid="member-table"
+          class="ant-space ant-space-horizontal"
         >
           <div
-            class="ant-table-container"
+            class="ant-space-item"
+            style="margin-right: 8px;"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-plus fa-w-14 "
+              data-icon="plus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          <div
+            class="ant-space-item"
+          >
+            <span>
+              New member
+            </span>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div
+      class="ant-space-item"
+    >
+      <div
+        class="ant-table-wrapper"
+      >
+        <div
+          class="ant-spin-nested-loading"
+        >
+          <div
+            class="ant-spin-container"
           >
             <div
-              class="ant-table-content"
+              class="ant-table"
+              data-testid="member-table"
             >
-              <table
-                style="table-layout: auto;"
+              <div
+                class="ant-table-container"
               >
-                <colgroup />
-                <thead
-                  class="ant-table-thead"
+                <div
+                  class="ant-table-content"
                 >
-                  <tr>
-                    <th
-                      class="ant-table-cell"
-                    >
-                      First Name
-                    </th>
-                    <th
-                      class="ant-table-cell"
-                    >
-                      Last Name
-                    </th>
-                    <th
-                      class="ant-table-cell"
-                    >
-                      Email
-                    </th>
-                    <th
-                      class="ant-table-cell"
-                    >
-                      Action
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  class="ant-table-tbody"
-                >
-                  <tr
-                    class="ant-table-row ant-table-row-level-0"
-                    data-row-key="1"
+                  <table
+                    style="table-layout: auto;"
                   >
-                    <td
-                      class="ant-table-cell"
+                    <colgroup />
+                    <thead
+                      class="ant-table-thead"
                     >
-                      <a>
-                        Isaac
-                      </a>
-                    </td>
-                    <td
-                      class="ant-table-cell"
+                      <tr>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          First Name
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          Last Name
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          Email
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      class="ant-table-tbody"
                     >
-                      Newton
-                    </td>
-                    <td
-                      class="ant-table-cell"
-                    >
-                      isaac.newton@gmail.com
-                    </td>
-                    <td
-                      class="ant-table-cell"
-                    >
-                      <div
-                        class="ant-space ant-space-horizontal"
+                      <tr
+                        class="ant-table-row ant-table-row-level-0"
+                        data-row-key="1"
                       >
-                        <div
-                          class="ant-space-item"
-                          style="margin-right: 16px;"
+                        <td
+                          class="ant-table-cell"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-edit fa-w-18 "
-                            data-icon="edit"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 576 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </div>
-                        <div
-                          class="ant-space-item"
-                          style="margin-right: 16px;"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-trash fa-w-14 "
-                            data-icon="trash"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 448 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </div>
-                        <div
-                          class="ant-space-item"
-                        >
-                          <a
-                            data-testid="http://localhost:8000/api/members/1"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              class="svg-inline--fa fa-times fa-w-11 "
-                              data-icon="times"
-                              data-prefix="fas"
-                              focusable="false"
-                              role="img"
-                              viewBox="0 0 352 512"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                                fill="currentColor"
-                              />
-                            </svg>
+                          <a>
+                            Isaac
                           </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr
-                    class="ant-table-row ant-table-row-level-0"
-                    data-row-key="2"
-                  >
-                    <td
-                      class="ant-table-cell"
-                    >
-                      <a>
-                        Nikola
-                      </a>
-                    </td>
-                    <td
-                      class="ant-table-cell"
-                    >
-                      Tesla
-                    </td>
-                    <td
-                      class="ant-table-cell"
-                    >
-                      nikola.tesla@gmail.com
-                    </td>
-                    <td
-                      class="ant-table-cell"
-                    >
-                      <div
-                        class="ant-space ant-space-horizontal"
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          Newton
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          isaac.newton@gmail.com
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <div
+                            class="ant-space ant-space-horizontal"
+                          >
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 16px;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="svg-inline--fa fa-edit fa-w-18 "
+                                data-icon="edit"
+                                data-prefix="fas"
+                                focusable="false"
+                                role="img"
+                                viewBox="0 0 576 512"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </div>
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 16px;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="svg-inline--fa fa-trash fa-w-14 "
+                                data-icon="trash"
+                                data-prefix="fas"
+                                focusable="false"
+                                role="img"
+                                viewBox="0 0 448 512"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </div>
+                            <div
+                              class="ant-space-item"
+                            >
+                              <a
+                                data-testid="http://localhost:8000/api/members/1"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  class="svg-inline--fa fa-times fa-w-11 "
+                                  data-icon="times"
+                                  data-prefix="fas"
+                                  focusable="false"
+                                  role="img"
+                                  viewBox="0 0 352 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr
+                        class="ant-table-row ant-table-row-level-0"
+                        data-row-key="2"
                       >
-                        <div
-                          class="ant-space-item"
-                          style="margin-right: 16px;"
+                        <td
+                          class="ant-table-cell"
                         >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-edit fa-w-18 "
-                            data-icon="edit"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 576 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </div>
-                        <div
-                          class="ant-space-item"
-                          style="margin-right: 16px;"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-trash fa-w-14 "
-                            data-icon="trash"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 448 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </div>
-                        <div
-                          class="ant-space-item"
-                        >
-                          <a
-                            data-testid="http://localhost:8000/api/members/2"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              class="svg-inline--fa fa-times fa-w-11 "
-                              data-icon="times"
-                              data-prefix="fas"
-                              focusable="false"
-                              role="img"
-                              viewBox="0 0 352 512"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                                fill="currentColor"
-                              />
-                            </svg>
+                          <a>
+                            Nikola
                           </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          Tesla
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          nikola.tesla@gmail.com
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <div
+                            class="ant-space ant-space-horizontal"
+                          >
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 16px;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="svg-inline--fa fa-edit fa-w-18 "
+                                data-icon="edit"
+                                data-prefix="fas"
+                                focusable="false"
+                                role="img"
+                                viewBox="0 0 576 512"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </div>
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 16px;"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="svg-inline--fa fa-trash fa-w-14 "
+                                data-icon="trash"
+                                data-prefix="fas"
+                                focusable="false"
+                                role="img"
+                                viewBox="0 0 448 512"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </div>
+                            <div
+                              class="ant-space-item"
+                            >
+                              <a
+                                data-testid="http://localhost:8000/api/members/2"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  class="svg-inline--fa fa-times fa-w-11 "
+                                  data-icon="times"
+                                  data-prefix="fas"
+                                  focusable="false"
+                                  role="img"
+                                  viewBox="0 0 352 512"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>

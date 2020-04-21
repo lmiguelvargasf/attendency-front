@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useAxios from 'axios-hooks'
-import { Table, Space } from 'antd'
+import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
 import RemoveObjectButton from './RemoveObjectButton'
 
 const Members = () => {
@@ -55,12 +55,20 @@ const Members = () => {
   ]
 
   return (
-    <Table
-      data-testid='member-table'
-      columns={columns}
-      dataSource={members}
-      pagination={false}
-    />
+    <Space direction='vertical' size='middle' style={{ width: '100%' }}>
+      <Button type='primary'>
+        <Space>
+          <FontAwesomeIcon icon={faPlus} />
+          <span>New member</span>
+        </Space>
+      </Button>
+      <Table
+        data-testid='member-table'
+        columns={columns}
+        dataSource={members}
+        pagination={false}
+      />
+    </Space>
   )
 }
 
