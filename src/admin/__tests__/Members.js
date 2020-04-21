@@ -4,16 +4,19 @@ import Members from '../Members'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
+const BASE_API_URL = process.env.REACT_APP_API_URL
 const TABLE_TEST_ID = 'member-table'
 const fakeData = [
   {
     key: 1,
+    url: `${BASE_API_URL}/members/1`,
     firstName: 'Isaac',
     lastName: 'Newton',
     email: 'isaac.newton@gmail.com'
   },
   {
     key: 2,
+    url: `${BASE_API_URL}/members/2`,
     firstName: 'Nikola',
     lastName: 'Tesla',
     email: 'nikola.tesla@gmail.com'
