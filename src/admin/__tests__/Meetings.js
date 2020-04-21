@@ -25,7 +25,7 @@ describe('Meetings component', () => {
 
   describe('loading data', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: null,
         loading: true,
         error: null
@@ -47,7 +47,7 @@ describe('Meetings component', () => {
 
   describe('error', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: null,
         loading: false,
         error: 'Error'
@@ -69,7 +69,7 @@ describe('Meetings component', () => {
 
   describe('meetings table', () => {
     beforeAll(() => {
-      useAxios.mockImplementation(url => [{
+      useAxios.mockReturnValue([{
         data: fakeData,
         loading: false,
         error: null
