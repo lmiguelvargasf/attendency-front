@@ -94,6 +94,7 @@ describe('Projects component', () => {
     })
 
     it('removes project in table when clicking on X', async () => {
+      const projectTestId = `${process.env.REACT_APP_API_URL}/projects/1`
       const executeMock = jest.fn()
       useAxios.mockImplementation((...args) => {
         switch (args.length) {
@@ -109,9 +110,9 @@ describe('Projects component', () => {
         }
       })
       const { getByTestId, findByTestId } = render(<Projects />)
-      expect(getByTestId('project-table')).toHaveTextContent('Testing Project Alpha')
-      fireEvent.click(getByTestId('project-1'))
-      const table = await findByTestId('project-table')
+      expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent('Testing Project Alpha')
+      fireEvent.click(getByTestId(projectTestId))
+      const table = await findByTestId(TABLE_TEST_ID)
       expect(table).not.toHaveTextContent('Testing Project Alpha')
     })
   })
