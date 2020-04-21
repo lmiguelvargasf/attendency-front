@@ -54,7 +54,11 @@ export const Projects = () => {
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faCalendar} />
           <FontAwesomeIcon icon={faUserPlus} />
-          <RemoveProjectButton project={record} updateProjects={updateProjects} />
+          <RemoveObjectButton
+            url={`${PROJECTS_BASE_URL}/${record.key}`}
+            object={record}
+            updateObjects={updateProjects}
+          />
         </Space>
       )
     }
