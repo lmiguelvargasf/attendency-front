@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render, cleanup, fireEvent } from '@testing-library/react'
 import Members from '../Members'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
@@ -92,6 +92,29 @@ describe('Members component', () => {
       expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()
       expect(queryByTestId('error')).toBeNull()
+    })
+
+    it('removes member in table when clicking on X', async () => {
+      const member = members[0]
+      const executeMock = jest.fn()
+      useAxios.mockImplementation((...args) => {
+        switch (args.length) {
+          case 1:
+            return [{
+              data: members,
+              loading: false,
+              error: null
+            }]
+          case 2:
+            return [{}, executeMock]
+          default: break
+        }
+      })
+      const { getByTestId, findByTestId } = render(<Members />)
+      expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(member.email)
+      fireEvent.click(getByTestId(member.url))
+      const table = await findByTestId(TABLE_TEST_ID)
+      expect(table).not.toHaveTextContent(member.url)
     })
   })
 })
