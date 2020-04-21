@@ -114,7 +114,7 @@ describe('Members component', () => {
       expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(member.email)
       fireEvent.click(getByTestId(member.url))
       const table = await findByTestId(TABLE_TEST_ID)
-      expect(table).not.toHaveTextContent(member.url)
+      expect(table).not.toHaveTextContent(member.email)
     })
   })
 })
