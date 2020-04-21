@@ -3,9 +3,9 @@ import useAxios from 'axios-hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const RemoveObjectButton = ({ url, object, updateObjects }) => {
+const RemoveObjectButton = ({ object, updateObjects }) => {
   const [, execute] = useAxios(
-    { url: url, method: 'delete' },
+    { url: object.url, method: 'delete' },
     { manual: true }
   )
   const removeObject = async () => {
@@ -13,7 +13,7 @@ const RemoveObjectButton = ({ url, object, updateObjects }) => {
     updateObjects(object)
   }
 
-  return <a data-testid={url} onClick={removeObject}><FontAwesomeIcon icon={faTimes} /></a>
+  return <a data-testid={object.url} onClick={removeObject}><FontAwesomeIcon icon={faTimes} /></a>
 }
 
 export default RemoveObjectButton
