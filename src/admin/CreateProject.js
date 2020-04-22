@@ -1,5 +1,7 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { Form, Input, Button, DatePicker } from 'antd'
+import useAxios from 'axios-hooks'
 
 const layout = {
   labelCol: { span: 8 },
@@ -10,8 +12,19 @@ const tailLayout = {
 }
 
 const CreateProject = () => {
-  const onFinish = values => {
-    console.log('Success:', values)
+  const history = useHistory()
+  const [, executePost] = useAxios(
+    {
+      url: `${process.env.REACT_APP_API_URL}/projects/`,
+      method: 'post'
+    },
+    { manual: true }
+  )
+
+  const onFinish = async values => {
+    values.startDate = values.startDate.toDate().toISOString().slice(0, 10)
+    await executePost({ data: values })
+    history.push('/admin/projects')
   }
 
   const onFinishFailed = errorInfo => {
