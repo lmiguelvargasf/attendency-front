@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { render, cleanup } from '@testing-library/react'
 import CreateProject from '../CreateProject'
 
@@ -20,7 +21,7 @@ describe('CreateProject component', () => {
   })
   afterEach(cleanup)
   it('matches snapshot', () => {
-    const { asFragment } = render(<CreateProject />)
+    const { asFragment } = render(<Router><CreateProject /></Router>)
     expect(asFragment()).toMatchSnapshot()
   })
 })
