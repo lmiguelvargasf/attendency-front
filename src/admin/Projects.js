@@ -41,7 +41,12 @@ export const Projects = () => {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
-      render: description => `${description.substring(0, 50)}...`
+      render: description => {
+        if (description) {
+          return description.length < 50 ? description : `${description.substring(0, 50)}...`
+        }
+        return '-'
+      }
     },
     {
       title: 'Team',

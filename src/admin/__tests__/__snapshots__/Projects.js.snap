@@ -150,7 +150,7 @@ exports[`Projects component projects table matches snapshop when displaying tabl
                         <td
                           class="ant-table-cell"
                         >
-                          This is just for testing...
+                          This is just for testing
                         </td>
                         <td
                           class="ant-table-cell"
@@ -268,7 +268,7 @@ exports[`Projects component projects table matches snapshop when displaying tabl
                         <td
                           class="ant-table-cell"
                         >
-                          This is just for testing too...
+                          This is just for testing too
                         </td>
                         <td
                           class="ant-table-cell"
