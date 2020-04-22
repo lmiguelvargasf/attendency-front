@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import useAxios from 'axios-hooks'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -63,12 +64,14 @@ export const Projects = () => {
 
   return (
     <Space direction='vertical' size='middle' style={{ width: '100%' }}>
-      <Button type='primary'>
-        <Space>
-          <FontAwesomeIcon icon={faPlus} />
-          <span>New project</span>
-        </Space>
-      </Button>
+      <Link to='/admin/projects/create'>
+        <Button type='primary'>
+          <Space>
+            <FontAwesomeIcon icon={faPlus} />
+            <span>New project</span>
+          </Space>
+        </Button>
+      </Link>
       <Table
         data-testid='project-table'
         columns={columns}
