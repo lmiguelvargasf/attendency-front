@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import { Projects } from '../Projects'
 import useAxios from 'axios-hooks'
@@ -74,6 +75,7 @@ describe('Projects component', () => {
 
   describe('projects table', () => {
     let projects
+    let component
 
     beforeEach(() => {
       projects = JSON.parse(JSON.stringify(fakeData))
@@ -82,15 +84,16 @@ describe('Projects component', () => {
         loading: false,
         error: null
       }])
+      component = <Router><Projects /></Router>
     })
 
     it('matches snapshop when displaying table', () => {
-      const { asFragment } = render(<Projects />)
+      const { asFragment } = render(component)
       expect(asFragment()).toMatchSnapshot()
     })
 
     it('renders projects table', async () => {
-      const { getByTestId, queryByTestId } = render(<Projects />)
+      const { getByTestId, queryByTestId } = render(component)
       expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
       expect(queryByTestId('loading')).toBeNull()
       expect(queryByTestId('error')).toBeNull()
@@ -112,7 +115,7 @@ describe('Projects component', () => {
           default: break
         }
       })
-      const { getByTestId, findByTestId } = render(<Projects />)
+      const { getByTestId, findByTestId } = render(component)
       expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(project.title)
       fireEvent.click(getByTestId(project.url))
       const table = await findByTestId(TABLE_TEST_ID)
