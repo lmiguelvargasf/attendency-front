@@ -3,6 +3,7 @@ import { Route, Switch, Link, Redirect, useLocation } from 'react-router-dom'
 import { Layout, Menu, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import CreateProject from './CreateProject'
 
 import Meetings from './Meetings'
 import Members from './Members'
@@ -67,6 +68,7 @@ const Admin = () => {
           >
             <Switch>
               <Route exact path='/admin' render={() => (<Redirect to='/admin/projects' />)} />
+              <Route path='/admin/projects/create' component={CreateProject} />
               <Route path='/admin/projects' component={Projects} />
               <Route path='/admin/members' component={Members} />
               <Route path='/admin/meetings' component={Meetings} />
