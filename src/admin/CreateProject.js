@@ -31,7 +31,7 @@ const CreateProject = () => {
         <Form.Item
           label='Title'
           name='title'
-          rules={[{ required: true, message: "Please input your project's title!" }]}
+          rules={[{ required: true, message: 'Please input the title!' }]}
         >
           <Input />
         </Form.Item>
@@ -39,7 +39,7 @@ const CreateProject = () => {
         <Form.Item
           label='Start date'
           name='startDate'
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          rules={[{ required: true, message: 'Please input the start date!' }]}
         >
           <DatePicker />
         </Form.Item>
