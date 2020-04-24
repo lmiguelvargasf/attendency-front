@@ -1,5 +1,6 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import Projects from '../projects/Projects'
 import useAxios from 'axios-hooks'
@@ -76,6 +77,7 @@ describe('Projects component', () => {
   describe('projects table', () => {
     let projects
     let component
+    let history
 
     beforeEach(() => {
       projects = JSON.parse(JSON.stringify(fakeData))
@@ -84,7 +86,9 @@ describe('Projects component', () => {
         loading: false,
         error: null
       }])
-      component = <Router><Projects /></Router>
+      history = createMemoryHistory()
+      history.push('/admin/projects')
+      component = <Router history={history}><Projects /></Router>
     })
 
     it('matches snapshop when displaying table', () => {
