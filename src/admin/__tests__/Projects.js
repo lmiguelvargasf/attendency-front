@@ -49,6 +49,7 @@ describe('Projects component', () => {
       expect(queryByTestId(TABLE_TEST_ID)).toBeNull()
       expect(getByTestId('loading')).not.toBeNull()
       expect(queryByTestId('error')).toBeNull()
+      expect(queryByTestId('create-project-form')).toBeNull()
     })
   })
 
@@ -70,6 +71,7 @@ describe('Projects component', () => {
       const { getByTestId, queryByTestId } = render(<Projects />)
       expect(queryByTestId(TABLE_TEST_ID)).toBeNull()
       expect(queryByTestId('loading')).toBeNull()
+      expect(queryByTestId('create-project-form')).toBeNull()
       expect(getByTestId('error')).not.toBeNull()
     })
   })
@@ -102,6 +104,7 @@ describe('Projects component', () => {
         expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
         expect(queryByTestId('loading')).toBeNull()
         expect(queryByTestId('error')).toBeNull()
+        expect(queryByTestId('create-project-form')).toBeNull()
       })
 
       it('removes project in table when clicking on X', async () => {
@@ -160,6 +163,14 @@ describe('Projects component', () => {
       it('matches snapshop', () => {
         const { asFragment } = render(component)
         expect(asFragment()).toMatchSnapshot()
+      })
+
+      it('renders create project form', () => {
+        const { getByTestId, queryByTestId } = render(component)
+        expect(queryByTestId(TABLE_TEST_ID)).toBeNull()
+        expect(queryByTestId('loading')).toBeNull()
+        expect(queryByTestId('error')).toBeNull()
+        expect(getByTestId('create-project-form')).not.toBeNull()
       })
     })
   })

@@ -26,7 +26,7 @@ const Projects = () => {
   return (
     <Switch>
       <Route path='/admin/projects/create' component={CreateProject} />
-      <Route path='/admin/projects' render={props => <ProjectsTable {...props} projects={projects} removeProject={removeProject}/>} />
+      <Route path='/admin/projects' render={props => <ProjectsTable {...props} projects={projects} removeProject={removeProject} />} />
     </Switch>
   )
 }
