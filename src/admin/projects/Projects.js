@@ -4,7 +4,7 @@ import useAxios from 'axios-hooks'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
-import RemoveObjectButton from './RemoveObjectButton'
+import RemoveObjectButton from '../RemoveObjectButton'
 
 export const Projects = () => {
   const [projects, setProjects] = useState([])
