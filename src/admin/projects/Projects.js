@@ -61,7 +61,7 @@ const Projects = () => {
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faCalendar} />
           <FontAwesomeIcon icon={faUserPlus} />
-          <RemoveObjectButton object={record} updateObjects={updateProjects} />
+          <RemoveObjectButton object={record} removeObject={updateProjects} />
         </Space>
       )
     }
