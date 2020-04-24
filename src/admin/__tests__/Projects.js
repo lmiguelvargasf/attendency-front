@@ -74,56 +74,93 @@ describe('Projects component', () => {
     })
   })
 
-  describe('projects table', () => {
+  describe('projects data is retrieved sucessfully', () => {
     let projects
     let component
     let history
 
-    beforeEach(() => {
-      projects = JSON.parse(JSON.stringify(fakeData))
-      useAxios.mockReturnValue([{
-        data: projects,
-        loading: false,
-        error: null
-      }])
-      history = createMemoryHistory()
-      history.push('/admin/projects')
-      component = <Router history={history}><Projects /></Router>
-    })
-
-    it('matches snapshop when displaying table', () => {
-      const { asFragment } = render(component)
-      expect(asFragment()).toMatchSnapshot()
-    })
-
-    it('renders projects table', async () => {
-      const { getByTestId, queryByTestId } = render(component)
-      expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
-      expect(queryByTestId('loading')).toBeNull()
-      expect(queryByTestId('error')).toBeNull()
-    })
-
-    it('removes project in table when clicking on X', async () => {
-      const project = projects[0]
-      const executeMock = jest.fn()
-      useAxios.mockImplementation((...args) => {
-        switch (args.length) {
-          case 1:
-            return [{
-              data: projects,
-              loading: false,
-              error: null
-            }]
-          case 2:
-            return [{}, executeMock]
-          default: break
-        }
+    describe('table of projects', () => {
+      beforeEach(() => {
+        projects = JSON.parse(JSON.stringify(fakeData))
+        useAxios.mockReturnValue([{
+          data: projects,
+          loading: false,
+          error: null
+        }])
+        history = createMemoryHistory()
+        history.push('/admin/projects')
+        component = <Router history={history}><Projects /></Router>
       })
-      const { getByTestId, findByTestId } = render(component)
-      expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(project.title)
-      fireEvent.click(getByTestId(project.url))
-      const table = await findByTestId(TABLE_TEST_ID)
-      expect(table).not.toHaveTextContent(project.title)
+
+      it('matches snapshop', () => {
+        const { asFragment } = render(component)
+        expect(asFragment()).toMatchSnapshot()
+      })
+
+      it('renders projects table', async () => {
+        const { getByTestId, queryByTestId } = render(component)
+        expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
+        expect(queryByTestId('loading')).toBeNull()
+        expect(queryByTestId('error')).toBeNull()
+      })
+
+      it('removes project in table when clicking on X', async () => {
+        const project = projects[0]
+        const executeMock = jest.fn()
+        useAxios.mockImplementation((...args) => {
+          switch (args.length) {
+            case 1:
+              return [{
+                data: projects,
+                loading: false,
+                error: null
+              }]
+            case 2:
+              return [{}, executeMock]
+            default: break
+          }
+        })
+        const { getByTestId, findByTestId } = render(component)
+        expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(project.title)
+        fireEvent.click(getByTestId(project.url))
+        const table = await findByTestId(TABLE_TEST_ID)
+        expect(table).not.toHaveTextContent(project.title)
+      })
+    })
+
+    describe('renders create project form', () => {
+      beforeAll(() => {
+        Object.defineProperty(window, 'matchMedia', {
+          writable: true,
+          value: jest.fn().mockImplementation(query => ({
+            matches: false,
+            media: query,
+            onchange: null,
+            addListener: jest.fn(), // deprecated
+            removeListener: jest.fn(), // deprecated
+            addEventListener: jest.fn(),
+            removeEventListener: jest.fn(),
+            dispatchEvent: jest.fn()
+          }))
+        })
+      })
+
+      beforeEach(() => {
+        projects = JSON.parse(JSON.stringify(fakeData))
+        useAxios.mockReturnValue([{
+          data: projects,
+          loading: false,
+          error: null
+        }])
+        history = createMemoryHistory()
+        history.push('/admin/projects/create')
+        component = <Router history={history}><Projects /></Router>
+      })
+
+      it('matches snapshop', () => {
+        const { asFragment } = render(component)
+        expect(asFragment()).toMatchSnapshot()
+      })
     })
   })
 })
