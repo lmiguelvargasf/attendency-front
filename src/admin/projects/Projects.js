@@ -16,7 +16,7 @@ const Projects = () => {
 
   useEffect(() => { }, [projects])
 
-  const updateProjects = (projectToDelete) => {
+  const removeProject = (projectToDelete) => {
     setProjects(() => projects.filter(project => project.key !== projectToDelete.key))
   }
 
@@ -26,7 +26,7 @@ const Projects = () => {
   return (
     <Switch>
       <Route path='/admin/projects/create' component={CreateProject} />
-      <Route path='/admin/projects' render={props => <ProjectsTable {...props} projects={projects} removeProject={updateProjects}/>} />
+      <Route path='/admin/projects' render={props => <ProjectsTable {...props} projects={projects} removeProject={removeProject}/>} />
     </Switch>
   )
 }

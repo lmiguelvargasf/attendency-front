@@ -36,6 +36,7 @@ const CreateProject = () => {
     <>
       <h2>Create Project</h2>
       <Form
+        data-testid='create-project-form'
         {...layout}
         name='basic'
         initialValues={{ remember: true }}
