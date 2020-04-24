@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import RemoveObjectButton from '../RemoveObjectButton'
 
-export const Projects = () => {
+const Projects = () => {
   const [projects, setProjects] = useState([])
   const [{ data, loading, error }] = useAxios(
     `${process.env.REACT_APP_API_URL}/projects`
@@ -86,3 +86,5 @@ export const Projects = () => {
     </Space>
   )
 }
+
+export default Projects

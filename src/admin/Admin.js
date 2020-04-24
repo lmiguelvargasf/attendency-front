@@ -7,7 +7,7 @@ import CreateProject from './projects/CreateProject'
 
 import Meetings from './Meetings'
 import Members from './Members'
-import { Projects } from './projects/Projects'
+import Projects from './projects/Projects'
 
 import styles from './Admin.module.sass'
 
