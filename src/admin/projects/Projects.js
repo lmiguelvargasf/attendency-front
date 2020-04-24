@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Route, Switch } from 'react-router-dom'
 import useAxios from 'axios-hooks'
 import ProjectsTable from './ProjectsTable'
+import CreateProject from './CreateProject'
 
 const Projects = () => {
   const [projects, setProjects] = useState([])
@@ -22,7 +24,10 @@ const Projects = () => {
   if (error) return <p data-testid='error'>Error!</p>
 
   return (
-    <ProjectsTable projects={projects} removeProject={updateProjects} />
+    <Switch>
+      <Route path='/admin/projects/create' component={CreateProject} />
+      <Route path='/admin/projects' render={props => <ProjectsTable {...props} projects={projects} removeProject={updateProjects}/>} />
+    </Switch>
   )
 }
 
