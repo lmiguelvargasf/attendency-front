@@ -3,7 +3,7 @@ import { Route, Switch, Link, Redirect, useLocation } from 'react-router-dom'
 import { Layout, Menu, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-import CreateProject from './CreateProject'
+import CreateProject from './projects/CreateProject'
 
 import Meetings from './Meetings'
 import Members from './Members'
