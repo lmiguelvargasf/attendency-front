@@ -32,8 +32,6 @@ const CreateMeeting = ({ addMeeting }) => {
     if (data) setProjects(data)
   }, [data])
 
-  useEffect(() => { }, [projects])
-
   if (loading) return <p data-testid='loading'>Loading...</p>
   if (error) return <p data-testid='error'>Error!</p>
 
