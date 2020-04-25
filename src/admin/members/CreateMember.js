@@ -32,7 +32,7 @@ const CreateMember = ({ addMember }) => {
       return
     }
     addMember(member)
-    message.success({ content: `${member.firstName} ${member.lastName} was created sucessfully`, duration: 2.5 })
+    message.success({ content: `${member.firstName} ${member.lastName} was created sucessfully`, duration: 3 })
     history.push('/admin/members')
   }
 
