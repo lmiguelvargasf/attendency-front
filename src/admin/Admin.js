@@ -4,7 +4,7 @@ import { Layout, Menu, Space } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
-import Meetings from './Meetings'
+import Meetings from './meetings/Meetings'
 import Members from './members/Members'
 import Projects from './projects/Projects'
 
