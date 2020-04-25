@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form, Input, Button, DatePicker } from 'antd'
+import { Form, Input, Button, DatePicker, message } from 'antd'
 import useAxios from 'axios-hooks'
 
 const layout = {
@@ -22,10 +22,18 @@ const CreateProject = ({ addProject }) => {
   )
 
   const onFinish = async values => {
-    console.log('This has been called!!! Finish')
     values.startDate = values.startDate.toDate().toISOString().slice(0, 10)
-    const { data: project } = await createProject({ data: values })
+    let project
+    try {
+      const { data } = await createProject({ data: values })
+      project = data
+    } catch (error) {
+      message.error('There was an error, please try again.')
+      console.log(error)
+      return
+    }
     addProject(project)
+    message.success({ content: `${project.title} project was created sucessfully`, duration: 2.5 })
     history.push('/admin/projects')
   }
 
