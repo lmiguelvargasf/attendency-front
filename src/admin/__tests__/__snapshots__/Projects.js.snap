@@ -28,7 +28,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
   <form
     class="ant-form ant-form-horizontal"
     data-testid="create-project-form"
-    id="basic"
+    id="project"
   >
     <div
       class="ant-row ant-form-item"
@@ -38,7 +38,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
       >
         <label
           class="ant-form-item-required"
-          for="basic_title"
+          for="project_title"
           title="Title"
         >
           Title
@@ -56,7 +56,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
             <input
               class="ant-input"
               data-testid="project-title-input"
-              id="basic_title"
+              id="project_title"
               type="text"
               value=""
             />
@@ -72,7 +72,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
       >
         <label
           class="ant-form-item-required"
-          for="basic_startDate"
+          for="project_startDate"
           title="Start date"
         >
           Start date
@@ -139,7 +139,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
       >
         <label
           class=""
-          for="basic_description"
+          for="project_description"
           title="Description"
         >
           Description
@@ -157,7 +157,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
             <textarea
               class="ant-input"
               data-testid="project-description"
-              id="basic_description"
+              id="project_description"
               rows="4"
             />
           </div>

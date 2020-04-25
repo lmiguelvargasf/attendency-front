@@ -33,7 +33,7 @@ const CreateProject = ({ addProject }) => {
       return
     }
     addProject(project)
-    message.success({ content: `${project.title} project was created sucessfully`, duration: 2.5 })
+    message.success({ content: `${project.title} project was created sucessfully`, duration: 3 })
     history.push('/admin/projects')
   }
 
@@ -45,7 +45,7 @@ const CreateProject = ({ addProject }) => {
       <Form
         data-testid='create-project-form'
         {...layout}
-        name='basic'
+        name='project'
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}

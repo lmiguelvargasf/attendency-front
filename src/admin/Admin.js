@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDraftingCompass, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 import Meetings from './Meetings'
-import Members from './Members'
+import Members from './members/Members'
 import Projects from './projects/Projects'
 
 import styles from './Admin.module.sass'

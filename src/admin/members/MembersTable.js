@@ -1,29 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import useAxios from 'axios-hooks'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
-import RemoveObjectButton from './RemoveObjectButton'
+import RemoveObjectButton from '../RemoveObjectButton'
 
-const Members = () => {
-  const [members, setMembers] = useState([])
-  const [{ data, loading, error }] = useAxios(
-    `${process.env.REACT_APP_API_URL}/members/`
-  )
-
-  useEffect(() => {
-    setMembers(data)
-  }, [data])
-
-  useEffect(() => { }, [members])
-
-  const updateMembers = (memberToDelete) => {
-    setMembers(() => members.filter(member => member.key !== memberToDelete.key))
-  }
-
-  if (loading) return <p data-testid='loading'>Loading...</p>
-  if (error) return <p data-testid='error'>Error!</p>
-
+const MembersTable = ({ members, removeMember }) => {
   const columns = [
     {
       title: 'First Name',
@@ -48,7 +30,7 @@ const Members = () => {
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faTrash} />
-          <RemoveObjectButton object={record} removeObject={updateMembers} />
+          <RemoveObjectButton object={record} removeObject={removeMember} />
         </Space>
       )
     }
@@ -56,12 +38,14 @@ const Members = () => {
 
   return (
     <Space direction='vertical' size='middle' style={{ width: '100%' }}>
-      <Button type='primary'>
-        <Space>
-          <FontAwesomeIcon icon={faPlus} />
-          <span>New member</span>
-        </Space>
-      </Button>
+      <Link to='/admin/members/create'>
+        <Button type='primary'>
+          <Space>
+            <FontAwesomeIcon icon={faPlus} />
+            <span>New member</span>
+          </Space>
+        </Button>
+      </Link>
       <Table
         data-testid='member-table'
         columns={columns}
@@ -72,4 +56,4 @@ const Members = () => {
   )
 }
 
-export default Members
+export default MembersTable

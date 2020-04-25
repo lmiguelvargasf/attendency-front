@@ -20,7 +20,7 @@ exports[`Members component loading data matches snapshot when loading data 1`] =
 </DocumentFragment>
 `;
 
-exports[`Members component members table matches snapshop when displaying table 1`] = `
+exports[`Members component members data is retrieved sucessfully members table matches snapshop 1`] = `
 <DocumentFragment>
   <div
     class="ant-space ant-space-vertical"
@@ -30,42 +30,46 @@ exports[`Members component members table matches snapshop when displaying table 
       class="ant-space-item"
       style="margin-bottom: 16px;"
     >
-      <button
-        class="ant-btn ant-btn-primary"
-        type="button"
+      <a
+        href="/admin/members/create"
       >
-        <div
-          class="ant-space ant-space-horizontal"
+        <button
+          class="ant-btn ant-btn-primary"
+          type="button"
         >
           <div
-            class="ant-space-item"
-            style="margin-right: 8px;"
+            class="ant-space ant-space-horizontal"
           >
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-plus fa-w-14 "
-              data-icon="plus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              class="ant-space-item"
+              style="margin-right: 8px;"
             >
-              <path
-                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-              />
-            </svg>
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-plus fa-w-14 "
+                data-icon="plus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span>
+                New member
+              </span>
+            </div>
           </div>
-          <div
-            class="ant-space-item"
-          >
-            <span>
-              New member
-            </span>
-          </div>
-        </div>
-      </button>
+        </button>
+      </a>
     </div>
     <div
       class="ant-space-item"
@@ -318,5 +322,214 @@ exports[`Members component members table matches snapshop when displaying table 
       </div>
     </div>
   </div>
+</DocumentFragment>
+`;
+
+exports[`Members component members data is retrieved sucessfully renders create member form matches snapshop 1`] = `
+<DocumentFragment>
+  <h2>
+    Create Member
+  </h2>
+  <form
+    class="ant-form ant-form-horizontal"
+    data-testid="create-member-form"
+    id="member"
+  >
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_firstName"
+          title="First Name"
+        >
+          First Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_firstName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class=""
+          for="member_middleName"
+          title="Middle Name"
+        >
+          Middle Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_middleName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_lastName"
+          title="Last Name"
+        >
+          Last Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_lastName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class=""
+          for="member_preferredName"
+          title="Preferred Name"
+        >
+          Preferred Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_preferredName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_email"
+          title="Email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_email"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-col-offset-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              data-testid="create-project-button"
+              type="submit"
+            >
+              <span>
+                Create
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </DocumentFragment>
 `;
