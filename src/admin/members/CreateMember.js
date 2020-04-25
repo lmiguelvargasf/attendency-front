@@ -50,7 +50,7 @@ const CreateMember = ({ addMember }) => {
     <>
       <h2>Create Member</h2>
       <Form
-        data-testid='create-project-form'
+        data-testid='create-member-form'
         {...layout}
         name='member'
         initialValues={{ remember: true }}

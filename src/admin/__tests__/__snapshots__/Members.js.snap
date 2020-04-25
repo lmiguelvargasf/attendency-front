@@ -324,3 +324,212 @@ exports[`Members component members data is retrieved sucessfully members table m
   </div>
 </DocumentFragment>
 `;
+
+exports[`Members component members data is retrieved sucessfully renders create member form matches snapshop 1`] = `
+<DocumentFragment>
+  <h2>
+    Create Member
+  </h2>
+  <form
+    class="ant-form ant-form-horizontal"
+    data-testid="create-member-form"
+    id="member"
+  >
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_firstName"
+          title="First Name"
+        >
+          First Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_firstName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class=""
+          for="member_middleName"
+          title="Middle Name"
+        >
+          Middle Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_middleName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_lastName"
+          title="Last Name"
+        >
+          Last Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_lastName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class=""
+          for="member_preferredName"
+          title="Preferred Name"
+        >
+          Preferred Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_preferredName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_email"
+          title="Email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              data-testid="project-title-input"
+              id="member_email"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-col-offset-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              data-testid="create-project-button"
+              type="submit"
+            >
+              <span>
+                Create
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

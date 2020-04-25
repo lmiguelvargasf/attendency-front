@@ -45,6 +45,7 @@ describe('Members component', () => {
     it('renders loading', () => {
       const { getByTestId, queryByTestId } = render(<Members />)
       expect(queryByTestId(TABLE_TEST_ID)).toBeNull()
+      expect(queryByTestId('create-member-form')).toBeNull()
       expect(getByTestId('loading')).not.toBeNull()
       expect(queryByTestId('error')).toBeNull()
     })
@@ -68,6 +69,7 @@ describe('Members component', () => {
       const { getByTestId, queryByTestId } = render(<Members />)
       expect(queryByTestId(TABLE_TEST_ID)).toBeNull()
       expect(queryByTestId('loading')).toBeNull()
+      expect(queryByTestId('create-member-form')).toBeNull()
       expect(getByTestId('error')).not.toBeNull()
     })
   })
@@ -78,8 +80,6 @@ describe('Members component', () => {
     let history
 
     describe('members table', () => {
-      let members
-
       beforeEach(() => {
         members = JSON.parse(JSON.stringify(fakeData))
         useAxios.mockReturnValue([{
@@ -102,6 +102,7 @@ describe('Members component', () => {
         expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
         expect(queryByTestId('loading')).toBeNull()
         expect(queryByTestId('error')).toBeNull()
+        expect(queryByTestId('create-member-form')).toBeNull()
       })
 
       it('removes member in table when clicking on X', async () => {
@@ -125,6 +126,49 @@ describe('Members component', () => {
         fireEvent.click(getByTestId(member.url))
         const table = await findByTestId(TABLE_TEST_ID)
         expect(table).not.toHaveTextContent(member.email)
+      })
+    })
+
+    describe('renders create member form', () => {
+      beforeAll(() => {
+        Object.defineProperty(window, 'matchMedia', {
+          writable: true,
+          value: jest.fn().mockImplementation(query => ({
+            matches: false,
+            media: query,
+            onchange: null,
+            addListener: jest.fn(), // deprecated
+            removeListener: jest.fn(), // deprecated
+            addEventListener: jest.fn(),
+            removeEventListener: jest.fn(),
+            dispatchEvent: jest.fn()
+          }))
+        })
+      })
+
+      beforeEach(() => {
+        members = JSON.parse(JSON.stringify(fakeData))
+        useAxios.mockReturnValue([{
+          data: members,
+          loading: false,
+          error: null
+        }])
+        history = createMemoryHistory()
+        history.push('/admin/members/create')
+        component = <Router history={history}><Members /></Router>
+      })
+
+      it('matches snapshop', () => {
+        const { asFragment } = render(component)
+        expect(asFragment()).toMatchSnapshot()
+      })
+
+      it('renders create member form', () => {
+        const { getByTestId, queryByTestId } = render(component)
+        expect(queryByTestId(TABLE_TEST_ID)).toBeNull()
+        expect(queryByTestId('loading')).toBeNull()
+        expect(queryByTestId('error')).toBeNull()
+        expect(getByTestId('create-member-form')).not.toBeNull()
       })
     })
   })
