@@ -1,4 +1,6 @@
 import React from 'react'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import Meetings from '../meetings/Meetings'
 import useAxios from 'axios-hooks'
@@ -82,39 +84,59 @@ describe('Meetings component', () => {
       }])
     })
 
-    it('matches snapshop when displaying table', () => {
-      const { asFragment } = render(<Meetings />)
-      expect(asFragment()).toMatchSnapshot()
-    })
+    describe('meetings data is retrieved successfully', () => {
+      let meetings
+      let component
+      let history
 
-    it('renders meetings table', async () => {
-      const { getByTestId, queryByTestId } = render(<Meetings />)
-      expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
-      expect(queryByTestId('loading')).toBeNull()
-      expect(queryByTestId('error')).toBeNull()
-    })
+      describe('meetings table', () => {
+        beforeEach(() => {
+          meetings = JSON.parse(JSON.stringify(fakeData))
+          useAxios.mockReturnValue([{
+            data: meetings,
+            loading: false,
+            error: null
+          }])
+          history = createMemoryHistory()
+          history.push('/admin/meetings')
+          component = <Router history={history}><Meetings /></Router>
+        })
 
-    it('removes meeting in table when clicking on X', async () => {
-      const meeting = meetings[0]
-      const executeMock = jest.fn()
-      useAxios.mockImplementation((...args) => {
-        switch (args.length) {
-          case 1:
-            return [{
-              data: meetings,
-              loading: false,
-              error: null
-            }]
-          case 2:
-            return [{}, executeMock]
-          default: break
-        }
+        it('matches snapshop', () => {
+          const { asFragment } = render(component)
+          expect(asFragment()).toMatchSnapshot()
+        })
+
+        it('renders meetings table', async () => {
+          const { getByTestId, queryByTestId } = render(component)
+          expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
+          expect(queryByTestId('loading')).toBeNull()
+          expect(queryByTestId('error')).toBeNull()
+        })
+
+        it('removes meeting in table when clicking on X', async () => {
+          const meeting = meetings[0]
+          const executeMock = jest.fn()
+          useAxios.mockImplementation((...args) => {
+            switch (args.length) {
+              case 1:
+                return [{
+                  data: meetings,
+                  loading: false,
+                  error: null
+                }]
+              case 2:
+                return [{}, executeMock]
+              default: break
+            }
+          })
+          const { getByTestId, findByTestId } = render(component)
+          expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(meeting.project)
+          fireEvent.click(getByTestId(meeting.url))
+          const table = await findByTestId(TABLE_TEST_ID)
+          expect(table).not.toHaveTextContent(meeting.project)
+        })
       })
-      const { getByTestId, findByTestId } = render(<Meetings />)
-      expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(meeting.project)
-      fireEvent.click(getByTestId(meeting.url))
-      const table = await findByTestId(TABLE_TEST_ID)
-      expect(table).not.toHaveTextContent(meeting.project)
     })
   })
 })

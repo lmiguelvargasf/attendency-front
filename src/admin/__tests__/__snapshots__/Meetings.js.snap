@@ -20,7 +20,7 @@ exports[`Meetings component loading data matches snapshot when loading data 1`] 
 </DocumentFragment>
 `;
 
-exports[`Meetings component meetings table matches snapshop when displaying table 1`] = `
+exports[`Meetings component meetings table meetings data is retrieved successfully meetings table matches snapshop 1`] = `
 <DocumentFragment>
   <div
     class="ant-space ant-space-vertical"
