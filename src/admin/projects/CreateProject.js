@@ -11,7 +11,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 8 }
 }
 
-const CreateProject = () => {
+const CreateProject = ({ addProject }) => {
   const history = useHistory()
   const [, executePost] = useAxios(
     {
@@ -23,9 +23,9 @@ const CreateProject = () => {
 
   const onFinish = async values => {
     values.startDate = values.startDate.toDate().toISOString().slice(0, 10)
-    await executePost({ data: values })
+    const { data: project } = await executePost({ data: values })
+    addProject(project)
     history.push('/admin/projects')
-    history.go()
   }
 
   const onFinishFailed = errorInfo => {

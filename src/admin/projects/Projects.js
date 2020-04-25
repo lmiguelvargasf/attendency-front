@@ -19,13 +19,16 @@ const Projects = () => {
   const removeProject = (projectToDelete) => {
     setProjects(() => projects.filter(project => project.key !== projectToDelete.key))
   }
+  const addProject = (project) => {
+    setProjects(projects => [project, ...projects])
+  }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
   if (error) return <p data-testid='error'>Error!</p>
 
   return (
     <Switch>
-      <Route path='/admin/projects/create' component={CreateProject} />
+      <Route path='/admin/projects/create' render={props => <CreateProject {...props} addProject={addProject} />} />
       <Route path='/admin/projects' render={props => <ProjectsTable {...props} projects={projects} removeProject={removeProject} />} />
     </Switch>
   )
