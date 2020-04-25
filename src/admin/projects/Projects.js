@@ -14,8 +14,6 @@ const Projects = () => {
     setProjects(data)
   }, [data])
 
-  useEffect(() => { }, [projects])
-
   const removeProject = (projectToDelete) => {
     setProjects(() => projects.filter(project => project.key !== projectToDelete.key))
   }

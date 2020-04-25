@@ -14,8 +14,6 @@ const Members = () => {
     setMembers(data)
   }, [data])
 
-  useEffect(() => { }, [members])
-
   const removeMember = (memberToDelete) => {
     setMembers(() => members.filter(member => member.key !== memberToDelete.key))
   }

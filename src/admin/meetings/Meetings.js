@@ -14,8 +14,6 @@ const Meetings = () => {
     setMeetings(data)
   }, [data])
 
-  useEffect(() => { }, [meetings])
-
   const removeMeeting = (meetingToDelete) => {
     setMeetings(() => meetings.filter(meeting => meeting.key !== meetingToDelete.key))
   }
