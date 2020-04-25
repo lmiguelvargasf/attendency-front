@@ -22,15 +22,14 @@ const CreateProject = ({ addProject }) => {
   )
 
   const onFinish = async values => {
+    console.log('This has been called!!! Finish')
     values.startDate = values.startDate.toDate().toISOString().slice(0, 10)
     const { data: project } = await createProject({ data: values })
     addProject(project)
     history.push('/admin/projects')
   }
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo)
-  }
+  const onFinishFailed = errorInfo => {}
 
   return (
     <>
@@ -48,7 +47,7 @@ const CreateProject = ({ addProject }) => {
           name='title'
           rules={[{ required: true, message: 'Please input the title!' }]}
         >
-          <Input />
+          <Input data-testid='project-title-input' />
         </Form.Item>
 
         <Form.Item
@@ -56,17 +55,17 @@ const CreateProject = ({ addProject }) => {
           name='startDate'
           rules={[{ required: true, message: 'Please input the start date!' }]}
         >
-          <DatePicker />
+          <DatePicker data-testid='project-date-picker' />
         </Form.Item>
         <Form.Item
           label='Description'
           name='description'
         >
-          <Input.TextArea rows={4} />
+          <Input.TextArea rows={4} data-testid='project-description' />
         </Form.Item>
 
         <Form.Item {...tailLayout}>
-          <Button type='primary' htmlType='submit'>
+          <Button type='primary' htmlType='submit' data-testid='create-project-button'>
             Create
           </Button>
         </Form.Item>

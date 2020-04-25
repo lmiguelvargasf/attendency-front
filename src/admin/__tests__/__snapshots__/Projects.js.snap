@@ -55,6 +55,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
           >
             <input
               class="ant-input"
+              data-testid="project-title-input"
               id="basic_title"
               type="text"
               value=""
@@ -93,6 +94,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
                 class="ant-picker-input"
               >
                 <input
+                  data-testid="project-date-picker"
                   placeholder="Select date"
                   readonly=""
                   size="12"
@@ -154,6 +156,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
           >
             <textarea
               class="ant-input"
+              data-testid="project-description"
               id="basic_description"
               rows="4"
             />
@@ -175,6 +178,7 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
           >
             <button
               class="ant-btn ant-btn-primary"
+              data-testid="create-project-button"
               type="submit"
             >
               <span>

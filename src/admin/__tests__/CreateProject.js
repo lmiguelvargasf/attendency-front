@@ -6,22 +6,23 @@ import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
 const BASE_API_URL = process.env.REACT_APP_API_URL
+const project = {
+  key: 1,
+  url: `${BASE_API_URL}/projects/10`,
+  title: 'Testing Project Alpha',
+  startDate: '2020-04-18',
+  description: 'This is just for testing',
+  team: 'A, B, C'
+}
 
 describe('CreateProject component', () => {
   const addProjectMock = jest.fn()
   const createProjectMock = jest.fn().mockReturnValue({
-    data: {
-      key: 1,
-      url: `${BASE_API_URL}/projects/10`,
-      title: 'Testing Project Alpha',
-      startDate: '2020-04-18',
-      description: 'This is just for testing',
-      team: 'A, B, C'
-    }
+    data: project
   })
   let component
 
-  beforeAll(() => {
+  beforeEach(() => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
       value: jest.fn().mockImplementation(query => ({
@@ -35,11 +36,9 @@ describe('CreateProject component', () => {
         dispatchEvent: jest.fn()
       }))
     })
-  })
 
-  beforeEach(() => {
     useAxios.mockReturnValue([{}, createProjectMock])
-    component = <Router><CreateProject /></Router>
+    component = <Router><CreateProject addProject={addProjectMock} /></Router>
   })
 
   afterEach(cleanup)
