@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Route, Switch } from 'react-router-dom'
 import useAxios from 'axios-hooks'
 import MembersTable from './MembersTable'
+import CreateMember from './CreateMember'
 
 const Members = () => {
   const [members, setMembers] = useState([])
@@ -22,7 +24,10 @@ const Members = () => {
   if (error) return <p data-testid='error'>Error!</p>
 
   return (
-    <MembersTable members={members} removeMember={updateMembers} />
+    <Switch>
+      <Route path='/admin/members/create' component={CreateMember} />
+      <Route path='/admin/members' render={props => <MembersTable {...props} members={members} removeMember={updateMembers} />} />
+    </Switch>
   )
 }
 

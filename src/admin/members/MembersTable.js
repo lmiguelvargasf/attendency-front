@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -37,12 +38,14 @@ const MembersTable = ({ members, removeMember }) => {
 
   return (
     <Space direction='vertical' size='middle' style={{ width: '100%' }}>
-      <Button type='primary'>
-        <Space>
-          <FontAwesomeIcon icon={faPlus} />
-          <span>New member</span>
-        </Space>
-      </Button>
+      <Link to='/admin/members/create'>
+        <Button type='primary'>
+          <Space>
+            <FontAwesomeIcon icon={faPlus} />
+            <span>New member</span>
+          </Space>
+        </Button>
+      </Link>
       <Table
         data-testid='member-table'
         columns={columns}

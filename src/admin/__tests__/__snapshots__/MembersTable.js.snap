@@ -10,42 +10,46 @@ exports[`MembersTable component matches snapshot no members 1`] = `
       class="ant-space-item"
       style="margin-bottom: 16px;"
     >
-      <button
-        class="ant-btn ant-btn-primary"
-        type="button"
+      <a
+        href="/admin/members/create"
       >
-        <div
-          class="ant-space ant-space-horizontal"
+        <button
+          class="ant-btn ant-btn-primary"
+          type="button"
         >
           <div
-            class="ant-space-item"
-            style="margin-right: 8px;"
+            class="ant-space ant-space-horizontal"
           >
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-plus fa-w-14 "
-              data-icon="plus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              class="ant-space-item"
+              style="margin-right: 8px;"
             >
-              <path
-                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-              />
-            </svg>
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-plus fa-w-14 "
+                data-icon="plus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span>
+                New member
+              </span>
+            </div>
           </div>
-          <div
-            class="ant-space-item"
-          >
-            <span>
-              New member
-            </span>
-          </div>
-        </div>
-      </button>
+        </button>
+      </a>
     </div>
     <div
       class="ant-space-item"
@@ -180,42 +184,46 @@ exports[`MembersTable component matches snapshot one project 1`] = `
       class="ant-space-item"
       style="margin-bottom: 16px;"
     >
-      <button
-        class="ant-btn ant-btn-primary"
-        type="button"
+      <a
+        href="/admin/members/create"
       >
-        <div
-          class="ant-space ant-space-horizontal"
+        <button
+          class="ant-btn ant-btn-primary"
+          type="button"
         >
           <div
-            class="ant-space-item"
-            style="margin-right: 8px;"
+            class="ant-space ant-space-horizontal"
           >
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-plus fa-w-14 "
-              data-icon="plus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              class="ant-space-item"
+              style="margin-right: 8px;"
             >
-              <path
-                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-              />
-            </svg>
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-plus fa-w-14 "
+                data-icon="plus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span>
+                New member
+              </span>
+            </div>
           </div>
-          <div
-            class="ant-space-item"
-          >
-            <span>
-              New member
-            </span>
-          </div>
-        </div>
-      </button>
+        </button>
+      </a>
     </div>
     <div
       class="ant-space-item"

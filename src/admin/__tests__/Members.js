@@ -1,4 +1,6 @@
 import React from 'react'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import Members from '../members/Members'
 import useAxios from 'axios-hooks'
@@ -70,51 +72,60 @@ describe('Members component', () => {
     })
   })
 
-  describe('members table', () => {
+  describe('members data is retrieved sucessfully', () => {
     let members
+    let component
+    let history
 
-    beforeEach(() => {
-      members = JSON.parse(JSON.stringify(fakeData))
-      useAxios.mockReturnValue([{
-        data: members,
-        loading: false,
-        error: null
-      }])
-    })
+    describe('members table', () => {
+      let members
 
-    it('matches snapshop when displaying table', () => {
-      const { asFragment } = render(<Members />)
-      expect(asFragment()).toMatchSnapshot()
-    })
-
-    it('renders members table', async () => {
-      const { getByTestId, queryByTestId } = render(<Members />)
-      expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
-      expect(queryByTestId('loading')).toBeNull()
-      expect(queryByTestId('error')).toBeNull()
-    })
-
-    it('removes member in table when clicking on X', async () => {
-      const member = members[0]
-      const executeMock = jest.fn()
-      useAxios.mockImplementation((...args) => {
-        switch (args.length) {
-          case 1:
-            return [{
-              data: members,
-              loading: false,
-              error: null
-            }]
-          case 2:
-            return [{}, executeMock]
-          default: break
-        }
+      beforeEach(() => {
+        members = JSON.parse(JSON.stringify(fakeData))
+        useAxios.mockReturnValue([{
+          data: members,
+          loading: false,
+          error: null
+        }])
+        history = createMemoryHistory()
+        history.push('/admin/members')
+        component = <Router history={history}><Members /></Router>
       })
-      const { getByTestId, findByTestId } = render(<Members />)
-      expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(member.email)
-      fireEvent.click(getByTestId(member.url))
-      const table = await findByTestId(TABLE_TEST_ID)
-      expect(table).not.toHaveTextContent(member.email)
+
+      it('matches snapshop', () => {
+        const { asFragment } = render(component)
+        expect(asFragment()).toMatchSnapshot()
+      })
+
+      it('renders members table', async () => {
+        const { getByTestId, queryByTestId } = render(component)
+        expect(getByTestId(TABLE_TEST_ID)).not.toBeNull()
+        expect(queryByTestId('loading')).toBeNull()
+        expect(queryByTestId('error')).toBeNull()
+      })
+
+      it('removes member in table when clicking on X', async () => {
+        const member = members[0]
+        const executeMock = jest.fn()
+        useAxios.mockImplementation((...args) => {
+          switch (args.length) {
+            case 1:
+              return [{
+                data: members,
+                loading: false,
+                error: null
+              }]
+            case 2:
+              return [{}, executeMock]
+            default: break
+          }
+        })
+        const { getByTestId, findByTestId } = render(component)
+        expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(member.email)
+        fireEvent.click(getByTestId(member.url))
+        const table = await findByTestId(TABLE_TEST_ID)
+        expect(table).not.toHaveTextContent(member.email)
+      })
     })
   })
 })
