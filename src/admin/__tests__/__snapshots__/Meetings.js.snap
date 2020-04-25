@@ -197,7 +197,7 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                               class="ant-space-item"
                             >
                               <a
-                                data-testid="http://localhost:8000/api/meetings/1"
+                                data-testid="http://localhost:8000/api/meeting-table/1"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -290,7 +290,7 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                               class="ant-space-item"
                             >
                               <a
-                                data-testid="http://localhost:8000/api/meetings/2"
+                                data-testid="http://localhost:8000/api/meeting-table/2"
                               >
                                 <svg
                                   aria-hidden="true"

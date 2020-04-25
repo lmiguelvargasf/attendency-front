@@ -7,7 +7,7 @@ import CreateMeeting from './CreateMeeting'
 const Meetings = () => {
   const [meetings, setMeetings] = useState([])
   const [{ data, loading, error }] = useAxios(
-    `${process.env.REACT_APP_API_URL}/meetings/`
+    `${process.env.REACT_APP_API_URL}/meeting-table/`
   )
 
   useEffect(() => {

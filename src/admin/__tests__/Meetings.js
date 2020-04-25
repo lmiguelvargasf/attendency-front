@@ -11,14 +11,14 @@ const TABLE_TEST_ID = 'meeting-table'
 const fakeData = [
   {
     key: 1,
-    url: `${BASE_API_URL}/meetings/1`,
+    url: `${BASE_API_URL}/meeting-table/1`,
     project: 'Testing Project XYZ',
     date: '2020-04-18',
     time: '18:00'
   },
   {
     key: 2,
-    url: `${BASE_API_URL}/meetings/2`,
+    url: `${BASE_API_URL}/meeting-table/2`,
     project: 'Another Testing Project',
     date: '2020-04-18',
     time: '18:00'
