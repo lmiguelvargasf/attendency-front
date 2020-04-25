@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
-import Members from '../Members'
+import Members from '../members/Members'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
