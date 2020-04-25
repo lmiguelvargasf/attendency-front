@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
 import RemoveObjectButton from '../RemoveObjectButton'
 
-const MembersTable = ({ members, updateMembers }) => {
+const MembersTable = ({ members, removeMember }) => {
   const columns = [
     {
       title: 'First Name',
@@ -29,7 +29,7 @@ const MembersTable = ({ members, updateMembers }) => {
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faTrash} />
-          <RemoveObjectButton object={record} removeObject={updateMembers} />
+          <RemoveObjectButton object={record} removeObject={removeMember} />
         </Space>
       )
     }

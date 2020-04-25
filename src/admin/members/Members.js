@@ -22,7 +22,7 @@ const Members = () => {
   if (error) return <p data-testid='error'>Error!</p>
 
   return (
-    <MembersTable members={members} updateMembers={updateMembers} />
+    <MembersTable members={members} removeMember={updateMembers} />
   )
 }
 
