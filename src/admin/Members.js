@@ -48,7 +48,7 @@ const Members = () => {
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faTrash} />
-          <RemoveObjectButton object={record} updateObjects={updateMembers} />
+          <RemoveObjectButton object={record} removeObject={updateMembers} />
         </Space>
       )
     }

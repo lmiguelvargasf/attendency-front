@@ -1,29 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import useAxios from 'axios-hooks'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
-import RemoveObjectButton from './RemoveObjectButton'
+import RemoveObjectButton from '../RemoveObjectButton'
 
-export const Projects = () => {
-  const [projects, setProjects] = useState([])
-  const [{ data, loading, error }] = useAxios(
-    `${process.env.REACT_APP_API_URL}/projects`
-  )
-
-  useEffect(() => {
-    setProjects(data)
-  }, [data])
-
-  useEffect(() => { }, [projects])
-
-  const updateProjects = (projectToDelete) => {
-    setProjects(() => projects.filter(project => project.key !== projectToDelete.key))
-  }
-
-  if (loading) return <p data-testid='loading'>Loading...</p>
-  if (error) return <p data-testid='error'>Error!</p>
-
+const ProjectsTable = ({ projects, removeProject }) => {
   const columns = [
     {
       title: 'Title',
@@ -40,7 +22,12 @@ export const Projects = () => {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
-      render: description => `${description.substring(0, 50)}...`
+      render: description => {
+        if (description) {
+          return description.length < 50 ? description : `${description.substring(0, 50)}...`
+        }
+        return '-'
+      }
     },
     {
       title: 'Team',
@@ -55,7 +42,7 @@ export const Projects = () => {
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faCalendar} />
           <FontAwesomeIcon icon={faUserPlus} />
-          <RemoveObjectButton object={record} updateObjects={updateProjects} />
+          <RemoveObjectButton object={record} removeObject={removeProject} />
         </Space>
       )
     }
@@ -63,12 +50,14 @@ export const Projects = () => {
 
   return (
     <Space direction='vertical' size='middle' style={{ width: '100%' }}>
-      <Button type='primary'>
-        <Space>
-          <FontAwesomeIcon icon={faPlus} />
-          <span>New project</span>
-        </Space>
-      </Button>
+      <Link to='/admin/projects/create'>
+        <Button type='primary'>
+          <Space>
+            <FontAwesomeIcon icon={faPlus} />
+            <span>New project</span>
+          </Space>
+        </Button>
+      </Link>
       <Table
         data-testid='project-table'
         columns={columns}
@@ -78,3 +67,5 @@ export const Projects = () => {
     </Space>
   )
 }
+
+export default ProjectsTable

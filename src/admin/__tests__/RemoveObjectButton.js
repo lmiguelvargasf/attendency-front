@@ -7,13 +7,13 @@ jest.mock('axios-hooks')
 describe('RemoveObjectButton component', () => {
   const object = { key: 1, url: 'https://example.com/api' }
   const executeMock = jest.fn()
-  const updateObjectsMock = jest.fn()
+  const removeObjectMock = jest.fn()
   let component
 
   beforeEach(() => {
     useAxios.mockReturnValue([{}, executeMock])
     component = (
-      <RemoveObjectButton object={object} updateObjects={updateObjectsMock} />
+      <RemoveObjectButton object={object} removeObject={removeObjectMock} />
     )
   })
 
@@ -24,10 +24,10 @@ describe('RemoveObjectButton component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('execute and updateObjectsMock are called when clicking on component', async () => {
+  it('execute and removeObjectMock are called when clicking on component', async () => {
     const { getByTestId } = render(component)
     await fireEvent.click(getByTestId(object.url))
     expect(executeMock).toHaveBeenCalled()
-    expect(updateObjectsMock).toHaveBeenCalledWith(object)
+    expect(removeObjectMock).toHaveBeenCalledWith(object)
   })
 })

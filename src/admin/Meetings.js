@@ -48,7 +48,7 @@ const Meetings = () => {
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
           <FontAwesomeIcon icon={faTrash} />
-          <RemoveObjectButton object={record} updateObjects={updateMeetings} />
+          <RemoveObjectButton object={record} removeObject={updateMeetings} />
         </Space>
       )
     }
