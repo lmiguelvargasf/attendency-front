@@ -16,8 +16,11 @@ const Members = () => {
 
   useEffect(() => { }, [members])
 
-  const updateMembers = (memberToDelete) => {
+  const removeMember = (memberToDelete) => {
     setMembers(() => members.filter(member => member.key !== memberToDelete.key))
+  }
+  const addMember = (member) => {
+    setMembers(members => [member, ...members])
   }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
@@ -25,8 +28,8 @@ const Members = () => {
 
   return (
     <Switch>
-      <Route path='/admin/members/create' component={CreateMember} />
-      <Route path='/admin/members' render={props => <MembersTable {...props} members={members} removeMember={updateMembers} />} />
+      <Route path='/admin/members/create' render={props => <CreateMember {...props} addMember={addMember} />} />
+      <Route path='/admin/members' render={props => <MembersTable {...props} members={members} removeMember={removeMember} />} />
     </Switch>
   )
 }
