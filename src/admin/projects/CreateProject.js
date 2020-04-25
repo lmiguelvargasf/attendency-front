@@ -13,7 +13,7 @@ const tailLayout = {
 
 const CreateProject = ({ addProject }) => {
   const history = useHistory()
-  const [, executePost] = useAxios(
+  const [, createProject] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/projects/`,
       method: 'post'
@@ -23,7 +23,7 @@ const CreateProject = ({ addProject }) => {
 
   const onFinish = async values => {
     values.startDate = values.startDate.toDate().toISOString().slice(0, 10)
-    const { data: project } = await executePost({ data: values })
+    const { data: project } = await createProject({ data: values })
     addProject(project)
     history.push('/admin/projects')
   }
