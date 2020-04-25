@@ -28,9 +28,7 @@ const CreateMeeting = ({ addMeeting }) => {
     { manual: true }
   )
 
-  useEffect(() => {
-    if (data) setProjects(data)
-  }, [data])
+  useEffect(() => { if (data) setProjects(data) }, [data])
 
   if (loading) return <p data-testid='loading'>Loading...</p>
   if (error) return <p data-testid='error'>Error!</p>
@@ -38,8 +36,8 @@ const CreateMeeting = ({ addMeeting }) => {
   const onFinish = async values => {
     const project = projects.find(x => x.key === values.project)
     const date = values.date.format('YYYY-MM-DD')
-    const time = values.time.format('HH:mm:ss')
-    const dateTime = moment(`${date} ${time}`, 'YYYY-MM-DD HH:mm:ss')
+    const time = values.time.format('HH:mm')
+    const dateTime = moment(`${date} ${time}`, 'YYYY-MM-DD HH:mm')
     const meeting = {
       project: project.url,
       dateTime: dateTime.toISOString()
@@ -59,7 +57,7 @@ const CreateMeeting = ({ addMeeting }) => {
       url: createdMeeting.url,
       project: project.title,
       date,
-      time: values.time.format('HH:mm')
+      time
     })
     message.success({ content: `Meeting for project ${project.title} was created sucessfully`, duration: 3 })
     history.push('/admin/meetings')
