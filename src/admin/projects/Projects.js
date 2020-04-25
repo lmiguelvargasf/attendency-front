@@ -10,9 +10,7 @@ const Projects = () => {
     `${process.env.REACT_APP_API_URL}/projects`
   )
 
-  useEffect(() => {
-    setProjects(data)
-  }, [data])
+  useEffect(() => { setProjects(data) }, [data])
 
   const removeProject = (projectToDelete) => {
     setProjects(() => projects.filter(project => project.key !== projectToDelete.key))

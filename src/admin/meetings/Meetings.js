@@ -10,9 +10,7 @@ const Meetings = () => {
     `${process.env.REACT_APP_API_URL}/meeting-table/`
   )
 
-  useEffect(() => {
-    setMeetings(data)
-  }, [data])
+  useEffect(() => { setMeetings(data) }, [data])
 
   const removeMeeting = (meetingToDelete) => {
     setMeetings(() => meetings.filter(meeting => meeting.key !== meetingToDelete.key))

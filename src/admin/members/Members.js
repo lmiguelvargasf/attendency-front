@@ -10,9 +10,7 @@ const Members = () => {
     `${process.env.REACT_APP_API_URL}/members/`
   )
 
-  useEffect(() => {
-    setMembers(data)
-  }, [data])
+  useEffect(() => { setMembers(data) }, [data])
 
   const removeMember = (memberToDelete) => {
     setMembers(() => members.filter(member => member.key !== memberToDelete.key))
