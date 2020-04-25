@@ -360,7 +360,6 @@ exports[`Members component members data is retrieved sucessfully renders create 
           >
             <input
               class="ant-input"
-              data-testid="project-title-input"
               id="member_firstName"
               type="text"
               value=""
@@ -394,7 +393,6 @@ exports[`Members component members data is retrieved sucessfully renders create 
           >
             <input
               class="ant-input"
-              data-testid="project-title-input"
               id="member_middleName"
               type="text"
               value=""
@@ -428,7 +426,6 @@ exports[`Members component members data is retrieved sucessfully renders create 
           >
             <input
               class="ant-input"
-              data-testid="project-title-input"
               id="member_lastName"
               type="text"
               value=""
@@ -462,7 +459,6 @@ exports[`Members component members data is retrieved sucessfully renders create 
           >
             <input
               class="ant-input"
-              data-testid="project-title-input"
               id="member_preferredName"
               type="text"
               value=""
@@ -496,7 +492,6 @@ exports[`Members component members data is retrieved sucessfully renders create 
           >
             <input
               class="ant-input"
-              data-testid="project-title-input"
               id="member_email"
               type="text"
               value=""

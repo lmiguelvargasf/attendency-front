@@ -60,7 +60,7 @@ const CreateMember = ({ addMember }) => {
         <>
           {inputs.map((input, index) => (
             <Form.Item key={index} {...input}>
-              <Input data-testid='project-title-input' />
+              <Input />
             </Form.Item>
           ))}
         </>
