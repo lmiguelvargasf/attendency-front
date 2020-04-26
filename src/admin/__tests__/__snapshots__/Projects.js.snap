@@ -409,6 +409,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                                   data-prefix="fas"
                                   focusable="false"
                                   role="img"
+                                  style="color: rgb(242, 70, 61);"
                                   viewBox="0 0 448 512"
                                   xmlns="http://www.w3.org/2000/svg"
                                 >
@@ -527,6 +528,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                                   data-prefix="fas"
                                   focusable="false"
                                   role="img"
+                                  style="color: rgb(242, 70, 61);"
                                   viewBox="0 0 448 512"
                                   xmlns="http://www.w3.org/2000/svg"
                                 >

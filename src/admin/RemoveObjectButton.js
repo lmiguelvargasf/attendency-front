@@ -13,7 +13,10 @@ const RemoveObjectButton = ({ object, removeObject }) => {
     removeObject(object)
   }
 
-  return <a data-testid={object.url} onClick={remove}><FontAwesomeIcon icon={faTrash} /></a>
+  return (
+    <a data-testid={object.url} onClick={remove}>
+      <FontAwesomeIcon icon={faTrash} style={{ color: '#f2463d' }} />
+    </a>)
 }
 
 export default RemoveObjectButton
