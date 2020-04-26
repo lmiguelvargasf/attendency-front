@@ -28,7 +28,7 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
       key: 'action',
       render: (text, record) => (
         <Space size='middle'>
-          <Link to={`/admin/meetings/${record.key}/edit`}>
+          <Link to={{ pathname: `/admin/meetings/${record.key}/edit`, state: { meeting: record } }}>
             <FontAwesomeIcon icon={faEdit} />
           </Link>
           <RemoveObjectButton object={record} removeObject={removeMeeting} />
