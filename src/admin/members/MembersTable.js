@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons'
 import RemoveObjectButton from '../RemoveObjectButton'
 
 const MembersTable = ({ members, removeMember }) => {
@@ -29,7 +29,6 @@ const MembersTable = ({ members, removeMember }) => {
       render: (text, record) => (
         <Space size='middle'>
           <FontAwesomeIcon icon={faEdit} />
-          <FontAwesomeIcon icon={faTrash} />
           <RemoveObjectButton object={record} removeObject={removeMember} />
         </Space>
       )
