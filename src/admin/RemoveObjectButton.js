@@ -1,7 +1,7 @@
 import React from 'react'
 import useAxios from 'axios-hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const RemoveObjectButton = ({ object, removeObject }) => {
   const [, execute] = useAxios(
@@ -13,7 +13,10 @@ const RemoveObjectButton = ({ object, removeObject }) => {
     removeObject(object)
   }
 
-  return <a data-testid={object.url} onClick={remove}><FontAwesomeIcon icon={faTimes} /></a>
+  return (
+    <a data-testid={object.url} onClick={remove}>
+      <FontAwesomeIcon icon={faTrash} style={{ color: '#f2463d' }} />
+    </a>)
 }
 
 export default RemoveObjectButton
