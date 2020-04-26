@@ -45,14 +45,17 @@ const EditMeeting = ({ updateMeetings }) => {
       return
     }
 
-    updateMeetings({
-      key: updatedMeeting.key,
-      url: updatedMeeting.url,
-      projectTitle: projectTitle,
-      project: meetingFromTable.project,
-      date,
-      time
-    })
+    updateMeetings(
+      {
+        key: updatedMeeting.key,
+        url: updatedMeeting.url,
+        projectTitle: projectTitle,
+        project: meetingFromTable.project,
+        date,
+        time
+      },
+      location.state.index
+    )
     message.success({ content: `Meeting for project ${projectTitle} was updated sucessfully`, duration: 3 })
     history.push('/admin/meetings')
   }

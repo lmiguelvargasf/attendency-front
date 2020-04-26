@@ -19,9 +19,7 @@ const Meetings = () => {
   const addMeeting = meeting => {
     setMeetings(meetings => [meeting, ...meetings])
   }
-  const updateMeetings = updatedMeeting => {
-    const meeting = meetings.find(x => x.key === updatedMeeting.key)
-    const index = meetings.indexOf(meeting)
+  const updateMeetings = (updatedMeeting, index) => {
     meetings[index] = updatedMeeting
     setMeetings(meetings)
   }
