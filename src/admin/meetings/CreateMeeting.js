@@ -70,7 +70,7 @@ const CreateMeeting = ({ addMeeting }) => {
 
   return (
     <>
-      <h2>Create Project</h2>
+      <h2>Create Meeting</h2>
       <Form
         data-testid='create-meeting-form'
         {...layout}
