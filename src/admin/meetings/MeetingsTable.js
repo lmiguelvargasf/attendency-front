@@ -10,8 +10,7 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
     {
       title: 'Project',
       dataIndex: 'project',
-      key: 'project',
-      render: project => <a>{project}</a>
+      key: 'project'
     },
     {
       title: 'Date',

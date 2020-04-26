@@ -133,9 +133,7 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                         <td
                           class="ant-table-cell"
                         >
-                          <a>
-                            Testing Project XYZ
-                          </a>
+                          Testing Project XYZ
                         </td>
                         <td
                           class="ant-table-cell"
@@ -211,9 +209,7 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                         <td
                           class="ant-table-cell"
                         >
-                          <a>
-                            Another Testing Project
-                          </a>
+                          Another Testing Project
                         </td>
                         <td
                           class="ant-table-cell"
