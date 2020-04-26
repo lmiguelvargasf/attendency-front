@@ -12,14 +12,14 @@ const fakeData = [
   {
     key: 1,
     url: `${BASE_API_URL}/meeting-table/1`,
-    project: 'Testing Project XYZ',
+    projectTitle: 'Testing Project XYZ',
     date: '2020-04-18',
     time: '18:00'
   },
   {
     key: 2,
     url: `${BASE_API_URL}/meeting-table/2`,
-    project: 'Another Testing Project',
+    projectTitle: 'Another Testing Project',
     date: '2020-04-18',
     time: '18:00'
   }
@@ -131,10 +131,10 @@ describe('Meetings component', () => {
             }
           })
           const { getByTestId, findByTestId } = render(component)
-          expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(meeting.project)
+          expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(meeting.projectTitle)
           fireEvent.click(getByTestId(meeting.url))
           const table = await findByTestId(TABLE_TEST_ID)
-          expect(table).not.toHaveTextContent(meeting.project)
+          expect(table).not.toHaveTextContent(meeting.projectTitle)
         })
       })
     })

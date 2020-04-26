@@ -94,14 +94,14 @@ const CreateMeeting = ({ addMeeting }) => {
           name='date'
           rules={[{ required: true, message: "Please input meeting's date!" }]}
         >
-          <DatePicker style={{ width: '130px' }} />
+          <DatePicker />
         </Form.Item>
         <Form.Item
           label='Time'
           name='time'
           rules={[{ required: true, message: "Please input meeting's time!" }]}
         >
-          <TimePicker format='h:mm A' style={{ width: '130px' }} />
+          <TimePicker format='HH:mm' />
         </Form.Item>
 
         <Form.Item {...tailLayout}>
