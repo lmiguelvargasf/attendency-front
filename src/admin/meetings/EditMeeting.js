@@ -21,7 +21,7 @@ const EditMeeting = ({ updateMeetings }) => {
   const history = useHistory()
   const [, updateMeeting] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/meetings/`,
+      url: `${process.env.REACT_APP_API_URL}/meetings/${meetingFromTable.key}/`,
       method: 'put'
     },
     { manual: true }
@@ -57,7 +57,9 @@ const EditMeeting = ({ updateMeetings }) => {
     history.push('/admin/meetings')
   }
 
-  const onFinishFailed = errorInfo => {}
+  const onFinishFailed = errorInfo => {
+    console.log(errorInfo)
+  }
 
   return (
     <>
@@ -66,7 +68,7 @@ const EditMeeting = ({ updateMeetings }) => {
         data-testid='create-meeting-form'
         {...layout}
         name='meeting'
-        initialValues={{ remember: true }}
+        initialValues={{ project: projectTitle, date: currentDate, time: currentTime }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
@@ -74,7 +76,7 @@ const EditMeeting = ({ updateMeetings }) => {
           label='Project'
           name='project'
         >
-          <Input defaultValue={projectTitle} disabled />
+          <Input disabled />
         </Form.Item>
 
         <Form.Item
@@ -82,14 +84,14 @@ const EditMeeting = ({ updateMeetings }) => {
           name='date'
           rules={[{ required: true, message: "Please input meeting's date!" }]}
         >
-          <DatePicker defaultValue={currentDate} />
+          <DatePicker />
         </Form.Item>
         <Form.Item
           label='Time'
           name='time'
           rules={[{ required: true, message: "Please input meeting's time!" }]}
         >
-          <TimePicker defaultValue={currentTime} format='HH:mm' />
+          <TimePicker format='HH:mm' />
         </Form.Item>
 
         <Form.Item {...tailLayout}>
