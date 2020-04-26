@@ -9,8 +9,8 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
   const columns = [
     {
       title: 'Project',
-      dataIndex: 'project',
-      key: 'project'
+      dataIndex: 'projectTitle',
+      key: 'projectTitle'
     },
     {
       title: 'Date',
