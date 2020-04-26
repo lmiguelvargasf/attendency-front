@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import useAxios from 'axios-hooks'
 import MeetingsTable from './MeetingsTable'
 import CreateMeeting from './CreateMeeting'
+import EditMeeting from './EditMeeting'
 
 const Meetings = () => {
   const [meetings, setMeetings] = useState([])
@@ -12,11 +13,17 @@ const Meetings = () => {
 
   useEffect(() => { setMeetings(data) }, [data])
 
-  const removeMeeting = (meetingToDelete) => {
+  const removeMeeting = meetingToDelete => {
     setMeetings(() => meetings.filter(meeting => meeting.key !== meetingToDelete.key))
   }
-  const addMeeting = (meeting) => {
+  const addMeeting = meeting => {
     setMeetings(meetings => [meeting, ...meetings])
+  }
+  const updateMeetings = updatedMeeting => {
+    const meeting = meetings.find(x => x.key === updatedMeeting.key)
+    const index = meetings.indexOf(meeting)
+    meetings[index] = updatedMeeting
+    setMeetings(meetings)
   }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
@@ -25,6 +32,7 @@ const Meetings = () => {
   return (
     <Switch>
       <Route path='/admin/meetings/create' render={props => <CreateMeeting {...props} addMeeting={addMeeting} />} />
+      <Route path='/admin/meetings/:key/edit' render={props => <EditMeeting {...props} updateMeetings={updateMeetings} />} />
       <Route path='/admin/meetings' render={props => <MeetingsTable {...props} meetings={meetings} removeMeeting={removeMeeting} />} />
     </Switch>
   )
