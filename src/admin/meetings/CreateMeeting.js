@@ -55,7 +55,7 @@ const CreateMeeting = ({ addMeeting }) => {
     addMeeting({
       key: createdMeeting.key,
       url: createdMeeting.url,
-      project: project.title,
+      projectTitle: project.title,
       date,
       time
     })
