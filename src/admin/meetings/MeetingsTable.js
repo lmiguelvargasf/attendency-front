@@ -30,7 +30,7 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
           <Link to={{ pathname: `/admin/meetings/${record.key}/edit`, state: { meeting: record, index } }}>
             <FontAwesomeIcon icon={faEdit} />
           </Link>
-          <Link to={`/admin/meetings/${record.key}/participation`}>
+          <Link to={{ pathname: `/admin/meetings/${record.key}/participation`, state: { meeting: record } }}>
             <FontAwesomeIcon icon={faClipboardCheck} style={{ color: '#53A653' }} />
           </Link>
           <RemoveObjectButton object={record} removeObject={removeMeeting} />
