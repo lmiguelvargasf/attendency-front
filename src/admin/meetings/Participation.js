@@ -8,6 +8,7 @@ const Participation = () => {
   const history = useHistory()
   const location = useLocation()
   const meeting = location.state.meeting
+  const [description, setDescription] = useState('Elimination')
   const [data, setData] = useState([
     {
       member: 'Miguel',
@@ -95,7 +96,7 @@ const Participation = () => {
         <Col span={12}>
           <Space direction='vertical' style={{ width: '100%' }}>
             <strong>Observations:</strong>
-            <TextArea rows={data.length > 7 ? 14 : 2 + 2 * data.length} />
+            <TextArea rows={data.length > 7 ? 14 : 2 + 2 * data.length} value={description} onChange={(e) => { setDescription(e.target.value) }} />
             <Button type='primary' onClick={() => { updateParticipation() }}>Save</Button>
           </Space>
         </Col>
