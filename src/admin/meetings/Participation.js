@@ -8,37 +8,36 @@ const Participation = () => {
   const history = useHistory()
   const location = useLocation()
   const meeting = location.state.meeting
-  const [description, setDescription] = useState('Elimination')
+  const [observations, setObservations] = useState('Elimination')
   const [data, setData] = useState([
     {
       member: 'Miguel',
-      attendance: false
+      attended: false
     },
     {
       member: 'Sika',
-      attendance: true
+      attended: true
     },
     {
       member: 'Jan',
-      attendance: true
+      attended: true
     },
     {
       member: 'Sandri',
-      attendance: true
+      attended: true
     },
     {
       member: 'Chris',
-      attendance: true
+      attended: true
     },
     {
       member: 'Vale',
-      attendance: true
+      attended: true
     }
   ])
   const tootleAttendance = (event, participation, index) => {
     event.preventDefault()
-    participation.attendance = !participation.attendance
-    console.log(participation)
+    participation.attended = !participation.attended
     setData((data) => {
       const newData = [...data]
       newData[index] = participation
@@ -53,11 +52,11 @@ const Participation = () => {
       key: 'member'
     },
     {
-      title: 'Attendance',
-      dataIndex: 'attendance',
-      key: 'attendance',
+      title: 'Attended',
+      dataIndex: 'attended',
+      key: 'attended',
       render: (text, record, index) => (
-        <Checkbox checked={record.attendance} onClick={(event) => { tootleAttendance(event, record, index) }} />
+        <Checkbox checked={record.attended} onClick={(event) => { tootleAttendance(event, record, index) }} />
       )
     }
   ]
@@ -96,7 +95,7 @@ const Participation = () => {
         <Col span={12}>
           <Space direction='vertical' style={{ width: '100%' }}>
             <strong>Observations:</strong>
-            <TextArea rows={data.length > 7 ? 14 : 2 + 2 * data.length} value={description} onChange={(e) => { setDescription(e.target.value) }} />
+            <TextArea rows={data.length > 7 ? 14 : 2 + 2 * data.length} value={observations} onChange={(e) => { setObservations(e.target.value) }} />
             <Button type='primary' onClick={() => { updateParticipation() }}>Save</Button>
           </Space>
         </Col>
