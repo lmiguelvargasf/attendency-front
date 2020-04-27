@@ -5,6 +5,7 @@ import { Row, Col, Table, Checkbox, Button, Input, Space, message } from 'antd'
 const { TextArea } = Input
 
 const Participation = () => {
+  const history = useHistory()
   const location = useLocation()
   const meeting = location.state.meeting
   const [data, setData] = useState([
@@ -60,6 +61,10 @@ const Participation = () => {
     }
   ]
 
+  const updateParticipation = () => {
+    history.push('/admin/meetings')
+  }
+
   return (
     <>
       <h2>Participation</h2>
@@ -90,8 +95,8 @@ const Participation = () => {
         <Col span={12}>
           <Space direction='vertical' style={{ width: '100%' }}>
             <strong>Observations:</strong>
-            <TextArea rows={10} />
-            <Button type='primary'>Save</Button>
+            <TextArea rows={14} />
+            <Button type='primary' onClick={() => { updateParticipation() }}>Save</Button>
           </Space>
         </Col>
       </Row>
