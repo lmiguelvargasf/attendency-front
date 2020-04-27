@@ -95,7 +95,7 @@ const Participation = () => {
         <Col span={12}>
           <Space direction='vertical' style={{ width: '100%' }}>
             <strong>Observations:</strong>
-            <TextArea rows={14} />
+            <TextArea rows={data.length > 7 ? 14 : 2 + 2 * data.length} />
             <Button type='primary' onClick={() => { updateParticipation() }}>Save</Button>
           </Space>
         </Col>
