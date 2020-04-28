@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faPlus, faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 import RemoveObjectButton from '../RemoveObjectButton'
 
 const MeetingsTable = ({ meetings, removeMeeting }) => {
@@ -29,6 +29,9 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
         <Space size='middle'>
           <Link to={{ pathname: `/admin/meetings/${record.key}/edit`, state: { meeting: record, index } }}>
             <FontAwesomeIcon icon={faEdit} />
+          </Link>
+          <Link to={{ pathname: `/admin/meetings/${record.key}/participation`, state: { meeting: record } }}>
+            <FontAwesomeIcon icon={faClipboardCheck} style={{ color: '#53A653' }} />
           </Link>
           <RemoveObjectButton object={record} removeObject={removeMeeting} />
         </Space>

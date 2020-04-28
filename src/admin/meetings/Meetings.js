@@ -4,6 +4,7 @@ import useAxios from 'axios-hooks'
 import MeetingsTable from './MeetingsTable'
 import CreateMeeting from './CreateMeeting'
 import EditMeeting from './EditMeeting'
+import Participation from './Participation'
 
 const Meetings = () => {
   const [meetings, setMeetings] = useState([])
@@ -31,6 +32,7 @@ const Meetings = () => {
     <Switch>
       <Route path='/admin/meetings/create' render={props => <CreateMeeting {...props} addMeeting={addMeeting} />} />
       <Route path='/admin/meetings/:key/edit' render={props => <EditMeeting {...props} updateMeetings={updateMeetings} />} />
+      <Route path='/admin/meetings/:key/participation' render={props => <Participation {...props} />} />
       <Route path='/admin/meetings' render={props => <MeetingsTable {...props} meetings={meetings} removeMeeting={removeMeeting} />} />
     </Switch>
   )
