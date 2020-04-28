@@ -20,8 +20,11 @@ const Members = () => {
     setMembers(members => [member, ...members])
   }
   const updateMembers = (updatedMember, index) => {
-    members[index] = updatedMember
-    setMembers(members)
+    setMembers(members => {
+      const updatedMembers = [...members]
+      updateMembers[index] = updatedMember
+      return updatedMembers
+    })
   }
 
   if (loading) return <p data-testid='loading'>Loading...</p>

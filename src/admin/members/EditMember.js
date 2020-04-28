@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { Form, Input, Button, message } from 'antd'
 import useAxios from 'axios-hooks'
@@ -15,15 +15,18 @@ const EditMember = ({ updateMembers }) => {
   const history = useHistory()
   const location = useLocation()
   const memberFromTable = location.state.meeting
+  const memberUrl = memberFromTable.url
+  const [{ data, loading, error }] = useAxios(memberUrl, { useCache: false })
   const [, updateMember] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/meetings/${memberFromTable.key}/`,
+      url: memberUrl,
       method: 'put'
     },
     { manual: true }
   )
   const onFinish = async values => {
-    let member
+    let member = values
+    member.url = data.url
     try {
       const { data } = await updateMember({ data: member })
       member = data
@@ -49,6 +52,9 @@ const EditMember = ({ updateMembers }) => {
     console.log(errorInfo)
   }
 
+  if (loading) return <p data-testid='loading'>Loading...</p>
+  if (error) return <p data-testid='error'>Error!</p>
+
   return (
     <>
       <h2>Edit Member</h2>
@@ -56,7 +62,7 @@ const EditMember = ({ updateMembers }) => {
         data-testid='create-member-form'
         {...layout}
         name='member'
-        initialValues={{ remember: true }}
+        initialValues={{ ...data }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
@@ -69,7 +75,7 @@ const EditMember = ({ updateMembers }) => {
         </>
         <Form.Item {...tailLayout}>
           <Button type='primary' htmlType='submit' data-testid='create-project-button'>
-            Create
+            Save
           </Button>
         </Form.Item>
       </Form>
