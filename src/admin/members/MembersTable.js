@@ -10,8 +10,7 @@ const MembersTable = ({ members, removeMember }) => {
     {
       title: 'First Name',
       dataIndex: 'firstName',
-      key: 'firstName',
-      render: firstName => <a>{firstName}</a>
+      key: 'firstName'
     },
     {
       title: 'Last Name',

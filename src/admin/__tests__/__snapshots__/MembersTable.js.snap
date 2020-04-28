@@ -287,9 +287,7 @@ exports[`MembersTable component matches snapshot one project 1`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          <a>
-                            Isaac
-                          </a>
+                          Isaac
                         </td>
                         <td
                           class="ant-table-cell"
