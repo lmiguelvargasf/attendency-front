@@ -9,7 +9,7 @@ const Participation = () => {
   const history = useHistory()
   const location = useLocation()
   const meeting = location.state.meeting
-  const [observations, setObservations] = useState('Elimination')
+  const [observations, setObservations] = useState('')
   const [{ data, loading, error }] = useAxios(
     `${process.env.REACT_APP_API_URL}/meetings/${meeting.key}/participation`
   )
@@ -20,6 +20,13 @@ const Participation = () => {
       setObservations(data.observations)
     }
   }, [data])
+  const [, trackParticipation] = useAxios(
+    {
+      url: `${process.env.REACT_APP_API_URL}/meetings/${meeting.key}/track-participation/`,
+      method: 'post'
+    },
+    { manual: true }
+  )
 
   const tootleAttendance = (event, participation, index) => {
     event.preventDefault()
@@ -47,7 +54,16 @@ const Participation = () => {
     }
   ]
 
-  const updateParticipation = () => {
+  const updateParticipation = async () => {
+    try {
+      await trackParticipation({ data: { participations, observations } })
+    } catch (error) {
+      message.error('There was an error, please try again.')
+      console.log(error)
+      return
+    }
+    data.observations = observations
+    message.success({ content: 'Participation for m eeting was saved sucessfully', duration: 3 })
     history.push('/admin/meetings')
   }
 
