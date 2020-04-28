@@ -10,8 +10,7 @@ const MembersTable = ({ members, removeMember }) => {
     {
       title: 'First Name',
       dataIndex: 'firstName',
-      key: 'firstName',
-      render: firstName => <a>{firstName}</a>
+      key: 'firstName'
     },
     {
       title: 'Last Name',
@@ -26,9 +25,11 @@ const MembersTable = ({ members, removeMember }) => {
     {
       title: 'Action',
       key: 'action',
-      render: (text, record) => (
+      render: (text, record, index) => (
         <Space size='middle'>
-          <FontAwesomeIcon icon={faEdit} />
+          <Link to={{ pathname: `/admin/members/${record.key}/edit`, state: { meeting: record, index } }}>
+            <FontAwesomeIcon icon={faEdit} />
+          </Link>
           <RemoveObjectButton object={record} removeObject={removeMember} />
         </Space>
       )
