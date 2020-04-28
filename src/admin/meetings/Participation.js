@@ -63,7 +63,7 @@ const Participation = () => {
       return
     }
     data.observations = observations
-    message.success({ content: 'Participation for m eeting was saved sucessfully', duration: 3 })
+    message.success({ content: `Participation for ${meeting.projectTitle}'s meeting was saved sucessfully`, duration: 3 })
     history.push('/admin/meetings')
   }
 
