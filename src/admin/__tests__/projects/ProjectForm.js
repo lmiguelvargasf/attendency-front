@@ -20,24 +20,46 @@ Object.defineProperty(window, 'matchMedia', {
 describe('ProjectForm component', () => {
   afterEach(cleanup)
 
-  it('matches snapshot when project is passed', () => {
-    const project = {
-      title: 'This is a title',
-      startData: moment('2020-04-28', 'YYYY-MM-DD'),
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-    }
-    const component = (
-      <ProjectForm project={project} onFinish={jest.fn()} onFinishFailed={jest.fn()} />
-    )
-    const { asFragment } = render(component)
-    expect(asFragment()).toMatchSnapshot()
+  describe('project is passed', () => {
+    let component
+    beforeEach(() => {
+      const project = {
+        title: 'This is a title',
+        startData: moment('2020-04-28', 'YYYY-MM-DD'),
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+      }
+      component = (
+        <ProjectForm project={project} onFinish={jest.fn()} onFinishFailed={jest.fn()} />
+      )
+    })
+    it('matches snapshot', () => {
+      const { asFragment } = render(component)
+      expect(asFragment()).toMatchSnapshot()
+    })
+
+    it('displays button saying Save', () => {
+      const { getByTestId } = render(component)
+      expect(getByTestId('create-save-button')).toHaveTextContent(/^Save$/)
+    })
   })
 
-  it('matches snapshot when project is not passed', () => {
-    const component = (
-      <ProjectForm onFinish={jest.fn()} onFinishFailed={jest.fn()} />
-    )
-    const { asFragment } = render(component)
-    expect(asFragment()).toMatchSnapshot()
+  describe('project is not passed', () => {
+    let component
+
+    beforeEach(() => {
+      component = (
+        <ProjectForm onFinish={jest.fn()} onFinishFailed={jest.fn()} />
+      )
+    })
+
+    it('matches snapshot', () => {
+      const { asFragment } = render(component)
+      expect(asFragment()).toMatchSnapshot()
+    })
+
+    it('displays button saying Create', () => {
+      const { getByTestId } = render(component)
+      expect(getByTestId('create-save-button')).toHaveTextContent(/^Create$/)
+    })
   })
 })

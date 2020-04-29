@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProjectForm component matches snapshot when project is not passed 1`] = `
+exports[`ProjectForm component project is not passed matches snapshot 1`] = `
 <DocumentFragment>
   <form
     class="ant-form ant-form-horizontal"
@@ -155,7 +155,7 @@ exports[`ProjectForm component matches snapshot when project is not passed 1`] =
           >
             <button
               class="ant-btn ant-btn-primary"
-              data-testid="create-project-button"
+              data-testid="create-save-button"
               type="submit"
             >
               <span>
@@ -170,7 +170,7 @@ exports[`ProjectForm component matches snapshot when project is not passed 1`] =
 </DocumentFragment>
 `;
 
-exports[`ProjectForm component matches snapshot when project is passed 1`] = `
+exports[`ProjectForm component project is passed matches snapshot 1`] = `
 <DocumentFragment>
   <form
     class="ant-form ant-form-horizontal"
@@ -327,7 +327,7 @@ exports[`ProjectForm component matches snapshot when project is passed 1`] = `
           >
             <button
               class="ant-btn ant-btn-primary"
-              data-testid="create-project-button"
+              data-testid="create-save-button"
               type="submit"
             >
               <span>

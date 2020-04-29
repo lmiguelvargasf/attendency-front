@@ -42,7 +42,7 @@ const ProjectForm = ({ project, onFinish, onFinishFailed }) => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type='primary' htmlType='submit' data-testid='create-project-button'>
+        <Button type='primary' htmlType='submit' data-testid='create-save-button'>
           {project ? 'Save' : 'Create'}
         </Button>
       </Form.Item>
