@@ -21,9 +21,18 @@ const Projects = () => {
 
   return (
     <Switch>
-      <Route path='/admin/projects/create' render={props => <CreateProject {...props} addProject={project => dispatch({ type: 'ADD_PROJECT', project })} />} />
-      <Route path='/admin/projects/:key/edit' render={props => <EditProject {...props} updateProjects={(project, index) => dispatch({ type: 'UPDATE_PROJECT', project, index })} />} />
-      <Route path='/admin/projects' render={props => <ProjectsTable {...props} projects={projects} removeProject={project => dispatch({ type: 'REMOVE_PROJECT', project })} />} />
+      <Route
+        path='/admin/projects/create'
+        render={props => <CreateProject {...props} addProject={project => dispatch({ type: 'ADD_PROJECT', project })} />}
+      />
+      <Route
+        path='/admin/projects/:key/edit'
+        render={props => <EditProject {...props} updateProjects={(project, index) => dispatch({ type: 'UPDATE_PROJECT', project, index })} />}
+      />
+      <Route
+        path='/admin/projects'
+        render={props => <ProjectsTable {...props} projects={projects} removeProject={project => dispatch({ type: 'REMOVE_PROJECT', project })} />}
+      />
     </Switch>
   )
 }
