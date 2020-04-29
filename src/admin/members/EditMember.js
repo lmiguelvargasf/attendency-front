@@ -35,7 +35,7 @@ const EditMember = ({ updateMembers }) => {
       console.log(error)
       return
     }
-    updateMembers(member)
+    updateMembers(member, location.state.index)
     message.success({ content: `${member.firstName} ${member.lastName} was updated sucessfully`, duration: 3 })
     history.push('/admin/members')
   }
