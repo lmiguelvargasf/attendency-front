@@ -20,9 +20,8 @@ const Projects = () => {
     setProjects(projects => [project, ...projects])
   }
   const updateProjects = (updatedProject, index) => {
-    const tempProjects = [...projects]
-    tempProjects[index] = updatedProject
-    setProjects(tempProjects)
+    projects[index] = updatedProject
+    setProjects(projects)
   }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
