@@ -46,7 +46,6 @@ const CreateProject = ({ addProject }) => {
         data-testid='create-project-form'
         {...layout}
         name='project'
-        initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
