@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { render, cleanup } from '@testing-library/react'
-import ProjectsTable from '../projects/ProjectsTable'
+import ProjectsTable from '../../projects/ProjectsTable'
 
 describe('ProjectsTable component', () => {
   afterEach(cleanup)
