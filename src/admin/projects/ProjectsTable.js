@@ -38,7 +38,9 @@ const ProjectsTable = ({ projects, removeProject }) => {
       key: 'action',
       render: (text, record, index) => (
         <Space size='middle'>
-          <FontAwesomeIcon icon={faEdit} />
+          <Link to={{ pathname: `/admin/projects/${record.key}/edit`, state: { project: record, index } }}>
+            <FontAwesomeIcon icon={faEdit} />
+          </Link>
           <FontAwesomeIcon icon={faCalendar} />
           <FontAwesomeIcon icon={faUserPlus} />
           <RemoveObjectButton object={record} removeObject={removeProject} />

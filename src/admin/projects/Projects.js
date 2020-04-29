@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import useAxios from 'axios-hooks'
 import ProjectsTable from './ProjectsTable'
 import CreateProject from './CreateProject'
+import EditProject from './EditProject'
 
 const Projects = () => {
   const [projects, setProjects] = useState([])
@@ -18,6 +19,11 @@ const Projects = () => {
   const addProject = (project) => {
     setProjects(projects => [project, ...projects])
   }
+  const updateProjects = (updatedProject, index) => {
+    const tempProjects = [...projects]
+    tempProjects[index] = updatedProject
+    setProjects(tempProjects)
+  }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
   if (error) return <p data-testid='error'>Error!</p>
@@ -25,6 +31,7 @@ const Projects = () => {
   return (
     <Switch>
       <Route path='/admin/projects/create' render={props => <CreateProject {...props} addProject={addProject} />} />
+      <Route path='/admin/projects/:key/edit' render={props => <EditProject {...props} updateProjects={updateProjects} />} />
       <Route path='/admin/projects' render={props => <ProjectsTable {...props} projects={projects} removeProject={removeProject} />} />
     </Switch>
   )
