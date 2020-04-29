@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { Form, Input, Button, message } from 'antd'
 import useAxios from 'axios-hooks'
@@ -35,7 +35,7 @@ const EditMember = ({ updateMembers }) => {
       console.log(error)
       return
     }
-    updateMembers(member)
+    updateMembers(member, location.state.index)
     message.success({ content: `${member.firstName} ${member.lastName} was updated sucessfully`, duration: 3 })
     history.push('/admin/members')
   }

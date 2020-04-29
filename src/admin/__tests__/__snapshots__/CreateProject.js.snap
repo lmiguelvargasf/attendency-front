@@ -158,7 +158,7 @@ exports[`CreateProject component matches snapshot 1`] = `
           >
             <button
               class="ant-btn ant-btn-primary"
-              data-testid="create-project-button"
+              data-testid="create-save-button"
               type="submit"
             >
               <span>

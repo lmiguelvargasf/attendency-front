@@ -1,15 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form, Input, Button, DatePicker, message } from 'antd'
+import { message } from 'antd'
 import useAxios from 'axios-hooks'
-
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 8 }
-}
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 8 }
-}
+import ProjectForm from './ProjectForm'
 
 const CreateProject = ({ addProject }) => {
   const history = useHistory()
@@ -42,42 +35,7 @@ const CreateProject = ({ addProject }) => {
   return (
     <>
       <h2>Create Project</h2>
-      <Form
-        data-testid='create-project-form'
-        {...layout}
-        name='project'
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-      >
-        <Form.Item
-          label='Title'
-          name='title'
-          rules={[{ required: true, message: 'Please input the title!' }]}
-        >
-          <Input data-testid='project-title-input' />
-        </Form.Item>
-
-        <Form.Item
-          label='Start date'
-          name='startDate'
-          rules={[{ required: true, message: 'Please input the start date!' }]}
-        >
-          <DatePicker data-testid='project-date-picker' />
-        </Form.Item>
-        <Form.Item
-          label='Description'
-          name='description'
-        >
-          <Input.TextArea rows={4} data-testid='project-description' />
-        </Form.Item>
-
-        <Form.Item {...tailLayout}>
-          <Button type='primary' htmlType='submit' data-testid='create-project-button'>
-            Create
-          </Button>
-        </Form.Item>
-      </Form>
+      <ProjectForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
     </>
   )
 }

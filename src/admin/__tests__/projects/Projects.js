@@ -2,7 +2,7 @@ import React from 'react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import { render, cleanup, fireEvent } from '@testing-library/react'
-import Projects from '../projects/Projects'
+import Projects from '../../projects/Projects'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
