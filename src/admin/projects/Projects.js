@@ -13,7 +13,7 @@ const Projects = () => {
   )
 
   useEffect(() => {
-    dispatch({ type: 'LOAD_PROJECTS', projects: data })
+    dispatch({ type: 'LOAD', projects: data })
   }, [data])
 
   if (loading) return <p data-testid='loading'>Loading...</p>
@@ -23,15 +23,15 @@ const Projects = () => {
     <Switch>
       <Route
         path='/admin/projects/create'
-        render={props => <CreateProject {...props} addProject={project => dispatch({ type: 'ADD_PROJECT', project })} />}
+        render={props => <CreateProject {...props} addProject={project => dispatch({ type: 'ADD', project })} />}
       />
       <Route
         path='/admin/projects/:key/edit'
-        render={props => <EditProject {...props} updateProjects={(project, index) => dispatch({ type: 'UPDATE_PROJECT', project, index })} />}
+        render={props => <EditProject {...props} updateProjects={(project, index) => dispatch({ type: 'UPDATE', project, index })} />}
       />
       <Route
         path='/admin/projects'
-        render={props => <ProjectsTable {...props} projects={projects} removeProject={project => dispatch({ type: 'REMOVE_PROJECT', project })} />}
+        render={props => <ProjectsTable {...props} projects={projects} removeProject={project => dispatch({ type: 'REMOVE', project })} />}
       />
     </Switch>
   )

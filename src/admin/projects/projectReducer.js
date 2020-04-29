@@ -1,12 +1,12 @@
 const projectReducer = (state, action) => {
   switch (action.type) {
-    case 'LOAD_PROJECTS':
+    case 'LOAD':
       return action.projects
-    case 'REMOVE_PROJECT':
+    case 'REMOVE':
       return state.filter(project => project.key !== action.project.key)
-    case 'ADD_PROJECT':
+    case 'ADD':
       return [action.project, ...state]
-    case 'UPDATE_PROJECT':
+    case 'UPDATE':
       state[action.index] = action.project
       return state
     default:
