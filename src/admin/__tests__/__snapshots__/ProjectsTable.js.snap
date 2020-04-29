@@ -297,9 +297,7 @@ exports[`ProjectsTable component matches snapshot one project 1`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          <a>
-                            Testing Project Alpha
-                          </a>
+                          Testing Project Alpha
                         </td>
                         <td
                           class="ant-table-cell"

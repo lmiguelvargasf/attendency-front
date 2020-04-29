@@ -311,9 +311,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                         <td
                           class="ant-table-cell"
                         >
-                          <a>
-                            Testing Project Alpha
-                          </a>
+                          Testing Project Alpha
                         </td>
                         <td
                           class="ant-table-cell"
@@ -430,9 +428,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                         <td
                           class="ant-table-cell"
                         >
-                          <a>
-                            Testing Project Beta
-                          </a>
+                          Testing Project Beta
                         </td>
                         <td
                           class="ant-table-cell"
