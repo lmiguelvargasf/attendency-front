@@ -36,7 +36,7 @@ const MemberForm = ({ member, onFinish, onFinishFailed }) => {
       </>
       <Form.Item {...tailLayout}>
         <Button type='primary' htmlType='submit' data-testid='create-member-button'>
-            Save
+          {member ? 'Save' : 'Create'}
         </Button>
       </Form.Item>
     </Form>
