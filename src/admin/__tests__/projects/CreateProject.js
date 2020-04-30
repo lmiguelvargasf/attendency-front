@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { render, cleanup } from '@testing-library/react'
-import CreateProject from '../projects/CreateProject'
+import CreateProject from '../../projects/CreateProject'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
