@@ -13,12 +13,13 @@ const tailLayout = {
 }
 
 const EditMeeting = ({ updateMeetings }) => {
+  const history = useHistory()
   const location = useLocation()
   const meetingFromTable = location.state.meeting
   const projectTitle = meetingFromTable.projectTitle
   const currentDate = moment(meetingFromTable.date, 'YYYY-MM-DD')
   const currentTime = moment(meetingFromTable.time, 'HH:mm')
-  const history = useHistory()
+  const meeting = { project: projectTitle, date: currentDate, time: currentTime }
   const [, updateMeeting] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/meetings/${meetingFromTable.key}/`,
@@ -71,7 +72,7 @@ const EditMeeting = ({ updateMeetings }) => {
         data-testid='create-meeting-form'
         {...layout}
         name='meeting'
-        initialValues={{ project: projectTitle, date: currentDate, time: currentTime }}
+        initialValues={meeting}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
