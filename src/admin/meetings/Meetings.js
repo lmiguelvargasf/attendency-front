@@ -24,21 +24,9 @@ const meetingReducer = (state, action) => {
 
 const Meetings = () => {
   const [meetings, dispatch] = useReducer(meetingReducer, [])
-  const [{ data, loading, error }] = useAxios(
-    `${process.env.REACT_APP_API_URL}/meeting-table/`
-  )
+  const [{ data, loading, error }] = useAxios(`${process.env.REACT_APP_API_URL}/meeting-table/`)
 
   useEffect(() => { dispatch({ type: 'LOAD', meetings: data }) }, [data])
-
-  const removeMeeting = meeting => {
-    dispatch({ type: 'REMOVE', meeting })
-  }
-  const addMeeting = meeting => {
-    dispatch({ type: 'ADD', meeting })
-  }
-  const updateMeetings = (meeting, index) => {
-    dispatch({ type: 'UPDATE', meeting, index })
-  }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
   if (error) return <p data-testid='error'>Error!</p>
@@ -46,9 +34,18 @@ const Meetings = () => {
   return (
     <Switch>
       <Route path='/admin/meetings/:key/participation' render={props => <Participation {...props} />} />
-      <Route path='/admin/meetings/:key/edit' render={props => <EditMeeting {...props} updateMeetings={updateMeetings} />} />
-      <Route path='/admin/meetings/create' render={props => <CreateMeeting {...props} addMeeting={addMeeting} />} />
-      <Route path='/admin/meetings' render={props => <MeetingsTable {...props} meetings={meetings} removeMeeting={removeMeeting} />} />
+      <Route
+        path='/admin/meetings/:key/edit'
+        render={props => <EditMeeting {...props} updateMeetings={(meeting, index) => dispatch({ type: 'UPDATE', meeting, index })} />}
+      />
+      <Route
+        path='/admin/meetings/create'
+        render={props => <CreateMeeting {...props} addMeeting={meeting => dispatch({ type: 'ADD', meeting })} />}
+      />
+      <Route
+        path='/admin/meetings'
+        render={props => <MeetingsTable {...props} meetings={meetings} removeMeeting={meeting => dispatch({ type: 'REMOVE', meeting })} />}
+      />
     </Switch>
   )
 }
