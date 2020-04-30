@@ -4,22 +4,7 @@ import useAxios from 'axios-hooks'
 import MembersTable from './MembersTable'
 import CreateMember from './CreateMember'
 import EditMeeting from './EditMember'
-
-const memberReducer = (state, action) => {
-  switch (action.type) {
-    case 'LOAD':
-      return action.members
-    case 'REMOVE':
-      return state.filter(member => member.key !== action.member.key)
-    case 'ADD':
-      return [action.member, ...state]
-    case 'UPDATE':
-      state[action.index] = action.member
-      return state
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`)
-  }
-}
+import memberReducer from './memberReducer'
 
 const Members = () => {
   const [members, dispatch] = useReducer(memberReducer, [])
