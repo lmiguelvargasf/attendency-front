@@ -32,7 +32,6 @@ const EditMember = ({ updateMembers }) => {
     message.success({ content: `${member.firstName} ${member.lastName} was updated sucessfully`, duration: 3 })
     history.push('/admin/members')
   }
-
   const onFinishFailed = errorInfo => {
     console.log(errorInfo)
   }
