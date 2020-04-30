@@ -1,27 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import useAxios from 'axios-hooks'
 import MembersTable from './MembersTable'
 import CreateMember from './CreateMember'
 import EditMeeting from './EditMember'
 
+const memberReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOAD':
+      return action.members
+    case 'REMOVE':
+      return state.filter(member => member.key !== action.member.key)
+    case 'ADD':
+      return [action.member, ...state]
+    case 'UPDATE':
+      state[action.index] = action.member
+      return state
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`)
+  }
+}
+
 const Members = () => {
-  const [members, setMembers] = useState([])
+  const [members, dispatch] = useReducer(memberReducer, [])
   const [{ data, loading, error }] = useAxios(
     `${process.env.REACT_APP_API_URL}/members/`
   )
 
-  useEffect(() => { setMembers(data) }, [data])
+  useEffect(() => { dispatch({ type: 'LOAD', members: data }) }, [data])
 
-  const removeMember = (memberToDelete) => {
-    setMembers(() => members.filter(member => member.key !== memberToDelete.key))
+  const removeMember = (member) => {
+    dispatch({ type: 'REMOVE', member })
   }
   const addMember = (member) => {
-    setMembers(members => [member, ...members])
+    dispatch({ type: 'ADD', member })
   }
-  const updateMembers = (updatedMember, index) => {
-    members[index] = updatedMember
-    setMembers(() => members)
+  const updateMembers = (member, index) => {
+    dispatch({ type: 'UPDATE', member, index })
   }
 
   if (loading) return <p data-testid='loading'>Loading...</p>
