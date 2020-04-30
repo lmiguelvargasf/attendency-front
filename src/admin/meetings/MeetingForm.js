@@ -25,6 +25,7 @@ const MeetingForm = ({ meeting, onFinish, onFinishFailed, projects }) => {
         <Form.Item
           label='Project'
           name='project'
+          data-testid='disabled-input'
         >
           <Input disabled />
         </Form.Item>
@@ -33,6 +34,7 @@ const MeetingForm = ({ meeting, onFinish, onFinishFailed, projects }) => {
           label='Project'
           name='project'
           rules={[{ required: true, message: 'Please select project!' }]}
+          data-testid='select-project'
         >
           <Select allowClear>
             {projects.map(project => <Option key={project.key} value={project.key}>{project.title}</Option>)}
@@ -55,7 +57,7 @@ const MeetingForm = ({ meeting, onFinish, onFinishFailed, projects }) => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type='primary' htmlType='submit' data-testid='create-project-button'>
+        <Button type='primary' htmlType='submit' data-testid='create-save-button'>
           {meeting ? 'Save' : 'Create'}
         </Button>
       </Form.Item>
