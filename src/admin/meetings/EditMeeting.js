@@ -1,24 +1,18 @@
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import { Form, TimePicker, Button, DatePicker, Input, message } from 'antd'
+import { message } from 'antd'
 import useAxios from 'axios-hooks'
 import moment from 'moment'
-
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 8 }
-}
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 8 }
-}
+import MeetingForm from './MeetingForm'
 
 const EditMeeting = ({ updateMeetings }) => {
+  const history = useHistory()
   const location = useLocation()
   const meetingFromTable = location.state.meeting
   const projectTitle = meetingFromTable.projectTitle
   const currentDate = moment(meetingFromTable.date, 'YYYY-MM-DD')
   const currentTime = moment(meetingFromTable.time, 'HH:mm')
-  const history = useHistory()
+  const meeting = { project: projectTitle, date: currentDate, time: currentTime }
   const [, updateMeeting] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/meetings/${meetingFromTable.key}/`,
@@ -67,42 +61,7 @@ const EditMeeting = ({ updateMeetings }) => {
   return (
     <>
       <h2>Edit Meeting</h2>
-      <Form
-        data-testid='create-meeting-form'
-        {...layout}
-        name='meeting'
-        initialValues={{ project: projectTitle, date: currentDate, time: currentTime }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-      >
-        <Form.Item
-          label='Project'
-          name='project'
-        >
-          <Input disabled />
-        </Form.Item>
-
-        <Form.Item
-          label='Date'
-          name='date'
-          rules={[{ required: true, message: "Please input meeting's date!" }]}
-        >
-          <DatePicker />
-        </Form.Item>
-        <Form.Item
-          label='Time'
-          name='time'
-          rules={[{ required: true, message: "Please input meeting's time!" }]}
-        >
-          <TimePicker format='HH:mm' />
-        </Form.Item>
-
-        <Form.Item {...tailLayout}>
-          <Button type='primary' htmlType='submit' data-testid='create-project-button'>
-            Save
-          </Button>
-        </Form.Item>
-      </Form>
+      <MeetingForm meeting={meeting} onFinish={onFinish} onFinishFailed={onFinishFailed} />
     </>
   )
 }
