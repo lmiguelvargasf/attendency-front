@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, TimePicker, Button, DatePicker, Select } from 'antd'
+import { Form, TimePicker, Button, DatePicker, Input, Select } from 'antd'
 
 const { Option } = Select
 
@@ -11,7 +11,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 8 }
 }
 
-const MeetingForm = ({ meeting, onFinish, onFinishFailed, projects = {} }) => {
+const MeetingForm = ({ meeting, onFinish, onFinishFailed, projects }) => {
   return (
     <Form
       data-testid='create-meeting-form'
@@ -21,16 +21,24 @@ const MeetingForm = ({ meeting, onFinish, onFinishFailed, projects = {} }) => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
-      <Form.Item
-        label='Project'
-        name='project'
-        rules={[{ required: true, message: 'Please select project!' }]}
-      >
-        <Select allowClear>
-          {projects.map(project => <Option key={project.key} value={project.key}>{project.title}</Option>)}
-        </Select>
-      </Form.Item>
-
+      {meeting ? (
+        <Form.Item
+          label='Project'
+          name='project'
+        >
+          <Input disabled />
+        </Form.Item>
+      ) : (
+        <Form.Item
+          label='Project'
+          name='project'
+          rules={[{ required: true, message: 'Please select project!' }]}
+        >
+          <Select allowClear>
+            {projects.map(project => <Option key={project.key} value={project.key}>{project.title}</Option>)}
+          </Select>
+        </Form.Item>
+      )}
       <Form.Item
         label='Date'
         name='date'
@@ -48,7 +56,7 @@ const MeetingForm = ({ meeting, onFinish, onFinishFailed, projects = {} }) => {
 
       <Form.Item {...tailLayout}>
         <Button type='primary' htmlType='submit' data-testid='create-project-button'>
-            Create
+          {meeting ? 'Save' : 'Create'}
         </Button>
       </Form.Item>
     </Form>

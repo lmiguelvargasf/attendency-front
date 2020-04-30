@@ -1,16 +1,9 @@
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import { Form, TimePicker, Button, DatePicker, Input, message } from 'antd'
+import { message } from 'antd'
 import useAxios from 'axios-hooks'
 import moment from 'moment'
-
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 8 }
-}
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 8 }
-}
+import MeetingForm from './MeetingForm'
 
 const EditMeeting = ({ updateMeetings }) => {
   const history = useHistory()
@@ -68,42 +61,7 @@ const EditMeeting = ({ updateMeetings }) => {
   return (
     <>
       <h2>Edit Meeting</h2>
-      <Form
-        data-testid='create-meeting-form'
-        {...layout}
-        name='meeting'
-        initialValues={meeting}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-      >
-        <Form.Item
-          label='Project'
-          name='project'
-        >
-          <Input disabled />
-        </Form.Item>
-
-        <Form.Item
-          label='Date'
-          name='date'
-          rules={[{ required: true, message: "Please input meeting's date!" }]}
-        >
-          <DatePicker />
-        </Form.Item>
-        <Form.Item
-          label='Time'
-          name='time'
-          rules={[{ required: true, message: "Please input meeting's time!" }]}
-        >
-          <TimePicker format='HH:mm' />
-        </Form.Item>
-
-        <Form.Item {...tailLayout}>
-          <Button type='primary' htmlType='submit' data-testid='create-project-button'>
-            Save
-          </Button>
-        </Form.Item>
-      </Form>
+      <MeetingForm meeting={meeting} onFinish={onFinish} onFinishFailed={onFinishFailed} />
     </>
   )
 }
