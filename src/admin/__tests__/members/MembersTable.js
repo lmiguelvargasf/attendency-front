@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { render, cleanup } from '@testing-library/react'
-import MembersTable from '../members/MembersTable'
+import MembersTable from '../../members/MembersTable'
 
 describe('MembersTable component', () => {
   afterEach(cleanup)

@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberForm component member is not passed matches snapshot 1`] = `
+<DocumentFragment>
+  <form
+    class="ant-form ant-form-horizontal"
+    data-testid="create-member-form"
+    id="member"
+  >
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_firstName"
+          title="First Name"
+        >
+          First Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_firstName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class=""
+          for="member_middleName"
+          title="Middle Name"
+        >
+          Middle Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_middleName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_lastName"
+          title="Last Name"
+        >
+          Last Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_lastName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class=""
+          for="member_preferredName"
+          title="Preferred Name"
+        >
+          Preferred Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_preferredName"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_email"
+          title="Email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_email"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-col-offset-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              data-testid="create-save-button"
+              type="submit"
+            >
+              <span>
+                Create
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`MemberForm component member is passed matches snapshot 1`] = `
+<DocumentFragment>
+  <form
+    class="ant-form ant-form-horizontal"
+    data-testid="create-member-form"
+    id="member"
+  >
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_firstName"
+          title="First Name"
+        >
+          First Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_firstName"
+              type="text"
+              value="John"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class=""
+          for="member_middleName"
+          title="Middle Name"
+        >
+          Middle Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_middleName"
+              type="text"
+              value="Patrick"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_lastName"
+          title="Last Name"
+        >
+          Last Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_lastName"
+              type="text"
+              value="Smith"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class=""
+          for="member_preferredName"
+          title="Preferred Name"
+        >
+          Preferred Name
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_preferredName"
+              type="text"
+              value="JP"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-form-item-label"
+      >
+        <label
+          class="ant-form-item-required"
+          for="member_email"
+          title="Email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="ant-col ant-col-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="member_email"
+              type="text"
+              value="john.smith@example.com"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-col-8 ant-col-offset-8 ant-form-item-control"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              data-testid="create-save-button"
+              type="submit"
+            >
+              <span>
+                Save
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
