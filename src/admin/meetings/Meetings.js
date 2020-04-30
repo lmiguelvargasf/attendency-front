@@ -30,9 +30,9 @@ const Meetings = () => {
 
   return (
     <Switch>
-      <Route path='/admin/meetings/create' render={props => <CreateMeeting {...props} addMeeting={addMeeting} />} />
-      <Route path='/admin/meetings/:key/edit' render={props => <EditMeeting {...props} updateMeetings={updateMeetings} />} />
       <Route path='/admin/meetings/:key/participation' render={props => <Participation {...props} />} />
+      <Route path='/admin/meetings/:key/edit' render={props => <EditMeeting {...props} updateMeetings={updateMeetings} />} />
+      <Route path='/admin/meetings/create' render={props => <CreateMeeting {...props} addMeeting={addMeeting} />} />
       <Route path='/admin/meetings' render={props => <MeetingsTable {...props} meetings={meetings} removeMeeting={removeMeeting} />} />
     </Switch>
   )
