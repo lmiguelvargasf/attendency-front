@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Space, Button, Modal, Select, message } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
