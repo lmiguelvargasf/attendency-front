@@ -1,14 +1,13 @@
 import React, { useReducer } from 'react'
 import { Link } from 'react-router-dom'
-import { Table, Space, Button, Modal, Select, message } from 'antd'
+import { Table, Space, Button, Select, message } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import RemoveObjectButton from '../RemoveObjectButton'
+import AddMemberModal from './AddMemberModal'
 
 import styles from '../Admin.module.sass'
-
-const { Option } = Select
 
 const addMemberStateReducer = (state, action) => {
   switch (action.type) {
@@ -143,32 +142,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
           pagination={false}
         />
       </Space>
-      <Modal
-        title='Add Member'
-        visible={addMemberState.visible}
-        onOk={handleOk}
-        confirmLoading={addMemberState.confirmLoading}
-        onCancel={handleCancel}
-      >
-        <Space>
-          {
-            addMemberState.nonMembers.length > 0 ? (
-              <>
-                <strong>Member:</strong>
-                <Select style={{ width: 150 }} onChange={handleOnChange} value={addMemberState.memberToAdd}>
-                  {addMemberState.nonMembers.map(nonMember => (
-                    <Option key={nonMember.key} value={nonMember.key}>
-                      {nonMember.preferredName ? nonMember.preferredName : `${nonMember.firstName} ${nonMember.lastName}`}
-                    </Option>
-                  ))}
-                </Select>
-              </>
-            ) : (
-              <span>There are no more members to add to this project.</span>
-            )
-          }
-        </Space>
-      </Modal>
+      <AddMemberModal state={addMemberState} handleOk={handleOk} handleCancel={handleCancel} handleOnChange={handleOnChange} />
     </>
   )
 }
