@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Space, Button, Modal, Select, message } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -50,6 +50,11 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     dispatch({ type: 'SET_NON_MEMBERS', nonMembers: response.data })
   }
   const handleOk = async () => {
+    if (addMemberState.nonMembers.length === 0) {
+      dispatch({ type: 'CLOSE_MODAL' })
+      return
+    }
+
     if (!addMemberState.memberToAdd) {
       message.error('Please select a member to add!')
       return
@@ -143,14 +148,22 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
         onCancel={handleCancel}
       >
         <Space>
-          <strong>Member:</strong>
-          <Select style={{ width: 150 }} onChange={value => dispatch({ type: 'SET_MEMBER_TO_ADD', memberToAdd: value })} value={addMemberState.memberToAdd}>
-            {addMemberState.nonMembers.map(nonMember => (
-              <Option key={nonMember.key} value={nonMember.key}>
-                {nonMember.preferredName ? nonMember.preferredName : `${nonMember.firstName} ${nonMember.lastName}`}
-              </Option>
-            ))}
-          </Select>
+          {
+            addMemberState.nonMembers.length > 0 ? (
+              <>
+                <strong>Member:</strong>
+                <Select style={{ width: 150 }} onChange={value => dispatch({ type: 'SET_MEMBER_TO_ADD', memberToAdd: value })} value={addMemberState.memberToAdd}>
+                  {addMemberState.nonMembers.map(nonMember => (
+                    <Option key={nonMember.key} value={nonMember.key}>
+                      {nonMember.preferredName ? nonMember.preferredName : `${nonMember.firstName} ${nonMember.lastName}`}
+                    </Option>
+                  ))}
+                </Select>
+              </>
+            ) : (
+              <span>There are no more members to add to this project.</span>
+            )
+          }
         </Space>
       </Modal>
     </>
