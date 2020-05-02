@@ -9,7 +9,7 @@ import AddMemberModal from './AddMemberModal'
 
 import styles from '../Admin.module.sass'
 
-const addMemberStateReducer = (state, action) => {
+const addMemberReducer = (state, action) => {
   switch (action.type) {
     case 'OPEN_MODAL':
       return { ...state, visible: true, projectKey: action.projectKey, selectedProjectIndex: action.selectedProjectIndex }
@@ -29,7 +29,7 @@ const addMemberStateReducer = (state, action) => {
 }
 
 const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
-  const [addMemberState, dispatch] = useReducer(addMemberStateReducer, {
+  const [addMemberState, dispatch] = useReducer(addMemberReducer, {
     visible: false,
     confirmLoading: false,
     nonMembers: [],
