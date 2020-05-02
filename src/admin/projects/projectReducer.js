@@ -6,9 +6,11 @@ const projectReducer = (state, action) => {
       return state.filter(project => project.key !== action.project.key)
     case 'ADD':
       return [action.project, ...state]
-    case 'UPDATE':
-      state[action.index] = action.project
-      return state
+    case 'UPDATE': {
+      const newState = [...state]
+      newState[action.index] = action.project
+      return newState
+    }
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }

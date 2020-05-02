@@ -26,7 +26,14 @@ const Projects = () => {
       />
       <Route
         path='/admin/projects'
-        render={props => <ProjectsTable {...props} projects={projects} removeProject={project => dispatch({ type: 'REMOVE', project })} />}
+        render={props => (
+          <ProjectsTable
+            {...props}
+            projects={projects}
+            removeProject={project => dispatch({ type: 'REMOVE', project })}
+            updateProjects={(project, index) => dispatch({ type: 'UPDATE', project, index })}
+          />
+        )}
       />
     </Switch>
   )
