@@ -76,6 +76,9 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
   const handleCancel = () => {
     dispatch({ type: 'CLOSE_MODAL' })
   }
+  const handleOnChange = value => {
+    dispatch({ type: 'SET_MEMBER_TO_ADD', memberToAdd: value })
+  }
 
   const columns = [
     {
@@ -152,7 +155,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
             addMemberState.nonMembers.length > 0 ? (
               <>
                 <strong>Member:</strong>
-                <Select style={{ width: 150 }} onChange={value => dispatch({ type: 'SET_MEMBER_TO_ADD', memberToAdd: value })} value={addMemberState.memberToAdd}>
+                <Select style={{ width: 150 }} onChange={handleOnChange} value={addMemberState.memberToAdd}>
                   {addMemberState.nonMembers.map(nonMember => (
                     <Option key={nonMember.key} value={nonMember.key}>
                       {nonMember.preferredName ? nonMember.preferredName : `${nonMember.firstName} ${nonMember.lastName}`}
