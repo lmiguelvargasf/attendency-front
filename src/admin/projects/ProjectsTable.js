@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import { Link } from 'react-router-dom'
-import { Table, Space, Button, Select, message } from 'antd'
+import { Table, Space, Button, message } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
@@ -61,13 +61,15 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     dispatch({ type: 'LOADING' })
     let response
     try {
-      response = await axios.post(`${process.env.REACT_APP_API_URL}/projects/${addMemberState.projectKey}/add-member/`, { key: addMemberState.memberToAdd })
+      response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/projects/${addMemberState.projectKey}/add-member/`,
+        { key: addMemberState.memberToAdd }
+      )
     } catch (error) {
       message.error('There was an error, please try again.')
       console.log(error)
     }
-    const updatedProject = response.data
-    updateProjects(updatedProject, addMemberState.selectedProjectIndex)
+    updateProjects(response.data, addMemberState.selectedProjectIndex)
     dispatch({ type: 'CLOSE_MODAL' })
     message.success('Member was added successfully!')
   }
