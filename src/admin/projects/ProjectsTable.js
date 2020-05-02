@@ -12,24 +12,18 @@ const { Option } = Select
 
 const addMemberStateReducer = (state, action) => {
   switch (action.type) {
-    case 'VISIBLE':
-      return { ...state, visible: true }
-    case 'INVISIBLE':
-      return { ...state, visible: false }
+    case 'OPEN_MODAL':
+      return { ...state, visible: true, projectKey: action.projectKey, selectedProjectIndex: action.selectedProjectIndex }
     case 'LOADING':
       return { ...state, confirmLoading: true }
-    case 'STOP_LOADING':
-      return { ...state, confirmLoading: false }
-    case 'SET_PROJECT_KEY':
-      return { ...state, projectKey: action.projectKey }
     case 'SET_NON_MEMBERS':
       return { ...state, nonMembers: action.nonMembers }
-    case 'SET_SELECTED_PROJECT_INDEX':
-      return { ...state, selectedProjectIndex: action.selectedProjectIndex }
     case 'SET_MEMBER_TO_ADD':
       return { ...state, memberToAdd: action.memberToAdd }
     case 'UNSET_MEMBER_TO_ADD':
       return { ...state, memberToAdd: null }
+    case 'CLOSE_MODAL':
+      return { ...state, memberToAdd: null, confirmLoading: false, visible: false }
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }
@@ -46,9 +40,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
   })
 
   const showModal = async (project, index) => {
-    dispatch({ type: 'SET_SELECTED_PROJECT_INDEX', selectedProjectIndex: index })
-    dispatch({ type: 'SET_PROJECT_KEY', projectKey: project.key })
-    dispatch({ type: 'VISIBLE' })
+    dispatch({ type: 'OPEN_MODAL', selectedProjectIndex: index, projectKey: project.key })
     let response
     try {
       response = await axios.get(`${process.env.REACT_APP_API_URL}/projects/${project.key}/non-members/`)
@@ -72,15 +64,12 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     }
     const updatedProject = response.data
     updateProjects(updatedProject, addMemberState.selectedProjectIndex)
-    dispatch({ type: 'STOP_LOADING' })
-    dispatch({ type: 'INVISIBLE' })
-    dispatch({ type: 'UNSET_MEMBER_TO_ADD' })
+    dispatch({ type: 'CLOSE_MODAL' })
     message.success('Member was added successfully!')
   }
 
   const handleCancel = () => {
-    dispatch({ type: 'INVISIBLE' })
-    dispatch({ type: 'UNSET_MEMBER_TO_ADD' })
+    dispatch({ type: 'CLOSE_MODAL' })
   }
 
   const columns = [
@@ -155,7 +144,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
       >
         <Space>
           <strong>Member:</strong>
-          <Select style={{ width: 150 }} onChange={value => dispatch({type: 'SET_MEMBER_TO_ADD', memberToAdd: value })} value={addMemberState.memberToAdd}>
+          <Select style={{ width: 150 }} onChange={value => dispatch({ type: 'SET_MEMBER_TO_ADD', memberToAdd: value })} value={addMemberState.memberToAdd}>
             {addMemberState.nonMembers.map(nonMember => (
               <Option key={nonMember.key} value={nonMember.key}>
                 {nonMember.preferredName ? nonMember.preferredName : `${nonMember.firstName} ${nonMember.lastName}`}
