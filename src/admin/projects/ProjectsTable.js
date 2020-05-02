@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Space, Button, Modal, Select, message } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,52 +10,77 @@ import styles from '../Admin.module.sass'
 
 const { Option } = Select
 
-const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
-  const [visible, setVisible] = useState(false)
-  const [memberToAdd, setMemberToAdd] = useState()
-  const [nonMembers, setNonMembers] = useState([])
-  const [project, setProject] = useState()
-  const [indexSelected, setIndexSelected] = useState()
-  const [confirmLoading, setConfirmLoading] = useState(false)
+const addMemberStateReducer = (state, action) => {
+  switch (action.type) {
+    case 'VISIBLE':
+      return { ...state, visible: true }
+    case 'INVISIBLE':
+      return { ...state, visible: false }
+    case 'LOADING':
+      return { ...state, confirmLoading: true }
+    case 'STOP_LOADING':
+      return { ...state, confirmLoading: false }
+    case 'SET_PROJECT_KEY':
+      return { ...state, projectKey: action.projectKey }
+    case 'SET_NON_MEMBERS':
+      return { ...state, nonMembers: action.nonMembers }
+    case 'SET_SELECTED_PROJECT_INDEX':
+      return { ...state, selectedProjectIndex: action.selectedProjectIndex }
+    case 'SET_MEMBER_TO_ADD':
+      return { ...state, memberToAdd: action.memberToAdd }
+    case 'UNSET_MEMBER_TO_ADD':
+      return { ...state, memberToAdd: null }
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`)
+  }
+}
 
-  const showModal = async (project, indexSelected) => {
-    setIndexSelected(indexSelected)
-    setProject(project)
-    setVisible(true)
+const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
+  const [addMemberState, dispatch] = useReducer(addMemberStateReducer, {
+    visible: false,
+    confirmLoading: false,
+    nonMembers: [],
+    projectKey: null,
+    selectedProjectIndex: null,
+    memberToAdd: null
+  })
+
+  const showModal = async (project, index) => {
+    dispatch({ type: 'SET_SELECTED_PROJECT_INDEX', selectedProjectIndex: index })
+    dispatch({ type: 'SET_PROJECT_KEY', projectKey: project.key })
+    dispatch({ type: 'VISIBLE' })
     let response
     try {
       response = await axios.get(`${process.env.REACT_APP_API_URL}/projects/${project.key}/non-members/`)
     } catch (error) {
       console.log(error)
     }
-    setNonMembers(response.data)
+    dispatch({ type: 'SET_NON_MEMBERS', nonMembers: response.data })
   }
   const handleOk = async () => {
-    if (!memberToAdd) {
+    if (!addMemberState.memberToAdd) {
       message.error('Please select a member to add!')
       return
     }
-    setConfirmLoading(true)
+    dispatch({ type: 'LOADING' })
     let response
     try {
-      response = await axios.post(`${process.env.REACT_APP_API_URL}/projects/${project.key}/add-member/`, { key: memberToAdd })
+      response = await axios.post(`${process.env.REACT_APP_API_URL}/projects/${addMemberState.projectKey}/add-member/`, { key: addMemberState.memberToAdd })
     } catch (error) {
       message.error('There was an error, please try again.')
       console.log(error)
     }
     const updatedProject = response.data
-    updateProjects(updatedProject, indexSelected)
-    setVisible(false)
-    setConfirmLoading(false)
-    setMemberToAdd(null)
-    setIndexSelected(null)
+    updateProjects(updatedProject, addMemberState.selectedProjectIndex)
+    dispatch({ type: 'STOP_LOADING' })
+    dispatch({ type: 'INVISIBLE' })
+    dispatch({ type: 'UNSET_MEMBER_TO_ADD' })
     message.success('Member was added successfully!')
   }
 
   const handleCancel = () => {
-    setVisible(false)
-    setMemberToAdd(null)
-    setIndexSelected(null)
+    dispatch({ type: 'INVISIBLE' })
+    dispatch({ type: 'UNSET_MEMBER_TO_ADD' })
   }
 
   const columns = [
@@ -123,15 +148,15 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
       </Space>
       <Modal
         title='Add Member'
-        visible={visible}
+        visible={addMemberState.visible}
         onOk={handleOk}
-        confirmLoading={confirmLoading}
+        confirmLoading={addMemberState.confirmLoading}
         onCancel={handleCancel}
       >
         <Space>
           <strong>Member:</strong>
-          <Select style={{ width: 150 }} onChange={value => setMemberToAdd(value)} value={memberToAdd}>
-            {nonMembers.map(nonMember => (
+          <Select style={{ width: 150 }} onChange={value => dispatch({type: 'SET_MEMBER_TO_ADD', memberToAdd: value })} value={addMemberState.memberToAdd}>
+            {addMemberState.nonMembers.map(nonMember => (
               <Option key={nonMember.key} value={nonMember.key}>
                 {nonMember.preferredName ? nonMember.preferredName : `${nonMember.firstName} ${nonMember.lastName}`}
               </Option>
