@@ -2,6 +2,7 @@ import React from 'react'
 import useAxios from 'axios-hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import styles from './Admin.module.sass'
 
 const RemoveObjectButton = ({ object, removeObject }) => {
   const [, execute] = useAxios(
@@ -14,9 +15,9 @@ const RemoveObjectButton = ({ object, removeObject }) => {
   }
 
   return (
-    <a data-testid={object.url} onClick={remove}>
+    <button type='button' className={styles.linkButton} data-testid={object.url} onClick={remove}>
       <FontAwesomeIcon icon={faTrash} style={{ color: '#f2463d' }} />
-    </a>)
+    </button>)
 }
 
 export default RemoveObjectButton

@@ -203,8 +203,10 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                             <div
                               class="ant-space-item"
                             >
-                              <a
+                              <button
+                                class="linkButton"
                                 data-testid="http://localhost:8000/api/meeting-table/1"
+                                type="button"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -222,7 +224,7 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                                     fill="currentColor"
                                   />
                                 </svg>
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </td>
@@ -304,8 +306,10 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                             <div
                               class="ant-space-item"
                             >
-                              <a
+                              <button
+                                class="linkButton"
                                 data-testid="http://localhost:8000/api/meeting-table/2"
+                                type="button"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -323,7 +327,7 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                                     fill="currentColor"
                                   />
                                 </svg>
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </td>
