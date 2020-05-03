@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddMemberModal component no members to be added matches snapshot 1`] = `<DocumentFragment />`;
+
+exports[`AddMemberModal component there are members to be added matches snapshot 1`] = `<DocumentFragment />`;
