@@ -178,8 +178,10 @@ exports[`Members component members data is retrieved sucessfully members table m
                             <div
                               class="ant-space-item"
                             >
-                              <a
+                              <button
+                                class="linkButton"
                                 data-testid="http://localhost:8000/api/members/1"
+                                type="button"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -197,7 +199,7 @@ exports[`Members component members data is retrieved sucessfully members table m
                                     fill="currentColor"
                                   />
                                 </svg>
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </td>
@@ -254,8 +256,10 @@ exports[`Members component members data is retrieved sucessfully members table m
                             <div
                               class="ant-space-item"
                             >
-                              <a
+                              <button
+                                class="linkButton"
                                 data-testid="http://localhost:8000/api/members/2"
+                                type="button"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -273,7 +277,7 @@ exports[`Members component members data is retrieved sucessfully members table m
                                     fill="currentColor"
                                   />
                                 </svg>
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </td>

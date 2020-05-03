@@ -2,8 +2,10 @@
 
 exports[`RemoveObjectButton component matches snapshot 1`] = `
 <DocumentFragment>
-  <a
+  <button
+    class="linkButton"
     data-testid="https://example.com/api"
+    type="button"
   >
     <svg
       aria-hidden="true"
@@ -21,6 +23,6 @@ exports[`RemoveObjectButton component matches snapshot 1`] = `
         fill="currentColor"
       />
     </svg>
-  </a>
+  </button>
 </DocumentFragment>
 `;

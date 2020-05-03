@@ -407,8 +407,10 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                             <div
                               class="ant-space-item"
                             >
-                              <a
+                              <button
+                                class="linkButton"
                                 data-testid="http://localhost:8000/api/projects/1"
+                                type="button"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -426,7 +428,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                                     fill="currentColor"
                                   />
                                 </svg>
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </td>
@@ -534,8 +536,10 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                             <div
                               class="ant-space-item"
                             >
-                              <a
+                              <button
+                                class="linkButton"
                                 data-testid="http://localhost:8000/api/projects/2"
+                                type="button"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -553,7 +557,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                                     fill="currentColor"
                                   />
                                 </svg>
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </td>

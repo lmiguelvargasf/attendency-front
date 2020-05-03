@@ -332,8 +332,10 @@ exports[`MembersTable component matches snapshot one project 1`] = `
                             <div
                               class="ant-space-item"
                             >
-                              <a
+                              <button
+                                class="linkButton"
                                 data-testid="http://localhost:8000/api/members/1"
+                                type="button"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -351,7 +353,7 @@ exports[`MembersTable component matches snapshot one project 1`] = `
                                     fill="currentColor"
                                   />
                                 </svg>
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </td>
