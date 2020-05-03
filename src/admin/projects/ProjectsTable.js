@@ -2,7 +2,7 @@ import React, { useReducer } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Space, Button, message } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faCalendar, faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faCalendar, faUserPlus, faUserMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import RemoveObjectButton from '../RemoveObjectButton'
 import AddMemberModal from './AddMemberModal'
@@ -101,6 +101,9 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
           <FontAwesomeIcon icon={faCalendar} />
           <button type='button' className={styles.linkButton} onClick={() => showModal(record, index)}>
             <FontAwesomeIcon icon={faUserPlus} style={{ color: '#9664c8' }} />
+          </button>
+          <button type='button' className={styles.linkButton} onClick={() => showModal(record, index)}>
+            <FontAwesomeIcon icon={faUserMinus} style={{ color: '#f0c230' }} />
           </button>
           <RemoveObjectButton object={record} removeObject={removeProject} />
         </Space>
