@@ -54,7 +54,7 @@ describe('AddMemberModal component', () => {
       expect(asFragment()).toMatchSnapshot()
     })
 
-    it('displays text select', () => {
+    it('displays select', () => {
       const { getByTestId, queryByTestId } = render(component)
       expect(getByTestId('add-member-select')).not.toBeNull()
       expect(queryByTestId('no-members-add')).toBeNull()
