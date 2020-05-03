@@ -8,8 +8,6 @@ const addMemberReducer = (state, action) => {
       return { ...state, nonMembers: action.nonMembers }
     case 'SET_MEMBER_TO_ADD':
       return { ...state, memberToAdd: action.memberToAdd }
-    case 'UNSET_MEMBER_TO_ADD':
-      return { ...state, memberToAdd: null }
     case 'CLOSE_MODAL':
       return { ...state, memberToAdd: null, confirmLoading: false, visible: false }
     default:

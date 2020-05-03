@@ -24,7 +24,7 @@ const RemoveMemberModal = ({ state, handleOk, handleCancel, handleOnChange }) =>
             </Select>
           </Space>
         ) : (
-          <span data-testid='no-members-left'>There are no more members to add to this project.</span>
+          <span data-testid='no-members-remove'>There are no more members to remove from this project.</span>
         )
       }
     </Modal>

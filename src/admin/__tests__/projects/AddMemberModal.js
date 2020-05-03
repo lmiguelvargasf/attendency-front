@@ -26,7 +26,7 @@ describe('AddMemberModal component', () => {
 
     it('displays text indicating no members to add', () => {
       const { getByTestId, queryByTestId } = render(component)
-      expect(getByTestId('no-members-left')).toHaveTextContent('no more members to add')
+      expect(getByTestId('no-members-add')).toHaveTextContent('no more members to add')
       expect(queryByTestId('add-member-select')).toBeNull()
     })
   })
@@ -57,7 +57,7 @@ describe('AddMemberModal component', () => {
     it('displays text indicating no members to add', () => {
       const { getByTestId, queryByTestId } = render(component)
       expect(getByTestId('add-member-select')).not.toBeNull()
-      expect(queryByTestId('no-members-left')).toBeNull()
+      expect(queryByTestId('no-members-add')).toBeNull()
     })
   })
 })

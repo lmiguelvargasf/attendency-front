@@ -7,11 +7,29 @@ import axios from 'axios'
 import RemoveObjectButton from '../RemoveObjectButton'
 import AddMemberModal from './AddMemberModal'
 import addMemberReducer from './addMemberReducer'
+import RemoveMemberModal from './RemoveMemberModal'
 
 import styles from '../Admin.module.sass'
 
+const removeMemberReducer = (state, action) => {
+  switch (action.type) {
+    case 'OPEN_MODAL':
+      return { ...state, visible: true, projectKey: action.projectKey, selectedProjectIndex: action.selectedProjectIndex }
+    case 'LOADING':
+      return { ...state, confirmLoading: true }
+    case 'SET_MEMBERS':
+      return { ...state, members: action.members }
+    case 'SET_MEMBER_TO_REMOVE':
+      return { ...state, memberToRemove: action.memberToRemove }
+    case 'CLOSE_MODAL':
+      return { ...state, memberToRemove: null, confirmLoading: false, visible: false }
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`)
+  }
+}
+
 const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
-  const [addMemberState, dispatch] = useReducer(addMemberReducer, {
+  const [addMemberState, dispatchAdd] = useReducer(addMemberReducer, {
     visible: false,
     confirmLoading: false,
     nonMembers: [],
@@ -19,20 +37,38 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     selectedProjectIndex: null,
     memberToAdd: null
   })
+  const [removeMemberState, dispatchRemove] = useReducer(removeMemberReducer, {
+    visible: false,
+    confirmLoading: false,
+    members: [],
+    projectKey: null,
+    selectedProjectIndex: null,
+    memberToRemove: null
+  })
 
   const showAddMemberModal = async (project, index) => {
-    dispatch({ type: 'OPEN_MODAL', selectedProjectIndex: index, projectKey: project.key })
+    dispatchAdd({ type: 'OPEN_MODAL', selectedProjectIndex: index, projectKey: project.key })
     let response
     try {
       response = await axios.get(`${process.env.REACT_APP_API_URL}/projects/${project.key}/non-members/`)
     } catch (error) {
       console.log(error)
     }
-    dispatch({ type: 'SET_NON_MEMBERS', nonMembers: response.data })
+    dispatchAdd({ type: 'SET_NON_MEMBERS', nonMembers: response.data })
+  }
+  const showRemoveMemberModal = async (project, index) => {
+    dispatchRemove({ type: 'OPEN_MODAL', selectedProjectIndex: index, projectKey: project.key })
+    let response
+    try {
+      response = await axios.get(`${process.env.REACT_APP_API_URL}/projects/${project.key}/members/`)
+    } catch (error) {
+      console.log(error)
+    }
+    dispatchRemove({ type: 'SET_MEMBERS', members: response.data })
   }
   const handleAddMemberOk = async () => {
     if (addMemberState.nonMembers.length === 0) {
-      dispatch({ type: 'CLOSE_MODAL' })
+      dispatchAdd({ type: 'CLOSE_MODAL' })
       return
     }
 
@@ -40,7 +76,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
       message.error('Please select a member to add!')
       return
     }
-    dispatch({ type: 'LOADING' })
+    dispatchAdd({ type: 'LOADING' })
     let response
     try {
       response = await axios.post(
@@ -52,15 +88,48 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
       console.log(error)
     }
     updateProjects(response.data, addMemberState.selectedProjectIndex)
-    dispatch({ type: 'CLOSE_MODAL' })
+    dispatchAdd({ type: 'CLOSE_MODAL' })
+    message.success('Member was added successfully!')
+  }
+
+  const handleRemoveMemberOk = async () => {
+    if (removeMemberState.members.length === 0) {
+      dispatchRemove({ type: 'CLOSE_MODAL' })
+      return
+    }
+
+    if (!removeMemberState.memberToRemove) {
+      message.error('Please select a member to remove!')
+      return
+    }
+    dispatchRemove({ type: 'LOADING' })
+    let response
+    try {
+      response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/projects/${removeMemberState.projectKey}/remove-member/`,
+        { key: removeMemberState.memberToRemove }
+      )
+    } catch (error) {
+      message.error('There was an error, please try again.')
+      console.log(error)
+    }
+    updateProjects(response.data, removeMemberState.selectedProjectIndex)
+    dispatchRemove({ type: 'CLOSE_MODAL' })
     message.success('Member was added successfully!')
   }
 
   const handleAddMemberCancel = () => {
-    dispatch({ type: 'CLOSE_MODAL' })
+    dispatchAdd({ type: 'CLOSE_MODAL' })
   }
-  const handleOnChange = value => {
-    dispatch({ type: 'SET_MEMBER_TO_ADD', memberToAdd: value })
+  const handleRemoveMemberCancel = () => {
+    dispatchRemove({ type: 'CLOSE_MODAL' })
+  }
+  const handleOnChangeAdd = value => {
+    dispatchAdd({ type: 'SET_MEMBER_TO_ADD', memberToAdd: value })
+  }
+
+  const handleOnChangeRemove = value => {
+    dispatchRemove({ type: 'SET_MEMBER_TO_REMOVE', memberToRemove: value })
   }
 
   const columns = [
@@ -102,7 +171,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
           <button type='button' className={styles.linkButton} onClick={() => showAddMemberModal(record, index)}>
             <FontAwesomeIcon icon={faUserPlus} style={{ color: '#9664c8' }} />
           </button>
-          <button type='button' className={styles.linkButton} onClick={() => showAddMemberModal(record, index)}>
+          <button type='button' className={styles.linkButton} onClick={() => showRemoveMemberModal(record, index)}>
             <FontAwesomeIcon icon={faUserMinus} style={{ color: '#f0c230' }} />
           </button>
           <RemoveObjectButton object={record} removeObject={removeProject} />
@@ -129,7 +198,8 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
           pagination={false}
         />
       </Space>
-      <AddMemberModal state={addMemberState} handleOk={handleAddMemberOk} handleCancel={handleAddMemberCancel} handleOnChange={handleOnChange} />
+      <AddMemberModal state={addMemberState} handleOk={handleAddMemberOk} handleCancel={handleAddMemberCancel} handleOnChange={handleOnChangeAdd} />
+      <RemoveMemberModal state={removeMemberState} handleOk={handleRemoveMemberOk} handleCancel={handleRemoveMemberCancel} handleOnChange={handleOnChangeRemove} />
     </>
   )
 }
