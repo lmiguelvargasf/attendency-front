@@ -99,7 +99,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     }
     updateProjects(response.data, removeMemberState.selectedProjectIndex)
     dispatchRemove({ type: 'CLOSE_MODAL' })
-    message.success('Member was added successfully!')
+    message.success('Member was removed successfully!')
   }
 
   const handleAddMemberCancel = () => {
