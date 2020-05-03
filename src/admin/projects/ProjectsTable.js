@@ -20,7 +20,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     memberToAdd: null
   })
 
-  const showModal = async (project, index) => {
+  const showAddMemberModal = async (project, index) => {
     dispatch({ type: 'OPEN_MODAL', selectedProjectIndex: index, projectKey: project.key })
     let response
     try {
@@ -30,7 +30,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     }
     dispatch({ type: 'SET_NON_MEMBERS', nonMembers: response.data })
   }
-  const handleOk = async () => {
+  const handleAddMemberOk = async () => {
     if (addMemberState.nonMembers.length === 0) {
       dispatch({ type: 'CLOSE_MODAL' })
       return
@@ -56,7 +56,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     message.success('Member was added successfully!')
   }
 
-  const handleCancel = () => {
+  const handleAddMemberCancel = () => {
     dispatch({ type: 'CLOSE_MODAL' })
   }
   const handleOnChange = value => {
@@ -99,10 +99,10 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
             <FontAwesomeIcon icon={faEdit} />
           </Link>
           <FontAwesomeIcon icon={faCalendar} />
-          <button type='button' className={styles.linkButton} onClick={() => showModal(record, index)}>
+          <button type='button' className={styles.linkButton} onClick={() => showAddMemberModal(record, index)}>
             <FontAwesomeIcon icon={faUserPlus} style={{ color: '#9664c8' }} />
           </button>
-          <button type='button' className={styles.linkButton} onClick={() => showModal(record, index)}>
+          <button type='button' className={styles.linkButton} onClick={() => showAddMemberModal(record, index)}>
             <FontAwesomeIcon icon={faUserMinus} style={{ color: '#f0c230' }} />
           </button>
           <RemoveObjectButton object={record} removeObject={removeProject} />
@@ -129,7 +129,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
           pagination={false}
         />
       </Space>
-      <AddMemberModal state={addMemberState} handleOk={handleOk} handleCancel={handleCancel} handleOnChange={handleOnChange} />
+      <AddMemberModal state={addMemberState} handleOk={handleAddMemberOk} handleCancel={handleAddMemberCancel} handleOnChange={handleOnChange} />
     </>
   )
 }
