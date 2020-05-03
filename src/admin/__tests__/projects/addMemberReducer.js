@@ -35,13 +35,6 @@ describe('addMemberReducer', () => {
     expect(newState.memberToAdd).toEqual(memberToAdd)
   })
 
-  it('unset member to add', () => {
-    const newState = addMemberReducer({}, {
-      type: 'UNSET_MEMBER_TO_ADD'
-    })
-    expect(newState.memberToAdd).toBeNull()
-  })
-
   it('close modal', () => {
     const newState = addMemberReducer({}, {
       type: 'CLOSE_MODAL'

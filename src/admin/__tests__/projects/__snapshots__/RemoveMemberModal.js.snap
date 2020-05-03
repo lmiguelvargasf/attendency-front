@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveMemberModal component no members to be removed matches snapshot 1`] = `<DocumentFragment />`;
+
+exports[`RemoveMemberModal component there are members to be removed matches snapshot 1`] = `<DocumentFragment />`;
