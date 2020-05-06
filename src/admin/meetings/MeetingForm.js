@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, TimePicker, Button, DatePicker, Input, Select } from 'antd'
+import PropTypes from 'prop-types'
 
 const { Option } = Select
 
@@ -63,6 +64,13 @@ const MeetingForm = ({ meeting, onFinish, onFinishFailed, projects }) => {
       </Form.Item>
     </Form>
   )
+}
+
+MeetingForm.propTypes = {
+  meeting: PropTypes.object,
+  onFinish: PropTypes.func,
+  onFinishFailed: PropTypes.func,
+  projects: PropTypes.array
 }
 
 export default MeetingForm

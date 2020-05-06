@@ -48,6 +48,7 @@ const Participation = () => {
       title: 'Attended',
       dataIndex: 'attended',
       key: 'attended',
+      // eslint-disable-next-line react/display-name
       render: (text, record, index) => (
         <Checkbox checked={record.attended} onClick={(event) => { tootleAttendance(event, record, index) }} />
       )

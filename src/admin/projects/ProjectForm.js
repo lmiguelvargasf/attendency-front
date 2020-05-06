@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Input, Button, DatePicker } from 'antd'
+import PropTypes from 'prop-types'
 
 const layout = {
   labelCol: { span: 8 },
@@ -48,6 +49,12 @@ const ProjectForm = ({ project, onFinish, onFinishFailed }) => {
       </Form.Item>
     </Form>
   )
+}
+
+ProjectForm.propTypes = {
+  project: PropTypes.object,
+  onFinish: PropTypes.func,
+  onFinishFailed: PropTypes.func
 }
 
 export default ProjectForm

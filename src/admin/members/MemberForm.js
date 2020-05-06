@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
+import PropTypes from 'prop-types'
 
 const layout = {
   labelCol: { span: 8 },
@@ -41,6 +42,12 @@ const MemberForm = ({ member, onFinish, onFinishFailed }) => {
       </Form.Item>
     </Form>
   )
+}
+
+MemberForm.propTypes = {
+  member: PropTypes.object,
+  onFinish: PropTypes.func,
+  onFinishFailed: PropTypes.func
 }
 
 export default MemberForm

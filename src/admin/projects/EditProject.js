@@ -2,6 +2,7 @@ import React from 'react'
 import { message } from 'antd'
 import { useHistory, useLocation } from 'react-router-dom'
 import useAxios from 'axios-hooks'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 import ProjectForm from './ProjectForm'
 
@@ -46,6 +47,10 @@ const EditProject = ({ updateProjects }) => {
       <ProjectForm project={project} onFinish={onFinish} onFinishFailed={onFinishFailed} />
     </>
   )
+}
+
+EditProject.propTypes = {
+  updateProjects: PropTypes.func
 }
 
 export default EditProject

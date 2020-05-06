@@ -1,5 +1,7 @@
 import React from 'react'
 import { Space, Modal, Select } from 'antd'
+import PropTypes from 'prop-types'
+
 const { Option } = Select
 
 const RemoveMemberModal = ({ state, handleOk, handleCancel, handleOnChange }) => {
@@ -29,6 +31,13 @@ const RemoveMemberModal = ({ state, handleOk, handleCancel, handleOnChange }) =>
       }
     </Modal>
   )
+}
+
+RemoveMemberModal.propTypes = {
+  state: PropTypes.object,
+  handleOk: PropTypes.func,
+  handleCancel: PropTypes.func,
+  handleOnChange: PropTypes.func
 }
 
 export default RemoveMemberModal

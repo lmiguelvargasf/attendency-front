@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { message } from 'antd'
 import useAxios from 'axios-hooks'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 import MeetingForm from './MeetingForm'
 
 const EditMeeting = ({ updateMeetings }) => {
@@ -64,6 +65,10 @@ const EditMeeting = ({ updateMeetings }) => {
       <MeetingForm meeting={meeting} onFinish={onFinish} onFinishFailed={onFinishFailed} />
     </>
   )
+}
+
+EditMeeting.propTypes = {
+  updateMeetings: PropTypes.func
 }
 
 export default EditMeeting

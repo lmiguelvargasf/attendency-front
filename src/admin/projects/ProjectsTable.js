@@ -4,6 +4,7 @@ import { Table, Space, Button, message } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faUserMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 import RemoveObjectButton from '../RemoveObjectButton'
 import AddMemberModal from './AddMemberModal'
 import addMemberReducer from './addMemberReducer'
@@ -99,7 +100,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     }
     updateProjects(response.data, removeMemberState.selectedProjectIndex)
     dispatchRemove({ type: 'CLOSE_MODAL' })
-    message.success('Member was added successfully!')
+    message.success('Member was removed successfully!')
   }
 
   const handleAddMemberCancel = () => {
@@ -146,6 +147,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     {
       title: 'Action',
       key: 'action',
+      // eslint-disable-next-line react/display-name
       render: (text, record, index) => (
         <Space size='middle'>
           <Link to={{ pathname: `/admin/projects/${record.key}/edit`, state: { project: record, index } }}>
@@ -186,6 +188,12 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
       <RemoveMemberModal state={removeMemberState} handleOk={handleRemoveMemberOk} handleCancel={handleRemoveMemberCancel} handleOnChange={handleOnChangeRemove} />
     </>
   )
+}
+
+ProjectsTable.propTypes = {
+  projects: PropTypes.array,
+  removeProject: PropTypes.func,
+  updateProjects: PropTypes.func
 }
 
 export default ProjectsTable

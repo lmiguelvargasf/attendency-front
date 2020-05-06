@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { message } from 'antd'
 import useAxios from 'axios-hooks'
+import PropTypes from 'prop-types'
 import MemberForm from './MemberForm'
 
 const CreateMember = ({ addMember }) => {
@@ -36,6 +37,10 @@ const CreateMember = ({ addMember }) => {
       <MemberForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
     </>
   )
+}
+
+CreateMember.propTypes = {
+  addMember: PropTypes.func
 }
 
 export default CreateMember
