@@ -132,7 +132,6 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
-      // eslint-disable-next-line react/display-name
       render: description => {
         if (description) {
           return description.length < 50 ? description : `${description.substring(0, 50)}...`
@@ -148,6 +147,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     {
       title: 'Action',
       key: 'action',
+      // eslint-disable-next-line react/display-name
       render: (text, record, index) => (
         <Space size='middle'>
           <Link to={{ pathname: `/admin/projects/${record.key}/edit`, state: { project: record, index } }}>
