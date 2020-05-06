@@ -70,7 +70,7 @@ MeetingForm.propTypes = {
   meeting: PropTypes.object,
   onFinish: PropTypes.func,
   onFinishFailed: PropTypes.func,
-  projects: PropTypes.object
+  projects: PropTypes.array
 }
 
 export default MeetingForm

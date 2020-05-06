@@ -59,7 +59,7 @@ const MembersTable = ({ members, removeMember }) => {
 }
 
 MembersTable.propTypes = {
-  members: PropTypes.object,
+  members: PropTypes.array,
   removeMember: PropTypes.func
 }
 

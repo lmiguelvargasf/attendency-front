@@ -62,7 +62,7 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
 }
 
 MeetingsTable.propTypes = {
-  meetings: PropTypes.object,
+  meetings: PropTypes.array,
   removeMeeting: PropTypes.func
 }
 

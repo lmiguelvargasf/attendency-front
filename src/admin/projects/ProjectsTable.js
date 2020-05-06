@@ -191,7 +191,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
 }
 
 ProjectsTable.propTypes = {
-  projects: PropTypes.object,
+  projects: PropTypes.array,
   removeProject: PropTypes.func,
   updateProjects: PropTypes.func
 }
