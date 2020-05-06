@@ -25,6 +25,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jest-environment-jsdom-sixteen",
+    "test:all": "CI=true yarn test && yarn lint",
     "eject": "react-app-rewired eject",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js"
@@ -58,8 +59,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint:fix",
-      "pre-push": "yarn lint"
+      "pre-commit": "npm run lint:fix",
+      "pre-push": "npm run test:all"
     }
   }
 }
