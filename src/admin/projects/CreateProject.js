@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { message } from 'antd'
 import useAxios from 'axios-hooks'
+import PropTypes from 'prop-types'
 import ProjectForm from './ProjectForm'
 
 const CreateProject = ({ addProject }) => {
@@ -38,6 +39,10 @@ const CreateProject = ({ addProject }) => {
       <ProjectForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
     </>
   )
+}
+
+CreateProject.propTypes = {
+  addProject: PropTypes.func
 }
 
 export default CreateProject

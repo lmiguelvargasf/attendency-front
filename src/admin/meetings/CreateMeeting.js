@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { message } from 'antd'
 import useAxios from 'axios-hooks'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 import MeetingForm from './MeetingForm'
 
 const CreateMeeting = ({ addMeeting }) => {
@@ -66,6 +67,10 @@ const CreateMeeting = ({ addMeeting }) => {
       <MeetingForm onFinish={onFinish} onFinishFailed={onFinishFailed} projects={projects} />
     </>
   )
+}
+
+CreateMeeting.propTypes = {
+  addMeeting: PropTypes.func
 }
 
 export default CreateMeeting

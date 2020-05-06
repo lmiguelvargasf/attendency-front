@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faPlus, faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 import RemoveObjectButton from '../RemoveObjectButton'
 
 const MeetingsTable = ({ meetings, removeMeeting }) => {
@@ -25,6 +26,7 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
     {
       title: 'Action',
       key: 'action',
+      // eslint-disable-next-line react/display-name
       render: (text, record, index) => (
         <Space size='middle'>
           <Link to={{ pathname: `/admin/meetings/${record.key}/edit`, state: { meeting: record, index } }}>
@@ -57,6 +59,11 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
       />
     </Space>
   )
+}
+
+MeetingsTable.propTypes = {
+  meetings: PropTypes.object,
+  removeMeeting: PropTypes.func
 }
 
 export default MeetingsTable

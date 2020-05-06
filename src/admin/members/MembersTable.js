@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Table, Space, Button } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 import RemoveObjectButton from '../RemoveObjectButton'
 
 const MembersTable = ({ members, removeMember }) => {
@@ -25,6 +26,7 @@ const MembersTable = ({ members, removeMember }) => {
     {
       title: 'Action',
       key: 'action',
+      // eslint-disable-next-line react/display-name
       render: (text, record, index) => (
         <Space size='middle'>
           <Link to={{ pathname: `/admin/members/${record.key}/edit`, state: { meeting: record, index } }}>
@@ -54,6 +56,11 @@ const MembersTable = ({ members, removeMember }) => {
       />
     </Space>
   )
+}
+
+MembersTable.propTypes = {
+  members: PropTypes.object,
+  removeMember: PropTypes.func
 }
 
 export default MembersTable

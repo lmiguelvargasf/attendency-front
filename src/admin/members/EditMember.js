@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { message } from 'antd'
 import useAxios from 'axios-hooks'
+import PropTypes from 'prop-types'
 import MemberForm from './MemberForm'
 
 const EditMember = ({ updateMembers }) => {
@@ -45,6 +46,10 @@ const EditMember = ({ updateMembers }) => {
       <MemberForm member={data} onFinish={onFinish} onFinishFailed={onFinishFailed} />
     </>
   )
+}
+
+EditMember.propTypes = {
+  updateMembers: PropTypes.func
 }
 
 export default EditMember

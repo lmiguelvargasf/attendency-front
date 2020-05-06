@@ -4,6 +4,7 @@ import { Table, Space, Button, message } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCalendar, faUserPlus, faUserMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 import RemoveObjectButton from '../RemoveObjectButton'
 import AddMemberModal from './AddMemberModal'
 import addMemberReducer from './addMemberReducer'
@@ -131,6 +132,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
+      // eslint-disable-next-line react/display-name
       render: description => {
         if (description) {
           return description.length < 50 ? description : `${description.substring(0, 50)}...`
@@ -186,6 +188,12 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
       <RemoveMemberModal state={removeMemberState} handleOk={handleRemoveMemberOk} handleCancel={handleRemoveMemberCancel} handleOnChange={handleOnChangeRemove} />
     </>
   )
+}
+
+ProjectsTable.propTypes = {
+  projects: PropTypes.object,
+  removeProject: PropTypes.func,
+  updateProjects: PropTypes.func
 }
 
 export default ProjectsTable
