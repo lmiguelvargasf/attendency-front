@@ -121,9 +121,10 @@ describe('Members component', () => {
             default: break
           }
         })
-        const { getByTestId, findByTestId } = render(component)
+        const { getByTestId, findByTestId, getByText } = render(component)
         expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(member.email)
         fireEvent.click(getByTestId(member.url))
+        fireEvent.click(getByText('OK'))
         const table = await findByTestId(TABLE_TEST_ID)
         expect(table).not.toHaveTextContent(member.email)
       })
