@@ -25,8 +25,9 @@ describe('RemoveObjectButton component', () => {
   })
 
   it('execute and removeObjectMock are called when clicking on component', async () => {
-    const { getByTestId } = render(component)
-    await fireEvent.click(getByTestId(object.url))
+    const { getByTestId, getByText } = render(component)
+    fireEvent.click(getByTestId(object.url))
+    await fireEvent.click(getByText('OK'))
     expect(executeMock).toHaveBeenCalled()
     expect(removeObjectMock).toHaveBeenCalledWith(object)
   })

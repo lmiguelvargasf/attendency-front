@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
-import { render, cleanup, fireEvent } from '@testing-library/react'
+import { render, cleanup, fireEvent, getByText } from '@testing-library/react'
 import Meetings from '../../meetings/Meetings'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
@@ -130,9 +130,10 @@ describe('Meetings component', () => {
               default: break
             }
           })
-          const { getByTestId, findByTestId } = render(component)
+          const { getByTestId, findByTestId, getByText } = render(component)
           expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(meeting.projectTitle)
           fireEvent.click(getByTestId(meeting.url))
+          fireEvent.click(getByText('OK'))
           const table = await findByTestId(TABLE_TEST_ID)
           expect(table).not.toHaveTextContent(meeting.projectTitle)
         })
