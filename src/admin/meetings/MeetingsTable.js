@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faPlus, faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
 import RemoveObjectButton from '../RemoveObjectButton'
-import paginationCofig from '../constants'
 
 const MeetingsTable = ({ meetings, removeMeeting }) => {
   const columns = [
@@ -56,7 +55,7 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
         data-testid='meeting-table'
         columns={columns}
         dataSource={meetings}
-        pagination={paginationCofig}
+        pagination={{ defaultCurrent: 1, defaultPageSize: 7, hideOnSinglePage: true }}
       />
     </Space>
   )
