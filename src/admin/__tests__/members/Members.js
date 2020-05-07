@@ -6,6 +6,20 @@ import Members from '../../members/Members'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn()
+  }))
+})
+
 const BASE_API_URL = process.env.REACT_APP_API_URL
 const TABLE_TEST_ID = 'member-table'
 const fakeData = [
