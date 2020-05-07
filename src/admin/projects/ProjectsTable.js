@@ -181,7 +181,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
           data-testid='project-table'
           columns={columns}
           dataSource={projects}
-          pagination={false}
+          pagination={{ defaultCurrent: 1, defaultPageSize: 7, hideOnSinglePage: true }}
         />
       </Space>
       <AddMemberModal state={addMemberState} handleOk={handleAddMemberOk} handleCancel={handleAddMemberCancel} handleOnChange={handleOnChangeAdd} />
