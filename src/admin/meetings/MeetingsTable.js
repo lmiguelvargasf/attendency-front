@@ -55,7 +55,7 @@ const MeetingsTable = ({ meetings, removeMeeting }) => {
         data-testid='meeting-table'
         columns={columns}
         dataSource={meetings}
-        pagination={false}
+        pagination={{ defaultCurrent: 1, defaultPageSize: 7, hideOnSinglePage: true }}
       />
     </Space>
   )
