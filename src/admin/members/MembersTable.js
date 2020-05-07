@@ -52,7 +52,7 @@ const MembersTable = ({ members, removeMember }) => {
         data-testid='member-table'
         columns={columns}
         dataSource={members}
-        pagination={false}
+        pagination={{ defaultCurrent: 1, defaultPageSize: 7, hideOnSinglePage: true }}
       />
     </Space>
   )
