@@ -32,7 +32,7 @@ const Login = () => {
     }
     const { data } = response
     localStorage.setItem('token', data.token)
-    history.push('/admin/')
+    history.push('/admin')
   }
 
   const onFinishFailed = errorInfo => {

@@ -36,7 +36,7 @@ const Admin = () => {
   const [selectedMenuItem, setselectedMenuItem] = useState(location.pathname.replace('/admin/', ''))
   const logOut = () => {
     localStorage.removeItem('token')
-    history.push('/')
+    history.push('/login')
   }
 
   return (
