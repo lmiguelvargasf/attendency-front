@@ -9,7 +9,7 @@ import './App.module.sass'
 function App () {
   return (
     <>
-      <Route exact path='/' component={Login} />
+      <Route exact path='/login' component={Login} />
       <Route path='/admin' component={Admin} />
     </>
   )

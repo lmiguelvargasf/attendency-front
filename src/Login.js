@@ -1,5 +1,7 @@
 import React from 'react'
 import { Row, Col, Form, Input, Button } from 'antd'
+import { useHistory } from 'react-router-dom'
+import useAxios from 'axios-hooks'
 
 const layout = {
   labelCol: { offset: 6, span: 3 },
@@ -10,8 +12,27 @@ const tailLayout = {
 }
 
 const Login = () => {
-  const onFinish = values => {
-    console.log('Success:', values)
+  const history = useHistory()
+  const [, login] = useAxios(
+    {
+      url: `${process.env.REACT_APP_API_URL}/token-auth/`,
+      method: 'post'
+    },
+    { manual: true }
+  )
+
+  const onFinish = async values => {
+    console.log(values)
+    let response
+    try {
+      response = await login({ data: values })
+    } catch (error) {
+      console.log(error)
+      return
+    }
+    const { data } = response
+    localStorage.setItem('token', data.token)
+    history.push('/admin/')
   }
 
   const onFinishFailed = errorInfo => {
