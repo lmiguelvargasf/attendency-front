@@ -70,12 +70,16 @@ const Admin = () => {
             className={styles.siteLayoutBackground}
             style={{ padding: 24 }}
           >
-            <Switch>
-              <Route exact path='/admin' render={() => (<Redirect to='/admin/projects' />)} />
-              <Route path='/admin/projects' component={Projects} />
-              <Route path='/admin/members' component={Members} />
-              <Route path='/admin/meetings' component={Meetings} />
-            </Switch>
+            {window.localStorage.getItem('token') ? (
+              <Switch>
+                <Route exact path='/admin' render={() => (<Redirect to='/admin/projects' />)} />
+                <Route path='/admin/projects' component={Projects} />
+                <Route path='/admin/members' component={Members} />
+                <Route path='/admin/meetings' component={Meetings} />
+              </Switch>
+            ) : (
+              <Redirect to='/login' />
+            )}
           </Content>
         </Layout>
       </Layout>

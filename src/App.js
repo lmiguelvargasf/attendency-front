@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Admin from './admin/Admin'
 import Home from './Home'
@@ -9,11 +9,12 @@ import './App.module.sass'
 
 function App () {
   return (
-    <>
+    <Switch>
       <Route exact path='/' component={Home} />
-      <Route exact path='/login' component={Login} />
+      <Route path='/login' component={Login} />
       <Route path='/admin' component={Admin} />
-    </>
+      <Route render={() => <h2>404 Page Not Found</h2>} />
+    </Switch>
   )
 }
 
