@@ -11,7 +11,7 @@ const Projects = () => {
   const [{ data, loading, error }] = useAxios({
     url: `${process.env.REACT_APP_API_URL}/projects`,
     headers: {
-      Authorization: `JWT ${localStorage.getItem('token')}`
+      Authorization: `JWT ${window.localStorage.getItem('token')}`
     }
   })
   useEffect(() => { dispatch({ type: 'LOAD', projects: data }) }, [data])

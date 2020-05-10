@@ -31,7 +31,7 @@ const Login = () => {
       return
     }
     const { data } = response
-    localStorage.setItem('token', data.token)
+    window.localStorage.setItem('token', data.token)
     history.push('/admin')
   }
 
