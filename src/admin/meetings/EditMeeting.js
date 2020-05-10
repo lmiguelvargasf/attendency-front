@@ -17,7 +17,10 @@ const EditMeeting = ({ updateMeetings }) => {
   const [, updateMeeting] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/meetings/${meetingFromTable.key}/`,
-      method: 'put'
+      method: 'put',
+      headers: {
+        Authorization: `JWT ${window.localStorage.getItem('token')}`
+      }
     },
     { manual: true }
   )

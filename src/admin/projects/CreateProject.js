@@ -10,7 +10,10 @@ const CreateProject = ({ addProject }) => {
   const [, createProject] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/projects/`,
-      method: 'post'
+      method: 'post',
+      headers: {
+        Authorization: `JWT ${window.localStorage.getItem('token')}`
+      }
     },
     { manual: true }
   )
