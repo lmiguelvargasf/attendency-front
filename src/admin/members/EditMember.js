@@ -10,11 +10,21 @@ const EditMember = ({ updateMembers }) => {
   const location = useLocation()
   const memberFromTable = location.state.meeting
   const memberUrl = memberFromTable.url
-  const [{ data, loading, error }] = useAxios(memberUrl, { useCache: false })
+  const [{ data, loading, error }] = useAxios(
+    {
+      url: memberUrl,
+      headers: {
+        Authorization: `JWT ${window.localStorage.getItem('token')}`
+      }
+    },
+    { useCache: false })
   const [, updateMember] = useAxios(
     {
       url: memberUrl,
-      method: 'put'
+      method: 'put',
+      headers: {
+        Authorization: `JWT ${window.localStorage.getItem('token')}`
+      }
     },
     { manual: true }
   )

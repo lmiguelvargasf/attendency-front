@@ -11,7 +11,13 @@ const { confirm } = Modal
 
 const RemoveObjectButton = ({ object, removeObject }) => {
   const [, execute] = useAxios(
-    { url: object.url, method: 'delete' },
+    {
+      url: object.url,
+      method: 'delete',
+      headers: {
+        Authorization: `JWT ${window.localStorage.getItem('token')}`
+      }
+    },
     { manual: true }
   )
 

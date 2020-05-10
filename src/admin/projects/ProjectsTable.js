@@ -35,7 +35,14 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     dispatchAdd({ type: 'OPEN_MODAL', selectedProjectIndex: index, projectKey: project.key })
     let response
     try {
-      response = await axios.get(`${process.env.REACT_APP_API_URL}/projects/${project.key}/non-members/`)
+      response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/projects/${project.key}/non-members/`,
+        {
+          headers: {
+            Authorization: `JWT ${window.localStorage.getItem('token')}`
+          }
+        }
+      )
     } catch (error) {
       console.log(error)
     }
@@ -45,7 +52,14 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     dispatchRemove({ type: 'OPEN_MODAL', selectedProjectIndex: index, projectKey: project.key })
     let response
     try {
-      response = await axios.get(`${process.env.REACT_APP_API_URL}/projects/${project.key}/members/`)
+      response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/projects/${project.key}/members/`,
+        {
+          headers: {
+            Authorization: `JWT ${window.localStorage.getItem('token')}`
+          }
+        }
+      )
     } catch (error) {
       console.log(error)
     }
@@ -66,7 +80,12 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     try {
       response = await axios.post(
         `${process.env.REACT_APP_API_URL}/projects/${addMemberState.projectKey}/add-member/`,
-        { key: addMemberState.memberToAdd }
+        { key: addMemberState.memberToAdd },
+        {
+          headers: {
+            Authorization: `JWT ${window.localStorage.getItem('token')}`
+          }
+        }
       )
     } catch (error) {
       message.error('There was an error, please try again.')
@@ -92,7 +111,12 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     try {
       response = await axios.post(
         `${process.env.REACT_APP_API_URL}/projects/${removeMemberState.projectKey}/remove-member/`,
-        { key: removeMemberState.memberToRemove }
+        { key: removeMemberState.memberToRemove },
+        {
+          headers: {
+            Authorization: `JWT ${window.localStorage.getItem('token')}`
+          }
+        }
       )
     } catch (error) {
       message.error('There was an error, please try again.')

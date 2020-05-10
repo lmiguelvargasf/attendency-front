@@ -8,7 +8,12 @@ import memberReducer from './memberReducer'
 
 const Members = () => {
   const [members, dispatch] = useReducer(memberReducer, [])
-  const [{ data, loading, error }] = useAxios(`${process.env.REACT_APP_API_URL}/members/`)
+  const [{ data, loading, error }] = useAxios({
+    url: `${process.env.REACT_APP_API_URL}/members/`,
+    headers: {
+      Authorization: `JWT ${window.localStorage.getItem('token')}`
+    }
+  })
   useEffect(() => { dispatch({ type: 'LOAD', members: data }) }, [data])
 
   if (loading) return <p data-testid='loading'>Loading...</p>

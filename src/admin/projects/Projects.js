@@ -8,7 +8,12 @@ import projectReducer from './projectReducer'
 
 const Projects = () => {
   const [projects, dispatch] = useReducer(projectReducer, [])
-  const [{ data, loading, error }] = useAxios(`${process.env.REACT_APP_API_URL}/projects`)
+  const [{ data, loading, error }] = useAxios({
+    url: `${process.env.REACT_APP_API_URL}/projects`,
+    headers: {
+      Authorization: `JWT ${window.localStorage.getItem('token')}`
+    }
+  })
   useEffect(() => { dispatch({ type: 'LOAD', projects: data }) }, [data])
 
   if (loading) return <p data-testid='loading'>Loading...</p>
