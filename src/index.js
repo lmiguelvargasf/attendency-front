@@ -1,11 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import { BrowserRouter as Router } from 'react-router-dom'
-
-import './index.css'
+import axios from 'axios'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
+
+import './index.css'
+
+axios.interceptors.request.use(function (config) {
+  if (window.localStorage.getItem('token')) {
+    const token = window.localStorage.getItem('token')
+    config.headers.Authorization = `JWT ${token}`
+    return config
+  }
+  return config
+})
 
 ReactDOM.render(
   <React.StrictMode>
