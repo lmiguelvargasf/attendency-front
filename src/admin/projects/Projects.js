@@ -9,10 +9,7 @@ import projectReducer from './projectReducer'
 const Projects = () => {
   const [projects, dispatch] = useReducer(projectReducer, [])
   const [{ data, loading, error }] = useAxios({
-    url: `${process.env.REACT_APP_API_URL}/projects`,
-    headers: {
-      Authorization: `JWT ${window.localStorage.getItem('token')}`
-    }
+    url: `${process.env.REACT_APP_API_URL}/projects`
   })
   useEffect(() => { dispatch({ type: 'LOAD', projects: data }) }, [data])
 

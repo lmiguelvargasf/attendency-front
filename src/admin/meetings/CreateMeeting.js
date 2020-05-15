@@ -10,18 +10,12 @@ const CreateMeeting = ({ addMeeting }) => {
   const history = useHistory()
   const [projects, setProjects] = useState([])
   const [{ data, loading, error }] = useAxios({
-    url: `${process.env.REACT_APP_API_URL}/simple-projects`,
-    headers: {
-      Authorization: `JWT ${window.localStorage.getItem('token')}`
-    }
+    url: `${process.env.REACT_APP_API_URL}/simple-projects`
   })
   const [, createMeeting] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/meetings/`,
-      method: 'post',
-      headers: {
-        Authorization: `JWT ${window.localStorage.getItem('token')}`
-      }
+      method: 'post'
     },
     { manual: true }
   )

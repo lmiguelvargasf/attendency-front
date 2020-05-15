@@ -1,14 +1,14 @@
 import React from 'react'
-import { Row, Col, Form, Input, Button } from 'antd'
+import { Row, Col, Form, Input, Button, message } from 'antd'
 import { useHistory } from 'react-router-dom'
 import useAxios from 'axios-hooks'
 
 const layout = {
-  labelCol: { offset: 6, span: 3 },
-  wrapperCol: { span: 8 }
+  labelCol: { offset: 8, span: 3 },
+  wrapperCol: { span: 4 }
 }
 const tailLayout = {
-  wrapperCol: { offset: 9, span: 16 }
+  wrapperCol: { offset: 11, span: 16 }
 }
 
 const Login = () => {
@@ -27,6 +27,7 @@ const Login = () => {
     try {
       response = await login({ data: values })
     } catch (error) {
+      message.error('The combination of username and password is incorrect!')
       console.log(error)
       return
     }
@@ -67,7 +68,7 @@ const Login = () => {
           </Form.Item>
           <Form.Item {...tailLayout}>
             <Button type='primary' htmlType='submit'>
-          Submit
+              Login
             </Button>
           </Form.Item>
         </Form>

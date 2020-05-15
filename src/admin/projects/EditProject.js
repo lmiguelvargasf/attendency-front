@@ -17,10 +17,7 @@ const EditProject = ({ updateProjects }) => {
   const [, updateProject] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/projects/${project.key}/`,
-      method: 'put',
-      headers: {
-        Authorization: `JWT ${window.localStorage.getItem('token')}`
-      }
+      method: 'put'
     },
     { manual: true }
   )
