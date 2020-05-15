@@ -13,10 +13,7 @@ const RemoveObjectButton = ({ object, removeObject }) => {
   const [, execute] = useAxios(
     {
       url: object.url,
-      method: 'delete',
-      headers: {
-        Authorization: `JWT ${window.localStorage.getItem('token')}`
-      }
+      method: 'delete'
     },
     { manual: true }
   )

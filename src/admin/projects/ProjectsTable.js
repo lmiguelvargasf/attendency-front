@@ -36,12 +36,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     let response
     try {
       response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/projects/${project.key}/non-members/`,
-        {
-          headers: {
-            Authorization: `JWT ${window.localStorage.getItem('token')}`
-          }
-        }
+        `${process.env.REACT_APP_API_URL}/projects/${project.key}/non-members/`
       )
     } catch (error) {
       console.log(error)
@@ -53,12 +48,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     let response
     try {
       response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/projects/${project.key}/members/`,
-        {
-          headers: {
-            Authorization: `JWT ${window.localStorage.getItem('token')}`
-          }
-        }
+        `${process.env.REACT_APP_API_URL}/projects/${project.key}/members/`
       )
     } catch (error) {
       console.log(error)
@@ -80,12 +70,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     try {
       response = await axios.post(
         `${process.env.REACT_APP_API_URL}/projects/${addMemberState.projectKey}/add-member/`,
-        { key: addMemberState.memberToAdd },
-        {
-          headers: {
-            Authorization: `JWT ${window.localStorage.getItem('token')}`
-          }
-        }
+        { key: addMemberState.memberToAdd }
       )
     } catch (error) {
       message.error('There was an error, please try again.')
@@ -111,12 +96,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     try {
       response = await axios.post(
         `${process.env.REACT_APP_API_URL}/projects/${removeMemberState.projectKey}/remove-member/`,
-        { key: removeMemberState.memberToRemove },
-        {
-          headers: {
-            Authorization: `JWT ${window.localStorage.getItem('token')}`
-          }
-        }
+        { key: removeMemberState.memberToRemove }
       )
     } catch (error) {
       message.error('There was an error, please try again.')

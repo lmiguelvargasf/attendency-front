@@ -12,19 +12,13 @@ const EditMember = ({ updateMembers }) => {
   const memberUrl = memberFromTable.url
   const [{ data, loading, error }] = useAxios(
     {
-      url: memberUrl,
-      headers: {
-        Authorization: `JWT ${window.localStorage.getItem('token')}`
-      }
+      url: memberUrl
     },
     { useCache: false })
   const [, updateMember] = useAxios(
     {
       url: memberUrl,
-      method: 'put',
-      headers: {
-        Authorization: `JWT ${window.localStorage.getItem('token')}`
-      }
+      method: 'put'
     },
     { manual: true }
   )

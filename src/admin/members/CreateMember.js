@@ -10,10 +10,7 @@ const CreateMember = ({ addMember }) => {
   const [, createMember] = useAxios(
     {
       url: `${process.env.REACT_APP_API_URL}/members/`,
-      method: 'post',
-      headers: {
-        Authorization: `JWT ${window.localStorage.getItem('token')}`
-      }
+      method: 'post'
     },
     { manual: true }
   )
