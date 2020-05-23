@@ -22,7 +22,6 @@ const Login = () => {
   )
 
   const onFinish = async values => {
-    console.log(values)
     let response
     try {
       response = await login({ data: values })
@@ -32,7 +31,7 @@ const Login = () => {
       return
     }
     const { data } = response
-    window.localStorage.setItem('token', data.token)
+    window.localStorage.setItem('token', data.access)
     history.push('/admin')
   }
 

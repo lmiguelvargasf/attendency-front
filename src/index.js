@@ -10,7 +10,7 @@ import './index.css'
 axios.interceptors.request.use(function (config) {
   if (window.localStorage.getItem('token')) {
     const token = window.localStorage.getItem('token')
-    config.headers.Authorization = `JWT ${token}`
+    config.headers.Authorization = `Bearer ${token}`
     return config
   }
   return config
