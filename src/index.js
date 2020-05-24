@@ -22,7 +22,7 @@ const getNewToken = () => {
   return new Promise((resolve, reject) => {
     axios({
       method: 'post',
-      url: `${process.env.REACT_APP_API_URL}/token/refresh/`,
+      url: '/token/refresh/',
       data: {
         refresh: window.localStorage.getItem('refreshToken')
       }
@@ -47,7 +47,7 @@ axios.interceptors.response.use((response) => {
   }
 
   // Logout user if token refresh didn't work or user is disabled
-  if (error.config.url === `${process.env.REACT_APP_API_URL}/token/refresh/`) {
+  if (error.config.url === '/token/refresh/') {
     window.localStorage.removeItem('token')
     window.localStorage.removeItem('refreshToken')
     window.location.href = '/login'
