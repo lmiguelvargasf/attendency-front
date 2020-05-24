@@ -20,19 +20,18 @@ Object.defineProperty(window, 'matchMedia', {
   }))
 })
 
-const BASE_API_URL = process.env.REACT_APP_API_URL
 const TABLE_TEST_ID = 'member-table'
 const fakeData = [
   {
     key: 1,
-    url: `${BASE_API_URL}/members/1`,
+    url: '/members/1',
     firstName: 'Isaac',
     lastName: 'Newton',
     email: 'isaac.newton@gmail.com'
   },
   {
     key: 2,
-    url: `${BASE_API_URL}/members/2`,
+    url: '/members/2',
     firstName: 'Nikola',
     lastName: 'Tesla',
     email: 'nikola.tesla@gmail.com'

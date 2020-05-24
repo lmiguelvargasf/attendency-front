@@ -15,7 +15,7 @@ const Login = () => {
   const history = useHistory()
   const [, login] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/token-auth/`,
+      url: '/token-auth/',
       method: 'post'
     },
     { manual: true }

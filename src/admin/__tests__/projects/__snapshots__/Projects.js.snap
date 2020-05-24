@@ -435,7 +435,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                             >
                               <button
                                 class="linkButton"
-                                data-testid="http://localhost:8000/api/projects/1"
+                                data-testid="/projects/1"
                                 type="button"
                               >
                                 <svg
@@ -590,7 +590,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                             >
                               <button
                                 class="linkButton"
-                                data-testid="http://localhost:8000/api/projects/2"
+                                data-testid="/projects/2"
                                 type="button"
                               >
                                 <svg

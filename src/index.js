@@ -7,6 +7,8 @@ import * as serviceWorker from './serviceWorker'
 
 import './index.css'
 
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
+
 axios.interceptors.request.use(function (config) {
   if (window.localStorage.getItem('token')) {
     const token = window.localStorage.getItem('token')

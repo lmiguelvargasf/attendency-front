@@ -421,7 +421,7 @@ exports[`ProjectsTable component matches snapshot one project 1`] = `
                             >
                               <button
                                 class="linkButton"
-                                data-testid="http://localhost:8000/api/projects/1"
+                                data-testid="/projects/1"
                                 type="button"
                               >
                                 <svg

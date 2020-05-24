@@ -28,10 +28,9 @@ describe('MembersTable component', () => {
   })
 
   it('matches snapshot one project', () => {
-    const BASE_API_URL = process.env.REACT_APP_API_URL
     const member = {
       key: 1,
-      url: `${BASE_API_URL}/members/1`,
+      url: '/members/1',
       firstName: 'Isaac',
       lastName: 'Newton',
       email: 'isaac.newton@gmail.com'

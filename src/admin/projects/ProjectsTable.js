@@ -14,7 +14,6 @@ import removeMemberReducer from './removeMemberReducer'
 import styles from '../Admin.module.sass'
 
 const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
-  console.log(window.localStorage.getItem('refreshToken'))
   const [addMemberState, dispatchAdd] = useReducer(addMemberReducer, {
     visible: false,
     confirmLoading: false,
@@ -37,7 +36,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     let response
     try {
       response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/projects/${project.key}/non-members/`
+        `/projects/${project.key}/non-members/`
       )
     } catch (error) {
       console.log(error)
@@ -49,7 +48,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     let response
     try {
       response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/projects/${project.key}/members/`
+        `/projects/${project.key}/members/`
       )
     } catch (error) {
       console.log(error)
@@ -70,7 +69,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     let response
     try {
       response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/projects/${addMemberState.projectKey}/add-member/`,
+        `/projects/${addMemberState.projectKey}/add-member/`,
         { key: addMemberState.memberToAdd }
       )
     } catch (error) {
@@ -96,7 +95,7 @@ const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
     let response
     try {
       response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/projects/${removeMemberState.projectKey}/remove-member/`,
+        `/projects/${removeMemberState.projectKey}/remove-member/`,
         { key: removeMemberState.memberToRemove }
       )
     } catch (error) {

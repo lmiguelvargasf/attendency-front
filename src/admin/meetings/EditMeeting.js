@@ -16,7 +16,7 @@ const EditMeeting = ({ updateMeetings }) => {
   const meeting = { project: projectTitle, date: currentDate, time: currentTime }
   const [, updateMeeting] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/meetings/${meetingFromTable.key}/`,
+      url: `/meetings/${meetingFromTable.key}/`,
       method: 'put'
     },
     { manual: true }

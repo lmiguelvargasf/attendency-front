@@ -10,7 +10,7 @@ import meetingReducer from './meetingReducer'
 const Meetings = () => {
   const [meetings, dispatch] = useReducer(meetingReducer, [])
   const [{ data, loading, error }] = useAxios({
-    url: `${process.env.REACT_APP_API_URL}/meeting-table/`
+    url: '/meeting-table/'
   })
 
   useEffect(() => { dispatch({ type: 'LOAD', meetings: data }) }, [data])
