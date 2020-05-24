@@ -14,6 +14,7 @@ import removeMemberReducer from './removeMemberReducer'
 import styles from '../Admin.module.sass'
 
 const ProjectsTable = ({ projects, removeProject, updateProjects }) => {
+  console.log(window.localStorage.getItem('refreshToken'))
   const [addMemberState, dispatchAdd] = useReducer(addMemberReducer, {
     visible: false,
     confirmLoading: false,

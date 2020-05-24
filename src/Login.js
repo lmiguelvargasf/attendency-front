@@ -27,11 +27,11 @@ const Login = () => {
       response = await login({ data: values })
     } catch (error) {
       message.error('The combination of username and password is incorrect!')
-      console.log(error)
       return
     }
     const { data } = response
     window.localStorage.setItem('token', data.access)
+    window.localStorage.setItem('refreshToken', data.access)
     history.push('/admin')
   }
 
