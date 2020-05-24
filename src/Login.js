@@ -31,7 +31,7 @@ const Login = () => {
     }
     const { data } = response
     window.localStorage.setItem('token', data.access)
-    window.localStorage.setItem('refreshToken', data.access)
+    window.localStorage.setItem('refreshToken', data.refresh)
     history.push('/admin')
   }
 
