@@ -9,7 +9,7 @@ const CreateProject = ({ addProject }) => {
   const history = useHistory()
   const [, createProject] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/projects/`,
+      url: '/projects/',
       method: 'post'
     },
     { manual: true }

@@ -10,11 +10,11 @@ const CreateMeeting = ({ addMeeting }) => {
   const history = useHistory()
   const [projects, setProjects] = useState([])
   const [{ data, loading, error }] = useAxios({
-    url: `${process.env.REACT_APP_API_URL}/simple-projects`
+    url: '/simple-projects'
   })
   const [, createMeeting] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/meetings/`,
+      url: '/meetings/',
       method: 'post'
     },
     { manual: true }

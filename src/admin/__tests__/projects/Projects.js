@@ -20,12 +20,11 @@ Object.defineProperty(window, 'matchMedia', {
   }))
 })
 
-const BASE_API_URL = process.env.REACT_APP_API_URL
 const TABLE_TEST_ID = 'project-table'
 const fakeData = [
   {
     key: 1,
-    url: `${BASE_API_URL}/projects/1`,
+    url: '/projects/1',
     title: 'Testing Project Alpha',
     startDate: '2020-04-18',
     description: 'This is just for testing',
@@ -33,7 +32,7 @@ const fakeData = [
   },
   {
     key: 2,
-    url: `${BASE_API_URL}/projects/2`,
+    url: '/projects/2',
     title: 'Testing Project Beta',
     startDate: '2020-04-19',
     description: 'This is just for testing too',

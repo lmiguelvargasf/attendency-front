@@ -28,10 +28,9 @@ describe('ProjectsTable component', () => {
   })
 
   it('matches snapshot one project', () => {
-    const BASE_API_URL = process.env.REACT_APP_API_URL
     const project = {
       key: 1,
-      url: `${BASE_API_URL}/projects/1`,
+      url: '/projects/1',
       title: 'Testing Project Alpha',
       startDate: '2020-04-18',
       description: 'This is just for testing',

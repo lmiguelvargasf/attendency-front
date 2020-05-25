@@ -5,10 +5,9 @@ import CreateProject from '../../projects/CreateProject'
 import useAxios from 'axios-hooks'
 jest.mock('axios-hooks')
 
-const BASE_API_URL = process.env.REACT_APP_API_URL
 const project = {
   key: 1,
-  url: `${BASE_API_URL}/projects/10`,
+  url: '/projects/10',
   title: 'Testing Project Alpha',
   startDate: '2020-04-18',
   description: 'This is just for testing',

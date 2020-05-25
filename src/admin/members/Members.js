@@ -9,7 +9,7 @@ import memberReducer from './memberReducer'
 const Members = () => {
   const [members, dispatch] = useReducer(memberReducer, [])
   const [{ data, loading, error }] = useAxios({
-    url: `${process.env.REACT_APP_API_URL}/members/`
+    url: '/members/'
   })
   useEffect(() => { dispatch({ type: 'LOAD', members: data }) }, [data])
 

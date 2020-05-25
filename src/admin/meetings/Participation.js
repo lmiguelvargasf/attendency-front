@@ -11,7 +11,7 @@ const Participation = () => {
   const meeting = location.state.meeting
   const [observations, setObservations] = useState('')
   const [{ data, loading, error }] = useAxios({
-    url: `${process.env.REACT_APP_API_URL}/meetings/${meeting.key}/participation`
+    url: `/meetings/${meeting.key}/participation`
   })
   const [participations, setParticipations] = useState([])
   useEffect(() => {
@@ -22,7 +22,7 @@ const Participation = () => {
   }, [data])
   const [, trackParticipation] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/meetings/${meeting.key}/track-participation/`,
+      url: `/meetings/${meeting.key}/track-participation/`,
       method: 'post'
     },
     { manual: true }

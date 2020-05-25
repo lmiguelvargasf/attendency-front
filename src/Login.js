@@ -15,24 +15,23 @@ const Login = () => {
   const history = useHistory()
   const [, login] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/token-auth/`,
+      url: '/token-auth/',
       method: 'post'
     },
     { manual: true }
   )
 
   const onFinish = async values => {
-    console.log(values)
     let response
     try {
       response = await login({ data: values })
     } catch (error) {
       message.error('The combination of username and password is incorrect!')
-      console.log(error)
       return
     }
     const { data } = response
-    window.localStorage.setItem('token', data.token)
+    window.localStorage.setItem('token', data.access)
+    window.localStorage.setItem('refreshToken', data.refresh)
     history.push('/admin')
   }
 

@@ -205,7 +205,7 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                             >
                               <button
                                 class="linkButton"
-                                data-testid="http://localhost:8000/api/meeting-table/1"
+                                data-testid="/meeting-table/1"
                                 type="button"
                               >
                                 <svg
@@ -308,7 +308,7 @@ exports[`Meetings component meetings table meetings data is retrieved successful
                             >
                               <button
                                 class="linkButton"
-                                data-testid="http://localhost:8000/api/meeting-table/2"
+                                data-testid="/meeting-table/2"
                                 type="button"
                               >
                                 <svg

@@ -9,7 +9,7 @@ const CreateMember = ({ addMember }) => {
   const history = useHistory()
   const [, createMember] = useAxios(
     {
-      url: `${process.env.REACT_APP_API_URL}/members/`,
+      url: '/members/',
       method: 'post'
     },
     { manual: true }

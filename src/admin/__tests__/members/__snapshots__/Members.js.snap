@@ -180,7 +180,7 @@ exports[`Members component members data is retrieved sucessfully members table m
                             >
                               <button
                                 class="linkButton"
-                                data-testid="http://localhost:8000/api/members/1"
+                                data-testid="/members/1"
                                 type="button"
                               >
                                 <svg
@@ -258,7 +258,7 @@ exports[`Members component members data is retrieved sucessfully members table m
                             >
                               <button
                                 class="linkButton"
-                                data-testid="http://localhost:8000/api/members/2"
+                                data-testid="/members/2"
                                 type="button"
                               >
                                 <svg
