@@ -18,7 +18,7 @@ exports[`MembersTable component matches snapshot no members 1`] = `
           type="button"
         >
           <div
-            class="ant-space ant-space-horizontal"
+            class="ant-space ant-space-horizontal ant-space-align-center"
           >
             <div
               class="ant-space-item"
@@ -64,7 +64,7 @@ exports[`MembersTable component matches snapshot no members 1`] = `
             class="ant-spin-container"
           >
             <div
-              class="ant-table"
+              class="ant-table ant-table-empty"
               data-testid="member-table"
             >
               <div
@@ -192,7 +192,7 @@ exports[`MembersTable component matches snapshot one project 1`] = `
           type="button"
         >
           <div
-            class="ant-space ant-space-horizontal"
+            class="ant-space ant-space-horizontal ant-space-align-center"
           >
             <div
               class="ant-space-item"
@@ -303,7 +303,7 @@ exports[`MembersTable component matches snapshot one project 1`] = `
                           class="ant-table-cell"
                         >
                           <div
-                            class="ant-space ant-space-horizontal"
+                            class="ant-space ant-space-horizontal ant-space-align-center"
                           >
                             <div
                               class="ant-space-item"

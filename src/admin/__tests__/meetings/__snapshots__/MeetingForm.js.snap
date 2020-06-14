@@ -52,6 +52,7 @@ exports[`MeetingForm component meeting is not passed matches snapshot 1`] = `
                     readonly=""
                     role="combobox"
                     style="opacity: 0;"
+                    unselectable="on"
                     value=""
                   />
                 </span>
@@ -121,6 +122,8 @@ exports[`MeetingForm component meeting is not passed matches snapshot 1`] = `
                 class="ant-picker-input"
               >
                 <input
+                  autocomplete="off"
+                  id="meeting_date"
                   placeholder="Select date"
                   readonly=""
                   size="12"
@@ -187,6 +190,8 @@ exports[`MeetingForm component meeting is not passed matches snapshot 1`] = `
                 class="ant-picker-input"
               >
                 <input
+                  autocomplete="off"
+                  id="meeting_time"
                   placeholder="Select time"
                   readonly=""
                   size="10"
@@ -327,6 +332,8 @@ exports[`MeetingForm component meeting is passed matches snapshot 1`] = `
                 class="ant-picker-input"
               >
                 <input
+                  autocomplete="off"
+                  id="meeting_date"
                   placeholder="Select date"
                   readonly=""
                   size="12"
@@ -417,6 +424,8 @@ exports[`MeetingForm component meeting is passed matches snapshot 1`] = `
                 class="ant-picker-input"
               >
                 <input
+                  autocomplete="off"
+                  id="meeting_time"
                   placeholder="Select time"
                   readonly=""
                   size="10"

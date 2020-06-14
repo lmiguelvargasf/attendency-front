@@ -94,7 +94,9 @@ exports[`Projects component projects data is retrieved sucessfully renders creat
                 class="ant-picker-input"
               >
                 <input
+                  autocomplete="off"
                   data-testid="project-date-picker"
+                  id="project_startDate"
                   placeholder="Select date"
                   readonly=""
                   size="12"
@@ -211,7 +213,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
           type="button"
         >
           <div
-            class="ant-space ant-space-horizontal"
+            class="ant-space ant-space-horizontal ant-space-align-center"
           >
             <div
               class="ant-space-item"
@@ -332,7 +334,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                           class="ant-table-cell"
                         >
                           <div
-                            class="ant-space ant-space-horizontal"
+                            class="ant-space ant-space-horizontal ant-space-align-center"
                           >
                             <div
                               class="ant-space-item"
@@ -487,7 +489,7 @@ exports[`Projects component projects data is retrieved sucessfully table of proj
                           class="ant-table-cell"
                         >
                           <div
-                            class="ant-space ant-space-horizontal"
+                            class="ant-space ant-space-horizontal ant-space-align-center"
                           >
                             <div
                               class="ant-space-item"
