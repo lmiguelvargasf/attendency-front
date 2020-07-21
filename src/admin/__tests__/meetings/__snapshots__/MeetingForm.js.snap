@@ -68,7 +68,7 @@ exports[`MeetingForm component meeting is not passed matches snapshot 1`] = `
               >
                 <span
                   aria-label="down"
-                  class="anticon anticon-down"
+                  class="anticon anticon-down ant-select-suffix"
                   role="img"
                 >
                   <svg
