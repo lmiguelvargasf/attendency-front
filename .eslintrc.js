@@ -20,7 +20,9 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    'react':  {
+      'version': 'detect'
+    }
   ],
   rules: {
   }
