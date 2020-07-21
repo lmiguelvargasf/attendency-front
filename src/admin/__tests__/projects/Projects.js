@@ -119,30 +119,6 @@ describe('Projects component', () => {
         expect(queryByTestId('error')).toBeNull()
         expect(queryByTestId('create-project-form')).toBeNull()
       })
-
-      it('removes project in table when clicking on X', async () => {
-        const project = projects[0]
-        const executeMock = jest.fn()
-        useAxios.mockImplementation((...args) => {
-          switch (args.length) {
-            case 1:
-              return [{
-                data: projects,
-                loading: false,
-                error: null
-              }]
-            case 2:
-              return [{}, executeMock]
-            default: break
-          }
-        })
-        const { getByTestId, findByTestId, getByText } = render(component)
-        expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(project.title)
-        fireEvent.click(getByTestId(project.url))
-        fireEvent.click(getByText('OK'))
-        const table = await findByTestId(TABLE_TEST_ID)
-        expect(table).not.toHaveTextContent(project.title)
-      })
     })
 
     describe('renders create project form', () => {

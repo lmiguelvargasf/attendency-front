@@ -126,30 +126,6 @@ describe('Meetings component', () => {
           expect(queryByTestId('loading')).toBeNull()
           expect(queryByTestId('error')).toBeNull()
         })
-
-        it('removes meeting in table when clicking on X', async () => {
-          const meeting = meetings[0]
-          const executeMock = jest.fn()
-          useAxios.mockImplementation((...args) => {
-            switch (args.length) {
-              case 1:
-                return [{
-                  data: meetings,
-                  loading: false,
-                  error: null
-                }]
-              case 2:
-                return [{}, executeMock]
-              default: break
-            }
-          })
-          const { getByTestId, findByTestId, getByText } = render(component)
-          expect(getByTestId(TABLE_TEST_ID)).toHaveTextContent(meeting.projectTitle)
-          fireEvent.click(getByTestId(meeting.url))
-          fireEvent.click(getByText('OK'))
-          const table = await findByTestId(TABLE_TEST_ID)
-          expect(table).not.toHaveTextContent(meeting.projectTitle)
-        })
       })
     })
   })
