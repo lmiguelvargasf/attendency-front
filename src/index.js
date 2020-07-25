@@ -9,17 +9,14 @@ import './index.css'
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
-function reactIsInDevelomentMode () {
-  return '_self' in React.createElement('div')
-}
-
 axios.interceptors.request.use(function (config) {
+  if (process.env.NODE_ENV !== 'development') {
+    config.url = config.url.replace(/^http:\/\//i, 'https://')
+  }
+
   if (window.localStorage.getItem('token')) {
     const token = window.localStorage.getItem('token')
     config.headers.Authorization = `Bearer ${token}`
-    if (!reactIsInDevelomentMode) {
-      config.url = config.url.replace(/^http:\/\//i, 'https://')
-    }
     return config
   }
   return config
